@@ -1,0 +1,5 @@
+2025-11-27 22:31:31.288 -05:00 [INF] Executing StatusCodeResult, setting HTTP status code 200
+2025-11-27 22:32:41.552 -05:00 [INF] Executing StatusCodeResult, setting HTTP status code 200
+2025-11-27 22:33:49.104 -05:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-11-27 22:33:54.292 -05:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-11-27 22:34:03.543 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+IEnumerableWhereIterator`1[[Play.Inventory.Dtos.InventoryItemDto, Play.Inventory.Service, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.

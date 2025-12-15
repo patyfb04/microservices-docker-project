@@ -1,0 +1,8 @@
+2025-11-21 22:17:46.302 -05:00 [ERR] { "_t" : "MongoWriteException", "HelpLink" : null, "Source" : "MongoDB.Driver", "HResult" : -2146233088 }
+2025-11-21 22:25:50.101 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+IEnumerableWhereIterator`1[[Play.Inventory.Dtos.InventoryItemDto, Play.Inventory.Service, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-11-21 22:26:01.049 -05:00 [INF] Executing StatusCodeResult, setting HTTP status code 200
+2025-11-21 22:26:05.699 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+IEnumerableWhereIterator`1[[Play.Inventory.Dtos.InventoryItemDto, Play.Inventory.Service, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-11-21 22:26:47.323 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+IEnumerableWhereIterator`1[[Play.Inventory.Dtos.InventoryItemDto, Play.Inventory.Service, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-11-21 22:43:18.641 -05:00 [INF] Executing StatusCodeResult, setting HTTP status code 200
+2025-11-21 22:43:24.492 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+IEnumerableWhereIterator`1[[Play.Inventory.Dtos.InventoryItemDto, Play.Inventory.Service, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-11-21 22:44:03.176 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+IEnumerableWhereIterator`1[[Play.Inventory.Dtos.InventoryItemDto, Play.Inventory.Service, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.

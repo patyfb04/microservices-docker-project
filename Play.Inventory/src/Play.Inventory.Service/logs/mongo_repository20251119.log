@@ -1,0 +1,43 @@
+2025-11-19 21:45:03.739 -05:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2025-11-19 21:58:13.371 -05:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2025-11-19 21:58:59.154 -05:00 [INF] Executing StatusCodeResult, setting HTTP status code 200
+2025-11-19 22:01:09.873 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+ListSelectIterator`2[[Play.Inventory.Service.Entities.InventoryItem, Play.Inventory.Service, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[Play.Inventory.Dtos.InventoryItemDto, Play.Inventory.Service, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-11-19 22:02:20.046 -05:00 [INF] Executing StatusCodeResult, setting HTTP status code 200
+2025-11-19 22:02:25.532 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+ListSelectIterator`2[[Play.Inventory.Service.Entities.InventoryItem, Play.Inventory.Service, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[Play.Inventory.Dtos.InventoryItemDto, Play.Inventory.Service, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-11-19 22:40:32.193 -05:00 [INF] Start processing HTTP request GET http://localhost:5007/items
+2025-11-19 22:40:32.221 -05:00 [INF] Sending HTTP request GET http://localhost:5007/items
+2025-11-19 22:40:32.363 -05:00 [INF] Received HTTP response headers after 136.2246ms - 200
+2025-11-19 22:40:32.376 -05:00 [INF] End processing HTTP request after 189.8994ms - 200
+2025-11-19 22:40:32.681 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+ListSelectIterator`2[[Play.Inventory.Service.Entities.InventoryItem, Play.Inventory.Service, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[Play.Inventory.Dtos.InventoryItemDto, Play.Inventory.Service, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-11-19 22:42:33.516 -05:00 [INF] Start processing HTTP request GET http://localhost:5007/items
+2025-11-19 22:42:33.516 -05:00 [INF] Sending HTTP request GET http://localhost:5007/items
+2025-11-19 22:42:33.625 -05:00 [INF] Received HTTP response headers after 109.1875ms - 200
+2025-11-19 22:42:33.625 -05:00 [INF] End processing HTTP request after 109.7486ms - 200
+2025-11-19 22:49:06.123 -05:00 [INF] Start processing HTTP request GET http://localhost:5007/items
+2025-11-19 22:49:06.160 -05:00 [INF] Sending HTTP request GET http://localhost:5007/items
+2025-11-19 22:49:07.089 -05:00 [INF] Received HTTP response headers after 926.7828ms - 200
+2025-11-19 22:49:07.099 -05:00 [INF] End processing HTTP request after 979.6667ms - 200
+2025-11-19 22:49:07.352 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+IEnumerableWhereIterator`1[[Play.Inventory.Dtos.InventoryItemDto, Play.Inventory.Service, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-11-19 22:49:52.490 -05:00 [INF] Start processing HTTP request GET http://localhost:5007/items
+2025-11-19 22:49:52.536 -05:00 [INF] Sending HTTP request GET http://localhost:5007/items
+2025-11-19 22:49:53.528 -05:00 [INF] Received HTTP response headers after 986.2051ms - 200
+2025-11-19 22:49:53.547 -05:00 [INF] End processing HTTP request after 1061.8775ms - 200
+2025-11-19 22:49:53.872 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+IEnumerableWhereIterator`1[[Play.Inventory.Dtos.InventoryItemDto, Play.Inventory.Service, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-11-19 22:50:17.827 -05:00 [INF] Start processing HTTP request GET http://localhost:5007/items
+2025-11-19 22:50:17.827 -05:00 [INF] Sending HTTP request GET http://localhost:5007/items
+2025-11-19 22:50:17.891 -05:00 [INF] Received HTTP response headers after 63.4861ms - 200
+2025-11-19 22:50:17.891 -05:00 [INF] End processing HTTP request after 63.8842ms - 200
+2025-11-19 22:53:09.300 -05:00 [INF] Start processing HTTP request GET http://localhost:5007/items
+2025-11-19 22:53:09.340 -05:00 [INF] Sending HTTP request GET http://localhost:5007/items
+2025-11-19 22:53:09.538 -05:00 [INF] Received HTTP response headers after 194.6423ms - 200
+2025-11-19 22:53:09.554 -05:00 [INF] End processing HTTP request after 258.1863ms - 200
+2025-11-19 22:59:04.039 -05:00 [INF] Start processing HTTP request GET http://localhost:5007/items
+2025-11-19 22:59:04.079 -05:00 [INF] Sending HTTP request GET http://localhost:5007/items
+2025-11-19 22:59:04.975 -05:00 [INF] Received HTTP response headers after 889.7138ms - 200
+2025-11-19 22:59:04.997 -05:00 [INF] End processing HTTP request after 958.0069ms - 200
+2025-11-19 22:59:05.308 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+IEnumerableWhereIterator`1[[Play.Inventory.Dtos.InventoryItemDto, Play.Inventory.Service, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-11-19 23:00:15.364 -05:00 [INF] Start processing HTTP request GET http://localhost:5007/items
+2025-11-19 23:00:15.418 -05:00 [INF] Sending HTTP request GET http://localhost:5007/items
+2025-11-19 23:00:16.421 -05:00 [INF] Received HTTP response headers after 997.6423ms - 200
+2025-11-19 23:00:16.439 -05:00 [INF] End processing HTTP request after 1080.189ms - 200
+2025-11-19 23:00:16.713 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+IEnumerableWhereIterator`1[[Play.Inventory.Dtos.InventoryItemDto, Play.Inventory.Service, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.

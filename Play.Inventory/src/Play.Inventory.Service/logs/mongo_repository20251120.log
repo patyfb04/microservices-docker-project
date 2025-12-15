@@ -1,0 +1,65 @@
+2025-11-20 12:16:41.552 -05:00 [INF] Start processing HTTP request GET http://localhost:5007/items
+2025-11-20 12:16:41.589 -05:00 [INF] Sending HTTP request GET http://localhost:5007/items
+2025-11-20 12:16:52.720 -05:00 [INF] Received HTTP response headers after 11124.2436ms - 500
+2025-11-20 12:16:52.744 -05:00 [INF] End processing HTTP request after 11195.9735ms - 500
+2025-11-20 12:22:58.736 -05:00 [INF] Start processing HTTP request GET http://localhost:5007/items
+2025-11-20 12:22:58.775 -05:00 [INF] Sending HTTP request GET http://localhost:5007/items
+2025-11-20 12:46:23.030 -05:00 [INF] Start processing HTTP request GET http://localhost:5007/items
+2025-11-20 12:46:23.076 -05:00 [INF] Sending HTTP request GET http://localhost:5007/items
+2025-11-20 12:46:24.109 -05:00 [WRN] Delaying for  00:00:02 seconds, then making retry Polly.Context
+2025-11-20 12:46:26.119 -05:00 [INF] Sending HTTP request GET http://localhost:5007/items
+2025-11-20 12:46:27.136 -05:00 [WRN] Delaying for  00:00:04 seconds, then making retry Polly.Context
+2025-11-20 12:46:31.140 -05:00 [INF] Sending HTTP request GET http://localhost:5007/items
+2025-11-20 12:46:31.273 -05:00 [INF] Received HTTP response headers after 126.6826ms - 500
+2025-11-20 12:46:31.295 -05:00 [WRN] Delaying for  00:00:08 seconds, then making retry Polly.Context
+2025-11-20 12:46:39.313 -05:00 [INF] Sending HTTP request GET http://localhost:5007/items
+2025-11-20 12:46:39.337 -05:00 [INF] Received HTTP response headers after 24.0828ms - 500
+2025-11-20 12:46:39.338 -05:00 [WRN] Delaying for  00:00:16 seconds, then making retry Polly.Context
+2025-11-20 12:46:55.342 -05:00 [INF] Sending HTTP request GET http://localhost:5007/items
+2025-11-20 12:46:55.697 -05:00 [INF] Received HTTP response headers after 354.3973ms - 200
+2025-11-20 12:46:55.700 -05:00 [INF] End processing HTTP request after 32679.3277ms - 200
+2025-11-20 12:46:56.136 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+IEnumerableWhereIterator`1[[Play.Inventory.Dtos.InventoryItemDto, Play.Inventory.Service, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-11-20 12:49:09.792 -05:00 [INF] Start processing HTTP request GET http://localhost:5007/items
+2025-11-20 12:49:09.793 -05:00 [INF] Sending HTTP request GET http://localhost:5007/items
+2025-11-20 12:49:09.830 -05:00 [INF] Received HTTP response headers after 37.4328ms - 200
+2025-11-20 12:49:09.830 -05:00 [INF] End processing HTTP request after 38.2965ms - 200
+2025-11-20 12:49:09.843 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+IEnumerableWhereIterator`1[[Play.Inventory.Dtos.InventoryItemDto, Play.Inventory.Service, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-11-20 12:49:55.582 -05:00 [INF] Start processing HTTP request GET http://localhost:5007/items
+2025-11-20 12:49:55.622 -05:00 [INF] Sending HTTP request GET http://localhost:5007/items
+2025-11-20 12:49:56.660 -05:00 [WRN] Delaying for  00:00:02 seconds, then making retry Polly.Context
+2025-11-20 12:49:58.668 -05:00 [INF] Sending HTTP request GET http://localhost:5007/items
+2025-11-20 12:49:59.688 -05:00 [WRN] Delaying for  00:00:04 seconds, then making retry Polly.Context
+2025-11-20 12:50:03.694 -05:00 [INF] Sending HTTP request GET http://localhost:5007/items
+2025-11-20 12:50:03.747 -05:00 [INF] Received HTTP response headers after 50.4857ms - 500
+2025-11-20 12:50:03.752 -05:00 [WRN] Delaying for  00:00:08 seconds, then making retry Polly.Context
+2025-11-20 12:50:11.765 -05:00 [INF] Sending HTTP request GET http://localhost:5007/items
+2025-11-20 12:50:11.780 -05:00 [INF] Received HTTP response headers after 14.6965ms - 500
+2025-11-20 12:50:11.781 -05:00 [WRN] Delaying for  00:00:16 seconds, then making retry Polly.Context
+2025-11-20 12:50:27.797 -05:00 [INF] Sending HTTP request GET http://localhost:5007/items
+2025-11-20 12:50:27.898 -05:00 [INF] Received HTTP response headers after 101.0588ms - 200
+2025-11-20 12:50:27.899 -05:00 [INF] End processing HTTP request after 32324.8807ms - 200
+2025-11-20 12:50:28.012 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+IEnumerableWhereIterator`1[[Play.Inventory.Dtos.InventoryItemDto, Play.Inventory.Service, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-11-20 20:32:08.003 -05:00 [INF] Start processing HTTP request GET http://localhost:5007/items
+2025-11-20 20:32:08.065 -05:00 [INF] Sending HTTP request GET http://localhost:5007/items
+2025-11-20 20:32:09.110 -05:00 [WRN] Delaying for  00:00:02.6220000 seconds, then making retry Polly.Context
+2025-11-20 20:32:11.737 -05:00 [INF] Sending HTTP request GET http://localhost:5007/items
+2025-11-20 20:32:12.753 -05:00 [WRN] Delaying for  00:00:04.0750000 seconds, then making retry Polly.Context
+2025-11-20 20:32:16.838 -05:00 [INF] Sending HTTP request GET http://localhost:5007/items
+2025-11-20 20:32:16.913 -05:00 [INF] Received HTTP response headers after 69.1165ms - 500
+2025-11-20 20:32:16.924 -05:00 [WRN] Delaying for  00:00:08.1590000 seconds, then making retry Polly.Context
+2025-11-20 20:32:25.101 -05:00 [INF] Sending HTTP request GET http://localhost:5007/items
+2025-11-20 20:32:25.119 -05:00 [INF] Received HTTP response headers after 17.22ms - 500
+2025-11-20 20:32:25.120 -05:00 [WRN] Delaying for  00:00:16.3920000 seconds, then making retry Polly.Context
+2025-11-20 20:32:41.521 -05:00 [INF] Sending HTTP request GET http://localhost:5007/items
+2025-11-20 20:32:41.626 -05:00 [INF] Received HTTP response headers after 104.404ms - 200
+2025-11-20 20:32:41.628 -05:00 [INF] End processing HTTP request after 33636.2202ms - 200
+2025-11-20 20:32:41.942 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+IEnumerableWhereIterator`1[[Play.Inventory.Dtos.InventoryItemDto, Play.Inventory.Service, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-11-20 20:42:50.766 -05:00 [INF] Start processing HTTP request GET http://localhost:5007/items
+2025-11-20 20:42:50.812 -05:00 [INF] Sending HTTP request GET http://localhost:5007/items
+2025-11-20 20:42:51.856 -05:00 [WRN] Delaying for  00:00:02.0230000 seconds, then making retry Polly.Context
+2025-11-20 20:42:53.882 -05:00 [INF] Sending HTTP request GET http://localhost:5007/items
+2025-11-20 20:42:54.907 -05:00 [WRN] Delaying for  00:00:04.3520000 seconds, then making retry Polly.Context
+2025-11-20 20:42:59.265 -05:00 [INF] Sending HTTP request GET http://localhost:5007/items
+2025-11-20 20:42:59.332 -05:00 [INF] Received HTTP response headers after 63.1865ms - 500
+2025-11-20 20:42:59.346 -05:00 [WRN] Opening the Circuit for  15 seconds...
+2025-11-20 20:42:59.347 -05:00 [WRN] Delaying for  00:00:08.2290000 seconds, then making retry Polly.Context

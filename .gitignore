@@ -1,0 +1,15 @@
+# Ignore build output
+bin
+obj
+.vs/
+node_modules/
+
+# Ignore environment files
+.env
+
+# Ignore logs
+.log
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db

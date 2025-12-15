@@ -1,0 +1,3 @@
+2025-11-21 22:12:59.012 -05:00 [ERR] { "_t" : "MongoWriteException", "HelpLink" : null, "Source" : "MongoDB.Driver", "HResult" : -2146233088 }
+2025-11-21 22:13:35.435 -05:00 [ERR] { "_t" : "MongoWriteException", "HelpLink" : null, "Source" : "MongoDB.Driver", "HResult" : -2146233088 }
+2025-11-21 22:15:11.810 -05:00 [ERR] { "_t" : "MongoWriteException", "HelpLink" : null, "Source" : "MongoDB.Driver", "HResult" : -2146233088 }
