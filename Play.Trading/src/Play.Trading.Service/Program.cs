@@ -99,7 +99,8 @@ void AddMassTransit()
             repo.DatabaseName = serviceSettings.ServiceName;
             repo.CollectionName = "purchaseStates";
 
-            BsonSerializer.RegisterSerializer(new GuidSerializer(GuidRepresentation.Standard));
+            BsonSerializer.RegisterSerializer(typeof(Guid), new GuidSerializer(GuidRepresentation.Standard));
+            BsonSerializer.RegisterSerializer(typeof(Guid?), new NullableSerializer<Guid>(new GuidSerializer(GuidRepresentation.Standard)));
 
         });
 

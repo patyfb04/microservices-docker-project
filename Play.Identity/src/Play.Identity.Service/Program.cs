@@ -20,8 +20,8 @@ Log.Logger = new LoggerConfiguration()
 builder.Host.UseSerilog();
 
 // MongoDB Guid serialization (Standard)
-BsonSerializer.RegisterSerializer(typeof(Guid), new GuidSerializer(BsonType.String));
-BsonSerializer.RegisterSerializer(typeof(Guid?), new NullableSerializer<Guid>(new GuidSerializer(BsonType.String)));
+BsonSerializer.RegisterSerializer(typeof(Guid), new GuidSerializer(GuidRepresentation.Standard));
+BsonSerializer.RegisterSerializer(typeof(Guid?), new NullableSerializer<Guid>(new GuidSerializer(GuidRepresentation.Standard)));
 
 // Settings
 const string AllowedOriginsSettings = "AllowedOrigins";
