@@ -7,10 +7,12 @@ using MongoDB.Bson.Serialization.Serializers;
 using Play.Common.Identity;
 using Play.Common.Repositories;
 using Play.Common.Settings;
+using Play.Inventory.Contracts;
 using Play.Trading.Service;
 using Play.Trading.Service.Contracts;
 using Play.Trading.Service.Entities;
 using Play.Trading.Service.Exceptions;
+using Play.Trading.Service.Settings;
 using Play.Trading.Service.StatesMachine;
 using System.Reflection;
 using System.Text.Json.Serialization;
@@ -30,6 +32,9 @@ builder.Services.Configure<ServiceSettings>(
 
 builder.Services.Configure<MassTransitSettings>(
     builder.Configuration.GetSection(nameof(MassTransitSettings)));
+
+builder.Services.Configure<QueueSettings>(
+    builder.Configuration.GetSection(nameof(QueueSettings)));
 
 builder.Services.AddMongoDb()
                 .AddMongoRepository<CatalogItem>("catalogitems")
@@ -109,6 +114,7 @@ void AddMassTransit()
         configure.UsingRabbitMq((context, cfg) =>
         {
             var rabbitSettings = builder.Configuration.GetSection(nameof(RabbitMQSettings)).Get<RabbitMQSettings>();
+            var queueSettings = builder.Configuration.GetSection(nameof(QueueSettings)).Get<QueueSettings>();
 
             cfg.UseMessageRetry(config =>
             {
@@ -122,6 +128,7 @@ void AddMassTransit()
                 h.Password(rabbitSettings.Password);
             });
 
+
             cfg.ReceiveEndpoint("purchase-requested-faults", e =>
             {
                 e.Handler<Fault<PurchaseRequested>>(context =>
@@ -132,10 +139,10 @@ void AddMassTransit()
                 });
             });
 
-
             cfg.ConfigureEndpoints(context);
         });
 
+        EndpointConvention.Map<GrantItems>(new Uri("queue:inventory-grant-items"));
     });
 } 
 
