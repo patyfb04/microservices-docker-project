@@ -9,6 +9,7 @@ node_modules/
 
 # Ignore logs
 .log
+.txt
 
 # Ignore OS-specific files
 .DS_Store

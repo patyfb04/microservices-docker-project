@@ -8,6 +8,7 @@ using Play.Common.Identity;
 using Play.Common.Repositories;
 using Play.Common.Settings;
 using Play.Trading.Service;
+using Play.Trading.Service.Contracts;
 using Play.Trading.Service.Entities;
 using Play.Trading.Service.Exceptions;
 using Play.Trading.Service.StatesMachine;
@@ -15,6 +16,9 @@ using System.Reflection;
 using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
+
+BsonSerializer.RegisterSerializer(typeof(Guid), new GuidSerializer(GuidRepresentation.Standard));
+BsonSerializer.RegisterSerializer(typeof(Guid?), new NullableSerializer<Guid>(new GuidSerializer(GuidRepresentation.Standard)));
 
 // Add services to the container.
 
@@ -99,9 +103,6 @@ void AddMassTransit()
             repo.DatabaseName = serviceSettings.ServiceName;
             repo.CollectionName = "purchaseStates";
 
-            BsonSerializer.RegisterSerializer(typeof(Guid), new GuidSerializer(GuidRepresentation.Standard));
-            BsonSerializer.RegisterSerializer(typeof(Guid?), new NullableSerializer<Guid>(new GuidSerializer(GuidRepresentation.Standard)));
-
         });
 
 
@@ -121,7 +122,17 @@ void AddMassTransit()
                 h.Password(rabbitSettings.Password);
             });
 
-            // This is critical: wires up saga consumers to queues
+            cfg.ReceiveEndpoint("purchase-requested-faults", e =>
+            {
+                e.Handler<Fault<PurchaseRequested>>(context =>
+                {
+                    var exception = context.Message.Exceptions.FirstOrDefault();
+                    Console.WriteLine($"Fault captured: {exception?.Message}");
+                    return Task.CompletedTask;
+                });
+            });
+
+
             cfg.ConfigureEndpoints(context);
         });
 

@@ -15,8 +15,10 @@ namespace Play.Trading.Service.StatesMachine
         public State Faulted { get; set; }
 
         public Event<PurchaseRequested> PurchaseRequested { get; }
-
         public Event<GetPurchaseState> GetPurchaseState { get; }
+
+        public Event<Fault<PurchaseRequested>> PurchaseRequestedFaulted { get; private set; }
+
         public PurchaseStateMachine()
         {
             InstanceState(state => state.CurrentState);
@@ -29,6 +31,7 @@ namespace Play.Trading.Service.StatesMachine
         {
             Event(() => PurchaseRequested, x => x.CorrelateById(context => context.Message.CorrelationId));
             Event(() => GetPurchaseState, x => x.CorrelateById(context => context.Message.CorrelationId));
+            Event(() => PurchaseRequestedFaulted, x => x.CorrelateById(context => context.Message.Message.CorrelationId));
         }
 
         private void ConfigureInitialState()
@@ -44,21 +47,27 @@ namespace Play.Trading.Service.StatesMachine
                     context.Saga.LastUpdated = context.Saga.Received;
                 })
                 .Activity(x=> x.OfType<CalculatePurchaseTotalActivity>())
-                .TransitionTo(Accepted)
-                .Catch<Exception>(ex => ex
-                    .Then(context =>
-                    {
-                        context.Saga.ErrorMessage = context.Exception.Message;
-                        context.Saga.LastUpdated = DateTimeOffset.UtcNow;
-                    }))
-                .TransitionTo(Faulted));
+                .TransitionTo(Accepted));
         }
 
         private void ConfigureAny()
         {
+            // Respond to queries
             DuringAny(
                 When(GetPurchaseState)
-                .Respond(x=> x.Saga));
+                    .Respond(x => x.Saga)
+            );
+
+            // Capture faults globally
+            DuringAny(
+                When(PurchaseRequestedFaulted) // this is the built-in fault event
+                    .Then(context =>
+                    {
+                        context.Saga.ErrorMessage = string.Join(",",context.Message.Exceptions.Select(c=> c.Message));
+                        context.Saga.LastUpdated = DateTimeOffset.UtcNow;
+                    })
+            );
+
         }
     }
 }
