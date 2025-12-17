@@ -19,6 +19,8 @@ namespace Play.Trading.Service.StatesMachine
         public Event<GetPurchaseState> GetPurchaseState { get; }
         public Event<Fault<PurchaseRequested>> PurchaseRequestedFaulted { get; private set; }
         public Event<InventoryItemsGranted> InventoryItemsGranted { get; }
+        public Event<Fault<InventoryItemsGranted>> InventoryItemsGrantedFaulted { get; private set; }
+
 
         public PurchaseStateMachine()
         {
@@ -35,6 +37,7 @@ namespace Play.Trading.Service.StatesMachine
             Event(() => GetPurchaseState, x => x.CorrelateById(context => context.Message.CorrelationId));
             Event(() => PurchaseRequestedFaulted, x => x.CorrelateById(context => context.Message.Message.CorrelationId));
             Event(() => InventoryItemsGranted, x => x.CorrelateById(context => context.Message.CorrelationId));
+            Event(() => InventoryItemsGrantedFaulted, x => x.CorrelateById(context => context.Message.Message.CorrelationId));
         }
 
         private void ConfigureInitialState()
@@ -50,13 +53,13 @@ namespace Play.Trading.Service.StatesMachine
                     context.Saga.LastUpdated = context.Saga.Received;
                 })
                 .Activity(x=> x.OfType<CalculatePurchaseTotalActivity>()) // migrate to a microservice later
-                .Send(context =>
-                            new GrantItems(
-                                context.Saga.UserId, 
-                                context.Saga.ItemId,
-                                context.Saga.Quantity,
-                                context.Saga.CorrelationId)
-                )
+                .Send(new Uri("queue:inventory-grant-items"), context =>
+                        new GrantItems(
+                            context.Saga.UserId,
+                            context.Saga.ItemId,
+                            context.Saga.Quantity,
+                            context.Saga.CorrelationId)
+                    )
                 .TransitionTo(Accepted));
         }
 
@@ -80,13 +83,22 @@ namespace Play.Trading.Service.StatesMachine
 
             // Capture faults globally
             DuringAny(
-                When(PurchaseRequestedFaulted) // this is the built-in fault event
+                When(PurchaseRequestedFaulted)
                     .Then(context =>
                     {
                         context.Saga.ErrorMessage = string.Join(",",context.Message.Exceptions.Select(c=> c.Message));
                         context.Saga.LastUpdated = DateTimeOffset.UtcNow;
                     })
             );
+
+          DuringAny(
+            When(InventoryItemsGrantedFaulted)
+                .Then(context =>
+                {
+                    context.Saga.ErrorMessage = string.Join(",", context.Message.Exceptions.Select(c => c.Message));
+                    context.Saga.LastUpdated = DateTimeOffset.UtcNow;
+                })
+        );
 
         }
     }
