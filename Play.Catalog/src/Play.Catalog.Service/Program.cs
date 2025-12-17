@@ -15,10 +15,8 @@ using Serilog;
 var builder = WebApplication.CreateBuilder(args);
 const string AllowedOriginSetting = "AllowedOrigin";
 
-//BsonSerializer.RegisterSerializer(typeof(Guid), new GuidSerializer(GuidRepresentation.CSharpLegacy));
-//BsonSerializer.RegisterSerializer(typeof(Guid?), new NullableSerializer<Guid>(new GuidSerializer(GuidRepresentation.CSharpLegacy)));
-BsonSerializer.RegisterSerializer(typeof(Guid), new GuidSerializer(BsonType.String));
-BsonSerializer.RegisterSerializer(typeof(Guid?), new NullableSerializer<Guid>(new GuidSerializer(BsonType.String)));
+BsonSerializer.RegisterSerializer(typeof(Guid), new GuidSerializer(GuidRepresentation.Standard));
+BsonSerializer.RegisterSerializer(typeof(Guid?), new NullableSerializer<Guid>(new GuidSerializer(GuidRepresentation.Standard)));
 
 Log.Logger = new LoggerConfiguration()
              .WriteTo.Console()
