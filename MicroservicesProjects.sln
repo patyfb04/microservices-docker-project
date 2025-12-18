@@ -31,6 +31,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Play.Catalog.Contracts", "P
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Play.Inventory.Contracts", "Play.Inventory\src\Play.Inventory.Contracts\Play.Inventory.Contracts.csproj", "{0955F11C-4A2F-477E-A469-351510B562CD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Play.Identity.Contracts", "Play.Identity\src\Play.Identity.Contracts\Play.Identity.Contracts.csproj", "{604AA1C1-C4B2-48D9-8C4D-DE14E02F1CEA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -65,6 +67,10 @@ Global
 		{0955F11C-4A2F-477E-A469-351510B562CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0955F11C-4A2F-477E-A469-351510B562CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0955F11C-4A2F-477E-A469-351510B562CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{604AA1C1-C4B2-48D9-8C4D-DE14E02F1CEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{604AA1C1-C4B2-48D9-8C4D-DE14E02F1CEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{604AA1C1-C4B2-48D9-8C4D-DE14E02F1CEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{604AA1C1-C4B2-48D9-8C4D-DE14E02F1CEA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -77,6 +83,7 @@ Global
 		{C2DEE2E8-187D-46DC-832B-6B190BFF552F} = {365E3A3B-A8D7-4155-AF19-B99527771467}
 		{DC101169-AA3C-2912-37F5-A92345FA2757} = {FA129AF9-625B-5B11-3AF1-0DECFEB3AD97}
 		{0955F11C-4A2F-477E-A469-351510B562CD} = {C46B9131-03F9-4CD9-B703-5D79EA33129B}
+		{604AA1C1-C4B2-48D9-8C4D-DE14E02F1CEA} = {29F9DA41-1011-4B8D-BE74-CD45C22A2647}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8CF81E1E-0097-495A-BFF1-0A8F2395819C}

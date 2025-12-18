@@ -7,6 +7,7 @@ using MongoDB.Bson.Serialization.Serializers;
 using Play.Common.Identity;
 using Play.Common.Repositories;
 using Play.Common.Settings;
+using Play.Identity.Contracts;
 using Play.Inventory.Contracts;
 using Play.Trading.Service;
 using Play.Trading.Service.Contracts;
@@ -110,11 +111,13 @@ void AddMassTransit()
 
         });
 
+        var queueSettings = builder.Configuration.GetSection(nameof(QueueSettings)).Get<QueueSettings>();
 
         configure.UsingRabbitMq((context, cfg) =>
         {
             var rabbitSettings = builder.Configuration.GetSection(nameof(RabbitMQSettings)).Get<RabbitMQSettings>();
-            var queueSettings = builder.Configuration.GetSection(nameof(QueueSettings)).Get<QueueSettings>();
+            
+            cfg.UseInMemoryOutbox(context);
 
             cfg.UseMessageRetry(config =>
             {
@@ -137,12 +140,35 @@ void AddMassTransit()
                     Console.WriteLine($"Fault captured: {exception?.Message}");
                     return Task.CompletedTask;
                 });
+
+                e.Handler<Fault<GilDebited>>(context =>
+                {
+                    var exception = context.Message.Exceptions.FirstOrDefault();
+                    Console.WriteLine($"Fault captured: {exception?.Message}");
+                    return Task.CompletedTask;
+                });
+
+                e.Handler<Fault<InventoryItemsGranted>>(context =>
+                {
+                    var exception = context.Message.Exceptions.FirstOrDefault();
+                    Console.WriteLine($"Fault captured: {exception?.Message}");
+                    return Task.CompletedTask;
+                });
+
+                e.Handler<Fault<InventoryItemsSubtracted>>(context =>
+                {
+                    var exception = context.Message.Exceptions.FirstOrDefault();
+                    Console.WriteLine($"Fault captured: {exception?.Message}");
+                    return Task.CompletedTask;
+                });
+
             });
 
             cfg.ConfigureEndpoints(context);
         });
 
-        EndpointConvention.Map<GrantItems>(new Uri("queue:inventory-grant-items"));
+        EndpointConvention.Map<GrantItems>(new Uri(queueSettings.GrantItemsQueueAddress));
+        EndpointConvention.Map<DebitGil>(new Uri(queueSettings.DebitGilQueueAddress));
     });
 } 
 

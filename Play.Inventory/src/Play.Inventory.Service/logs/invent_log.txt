@@ -6157,3 +6157,135 @@ System.ArgumentNullException: Value cannot be null. (Parameter 'input')
 2025-12-16 23:29:13.251 -05:00 [INF] Executed action Play.Inventory.Service.Controllers.ItemsController.GetAsync (Play.Inventory.Service) in 4.5731ms
 2025-12-16 23:29:13.253 -05:00 [INF] Executed endpoint 'Play.Inventory.Service.Controllers.ItemsController.GetAsync (Play.Inventory.Service)'
 2025-12-16 23:29:13.256 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7067/items?userId=e522c582-ea63-4d48-bc52-bc4f94809150 - 200 null application/json; charset=utf-8 27.4979ms
+2025-12-17 20:58:38.849 -05:00 [INF] Configured endpoint inventory-catalog-item-created, Consumer: Play.Inventory.Service.Consumers.CatalogItemCreatedConsumer
+2025-12-17 20:58:38.906 -05:00 [INF] Configured endpoint inventory-catalog-item-deleted, Consumer: Play.Inventory.Service.Consumers.CatalogItemDeletedConsumer
+2025-12-17 20:58:38.911 -05:00 [INF] Configured endpoint inventory-catalog-item-updated, Consumer: Play.Inventory.Service.Consumers.CatalogItemUpdatedConsumer
+2025-12-17 20:58:38.916 -05:00 [INF] Configured endpoint inventory-grant-items, Consumer: Play.Inventory.Service.Consumers.GrantItemsConsumer
+2025-12-17 20:58:38.922 -05:00 [INF] Configured endpoint inventory-subtract-items, Consumer: Play.Inventory.Service.Consumers.SubtractItemsConsumer
+2025-12-17 20:58:39.199 -05:00 [INF] User profile is available. Using 'C:\Users\patri\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-12-17 20:58:39.822 -05:00 [INF] Now listening on: https://localhost:7067
+2025-12-17 20:58:39.826 -05:00 [INF] Now listening on: http://localhost:5223
+2025-12-17 20:58:39.929 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-17 20:58:39.931 -05:00 [INF] Hosting environment: Development
+2025-12-17 20:58:39.933 -05:00 [INF] Content root path: C:\git-repos\MicroservicesProjects\Play.Inventory\src\Play.Inventory.Service
+2025-12-17 20:58:40.012 -05:00 [INF] Bus started: "rabbitmq://localhost/"
+2025-12-17 21:07:15.682 -05:00 [INF] Configured endpoint inventory-catalog-item-created, Consumer: Play.Inventory.Service.Consumers.CatalogItemCreatedConsumer
+2025-12-17 21:07:15.734 -05:00 [INF] Configured endpoint inventory-catalog-item-deleted, Consumer: Play.Inventory.Service.Consumers.CatalogItemDeletedConsumer
+2025-12-17 21:07:15.740 -05:00 [INF] Configured endpoint inventory-catalog-item-updated, Consumer: Play.Inventory.Service.Consumers.CatalogItemUpdatedConsumer
+2025-12-17 21:07:15.745 -05:00 [INF] Configured endpoint inventory-grant-items, Consumer: Play.Inventory.Service.Consumers.GrantItemsConsumer
+2025-12-17 21:07:15.751 -05:00 [INF] Configured endpoint inventory-subtract-items, Consumer: Play.Inventory.Service.Consumers.SubtractItemsConsumer
+2025-12-17 21:07:16.032 -05:00 [INF] User profile is available. Using 'C:\Users\patri\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-12-17 21:07:16.771 -05:00 [INF] Now listening on: https://localhost:7067
+2025-12-17 21:07:16.778 -05:00 [INF] Now listening on: http://localhost:5223
+2025-12-17 21:07:16.886 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-17 21:07:16.891 -05:00 [INF] Hosting environment: Development
+2025-12-17 21:07:16.893 -05:00 [INF] Content root path: C:\git-repos\MicroservicesProjects\Play.Inventory\src\Play.Inventory.Service
+2025-12-17 21:07:16.930 -05:00 [INF] Bus started: "rabbitmq://localhost/"
+2025-12-17 21:31:49.823 -05:00 [INF] Configured endpoint inventory-catalog-item-created, Consumer: Play.Inventory.Service.Consumers.CatalogItemCreatedConsumer
+2025-12-17 21:31:49.868 -05:00 [INF] Configured endpoint inventory-catalog-item-deleted, Consumer: Play.Inventory.Service.Consumers.CatalogItemDeletedConsumer
+2025-12-17 21:31:49.876 -05:00 [INF] Configured endpoint inventory-catalog-item-updated, Consumer: Play.Inventory.Service.Consumers.CatalogItemUpdatedConsumer
+2025-12-17 21:31:49.882 -05:00 [INF] Configured endpoint inventory-grant-items, Consumer: Play.Inventory.Service.Consumers.GrantItemsConsumer
+2025-12-17 21:31:49.892 -05:00 [INF] Configured endpoint inventory-subtract-items, Consumer: Play.Inventory.Service.Consumers.SubtractItemsConsumer
+2025-12-17 21:31:50.155 -05:00 [INF] User profile is available. Using 'C:\Users\patri\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-12-17 21:31:50.906 -05:00 [INF] Now listening on: https://localhost:7067
+2025-12-17 21:31:50.910 -05:00 [INF] Now listening on: http://localhost:5223
+2025-12-17 21:31:51.010 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-17 21:31:51.012 -05:00 [INF] Hosting environment: Development
+2025-12-17 21:31:51.015 -05:00 [INF] Content root path: C:\git-repos\MicroservicesProjects\Play.Inventory\src\Play.Inventory.Service
+2025-12-17 21:31:51.040 -05:00 [INF] Bus started: "rabbitmq://localhost/"
+2025-12-17 21:40:07.276 -05:00 [INF] Configured endpoint inventory-catalog-item-created, Consumer: Play.Inventory.Service.Consumers.CatalogItemCreatedConsumer
+2025-12-17 21:40:07.311 -05:00 [INF] Configured endpoint inventory-catalog-item-deleted, Consumer: Play.Inventory.Service.Consumers.CatalogItemDeletedConsumer
+2025-12-17 21:40:07.315 -05:00 [INF] Configured endpoint inventory-catalog-item-updated, Consumer: Play.Inventory.Service.Consumers.CatalogItemUpdatedConsumer
+2025-12-17 21:40:07.319 -05:00 [INF] Configured endpoint inventory-grant-items, Consumer: Play.Inventory.Service.Consumers.GrantItemsConsumer
+2025-12-17 21:40:07.324 -05:00 [INF] Configured endpoint inventory-subtract-items, Consumer: Play.Inventory.Service.Consumers.SubtractItemsConsumer
+2025-12-17 21:40:07.486 -05:00 [INF] User profile is available. Using 'C:\Users\patri\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-12-17 21:40:07.984 -05:00 [INF] Now listening on: https://localhost:7067
+2025-12-17 21:40:08.034 -05:00 [INF] Now listening on: http://localhost:5223
+2025-12-17 21:40:08.101 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-17 21:40:08.104 -05:00 [INF] Hosting environment: Development
+2025-12-17 21:40:08.106 -05:00 [INF] Content root path: C:\git-repos\MicroservicesProjects\Play.Inventory\src\Play.Inventory.Service
+2025-12-17 21:40:08.201 -05:00 [INF] Bus started: "rabbitmq://localhost/"
+2025-12-17 21:51:08.606 -05:00 [INF] Configured endpoint inventory-catalog-item-created, Consumer: Play.Inventory.Service.Consumers.CatalogItemCreatedConsumer
+2025-12-17 21:51:08.654 -05:00 [INF] Configured endpoint inventory-catalog-item-deleted, Consumer: Play.Inventory.Service.Consumers.CatalogItemDeletedConsumer
+2025-12-17 21:51:08.664 -05:00 [INF] Configured endpoint inventory-catalog-item-updated, Consumer: Play.Inventory.Service.Consumers.CatalogItemUpdatedConsumer
+2025-12-17 21:51:08.674 -05:00 [INF] Configured endpoint inventory-grant-items, Consumer: Play.Inventory.Service.Consumers.GrantItemsConsumer
+2025-12-17 21:51:08.684 -05:00 [INF] Configured endpoint inventory-subtract-items, Consumer: Play.Inventory.Service.Consumers.SubtractItemsConsumer
+2025-12-17 21:51:08.942 -05:00 [INF] User profile is available. Using 'C:\Users\patri\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-12-17 21:51:09.521 -05:00 [INF] Now listening on: https://localhost:7067
+2025-12-17 21:51:09.524 -05:00 [INF] Now listening on: http://localhost:5223
+2025-12-17 21:51:09.653 -05:00 [INF] Bus started: "rabbitmq://localhost/"
+2025-12-17 21:51:09.665 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-17 21:51:09.667 -05:00 [INF] Hosting environment: Development
+2025-12-17 21:51:09.670 -05:00 [INF] Content root path: C:\git-repos\MicroservicesProjects\Play.Inventory\src\Play.Inventory.Service
+2025-12-17 22:02:16.121 -05:00 [INF] Configured endpoint inventory-catalog-item-created, Consumer: Play.Inventory.Service.Consumers.CatalogItemCreatedConsumer
+2025-12-17 22:02:16.167 -05:00 [INF] Configured endpoint inventory-catalog-item-deleted, Consumer: Play.Inventory.Service.Consumers.CatalogItemDeletedConsumer
+2025-12-17 22:02:16.173 -05:00 [INF] Configured endpoint inventory-catalog-item-updated, Consumer: Play.Inventory.Service.Consumers.CatalogItemUpdatedConsumer
+2025-12-17 22:02:16.178 -05:00 [INF] Configured endpoint inventory-grant-items, Consumer: Play.Inventory.Service.Consumers.GrantItemsConsumer
+2025-12-17 22:02:16.183 -05:00 [INF] Configured endpoint inventory-subtract-items, Consumer: Play.Inventory.Service.Consumers.SubtractItemsConsumer
+2025-12-17 22:02:16.484 -05:00 [INF] User profile is available. Using 'C:\Users\patri\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-12-17 22:02:17.334 -05:00 [INF] Now listening on: https://localhost:7067
+2025-12-17 22:02:17.338 -05:00 [INF] Now listening on: http://localhost:5223
+2025-12-17 22:02:17.449 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-17 22:02:17.455 -05:00 [INF] Hosting environment: Development
+2025-12-17 22:02:17.470 -05:00 [INF] Bus started: "rabbitmq://localhost/"
+2025-12-17 22:02:17.471 -05:00 [INF] Content root path: C:\git-repos\MicroservicesProjects\Play.Inventory\src\Play.Inventory.Service
+2025-12-17 22:15:37.130 -05:00 [INF] Configured endpoint inventory-catalog-item-created, Consumer: Play.Inventory.Service.Consumers.CatalogItemCreatedConsumer
+2025-12-17 22:15:37.156 -05:00 [INF] Configured endpoint inventory-catalog-item-deleted, Consumer: Play.Inventory.Service.Consumers.CatalogItemDeletedConsumer
+2025-12-17 22:15:37.160 -05:00 [INF] Configured endpoint inventory-catalog-item-updated, Consumer: Play.Inventory.Service.Consumers.CatalogItemUpdatedConsumer
+2025-12-17 22:15:37.164 -05:00 [INF] Configured endpoint inventory-grant-items, Consumer: Play.Inventory.Service.Consumers.GrantItemsConsumer
+2025-12-17 22:15:37.167 -05:00 [INF] Configured endpoint inventory-subtract-items, Consumer: Play.Inventory.Service.Consumers.SubtractItemsConsumer
+2025-12-17 22:15:37.302 -05:00 [INF] User profile is available. Using 'C:\Users\patri\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-12-17 22:15:37.682 -05:00 [INF] Now listening on: https://localhost:7067
+2025-12-17 22:15:37.718 -05:00 [INF] Now listening on: http://localhost:5223
+2025-12-17 22:15:37.767 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-17 22:15:37.769 -05:00 [INF] Hosting environment: Development
+2025-12-17 22:15:37.771 -05:00 [INF] Content root path: C:\git-repos\MicroservicesProjects\Play.Inventory\src\Play.Inventory.Service
+2025-12-17 22:15:37.837 -05:00 [INF] Bus started: "rabbitmq://localhost/"
+2025-12-17 22:17:33.009 -05:00 [INF] Configured endpoint inventory-catalog-item-created, Consumer: Play.Inventory.Service.Consumers.CatalogItemCreatedConsumer
+2025-12-17 22:17:33.038 -05:00 [INF] Configured endpoint inventory-catalog-item-deleted, Consumer: Play.Inventory.Service.Consumers.CatalogItemDeletedConsumer
+2025-12-17 22:17:33.042 -05:00 [INF] Configured endpoint inventory-catalog-item-updated, Consumer: Play.Inventory.Service.Consumers.CatalogItemUpdatedConsumer
+2025-12-17 22:17:33.045 -05:00 [INF] Configured endpoint inventory-grant-items, Consumer: Play.Inventory.Service.Consumers.GrantItemsConsumer
+2025-12-17 22:17:33.049 -05:00 [INF] Configured endpoint inventory-subtract-items, Consumer: Play.Inventory.Service.Consumers.SubtractItemsConsumer
+2025-12-17 22:17:33.189 -05:00 [INF] User profile is available. Using 'C:\Users\patri\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-12-17 22:17:33.762 -05:00 [INF] Now listening on: https://localhost:7067
+2025-12-17 22:17:33.770 -05:00 [INF] Now listening on: http://localhost:5223
+2025-12-17 22:17:33.824 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-17 22:17:33.827 -05:00 [INF] Hosting environment: Development
+2025-12-17 22:17:33.830 -05:00 [INF] Content root path: C:\git-repos\MicroservicesProjects\Play.Inventory\src\Play.Inventory.Service
+2025-12-17 22:17:33.867 -05:00 [INF] Bus started: "rabbitmq://localhost/"
+2025-12-17 22:20:35.628 -05:00 [INF] Configured endpoint inventory-catalog-item-created, Consumer: Play.Inventory.Service.Consumers.CatalogItemCreatedConsumer
+2025-12-17 22:20:35.653 -05:00 [INF] Configured endpoint inventory-catalog-item-deleted, Consumer: Play.Inventory.Service.Consumers.CatalogItemDeletedConsumer
+2025-12-17 22:20:35.657 -05:00 [INF] Configured endpoint inventory-catalog-item-updated, Consumer: Play.Inventory.Service.Consumers.CatalogItemUpdatedConsumer
+2025-12-17 22:20:35.661 -05:00 [INF] Configured endpoint inventory-grant-items, Consumer: Play.Inventory.Service.Consumers.GrantItemsConsumer
+2025-12-17 22:20:35.665 -05:00 [INF] Configured endpoint inventory-subtract-items, Consumer: Play.Inventory.Service.Consumers.SubtractItemsConsumer
+2025-12-17 22:20:35.800 -05:00 [INF] User profile is available. Using 'C:\Users\patri\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-12-17 22:20:36.410 -05:00 [INF] Now listening on: https://localhost:7067
+2025-12-17 22:20:36.414 -05:00 [INF] Now listening on: http://localhost:5223
+2025-12-17 22:20:36.462 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-17 22:20:36.466 -05:00 [INF] Hosting environment: Development
+2025-12-17 22:20:36.468 -05:00 [INF] Content root path: C:\git-repos\MicroservicesProjects\Play.Inventory\src\Play.Inventory.Service
+2025-12-17 22:20:36.551 -05:00 [INF] Bus started: "rabbitmq://localhost/"
+2025-12-17 22:22:14.954 -05:00 [INF] Configured endpoint inventory-catalog-item-created, Consumer: Play.Inventory.Service.Consumers.CatalogItemCreatedConsumer
+2025-12-17 22:22:14.977 -05:00 [INF] Configured endpoint inventory-catalog-item-deleted, Consumer: Play.Inventory.Service.Consumers.CatalogItemDeletedConsumer
+2025-12-17 22:22:14.980 -05:00 [INF] Configured endpoint inventory-catalog-item-updated, Consumer: Play.Inventory.Service.Consumers.CatalogItemUpdatedConsumer
+2025-12-17 22:22:14.985 -05:00 [INF] Configured endpoint inventory-grant-items, Consumer: Play.Inventory.Service.Consumers.GrantItemsConsumer
+2025-12-17 22:22:14.988 -05:00 [INF] Configured endpoint inventory-subtract-items, Consumer: Play.Inventory.Service.Consumers.SubtractItemsConsumer
+2025-12-17 22:22:15.116 -05:00 [INF] User profile is available. Using 'C:\Users\patri\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-12-17 22:22:15.585 -05:00 [INF] Now listening on: https://localhost:7067
+2025-12-17 22:22:15.621 -05:00 [INF] Now listening on: http://localhost:5223
+2025-12-17 22:22:15.665 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-17 22:22:15.667 -05:00 [INF] Hosting environment: Development
+2025-12-17 22:22:15.670 -05:00 [INF] Content root path: C:\git-repos\MicroservicesProjects\Play.Inventory\src\Play.Inventory.Service
+2025-12-17 22:22:15.762 -05:00 [INF] Bus started: "rabbitmq://localhost/"
+2025-12-17 22:28:33.208 -05:00 [INF] Configured endpoint inventory-catalog-item-created, Consumer: Play.Inventory.Service.Consumers.CatalogItemCreatedConsumer
+2025-12-17 22:28:33.258 -05:00 [INF] Configured endpoint inventory-catalog-item-deleted, Consumer: Play.Inventory.Service.Consumers.CatalogItemDeletedConsumer
+2025-12-17 22:28:33.266 -05:00 [INF] Configured endpoint inventory-catalog-item-updated, Consumer: Play.Inventory.Service.Consumers.CatalogItemUpdatedConsumer
+2025-12-17 22:28:33.273 -05:00 [INF] Configured endpoint inventory-grant-items, Consumer: Play.Inventory.Service.Consumers.GrantItemsConsumer
+2025-12-17 22:28:33.283 -05:00 [INF] Configured endpoint inventory-subtract-items, Consumer: Play.Inventory.Service.Consumers.SubtractItemsConsumer
+2025-12-17 22:28:33.569 -05:00 [INF] User profile is available. Using 'C:\Users\patri\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-12-17 22:28:34.269 -05:00 [INF] Now listening on: https://localhost:7067
+2025-12-17 22:28:34.276 -05:00 [INF] Now listening on: http://localhost:5223
+2025-12-17 22:28:34.420 -05:00 [INF] Bus started: "rabbitmq://localhost/"
+2025-12-17 22:28:34.453 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-17 22:28:34.456 -05:00 [INF] Hosting environment: Development
+2025-12-17 22:28:34.459 -05:00 [INF] Content root path: C:\git-repos\MicroservicesProjects\Play.Inventory\src\Play.Inventory.Service

@@ -1,12 +1,18 @@
 ﻿using MassTransit;
+using MassTransit.SqlTransport.Topology;
+using Microsoft.Extensions.Options;
+using Play.Identity.Contracts;
 using Play.Inventory.Contracts;
 using Play.Trading.Service.Activities;
 using Play.Trading.Service.Contracts;
+using Play.Trading.Service.Settings;
 
 namespace Play.Trading.Service.StatesMachine
 {
     public class PurchaseStateMachine : MassTransitStateMachine<PurchaseState>
     {
+
+        public readonly QueueSettings _settings;
         public State Accepted { get; set; }
 
         public State ItemsGranted { get; set; }
@@ -21,14 +27,18 @@ namespace Play.Trading.Service.StatesMachine
         public Event<InventoryItemsGranted> InventoryItemsGranted { get; }
         public Event<Fault<InventoryItemsGranted>> InventoryItemsGrantedFaulted { get; private set; }
 
+        public Event<GilDebited> GilDebited { get; }
+        public Event<Fault<GilDebited>> GilDebitedFaulted { get; private set; }
 
-        public PurchaseStateMachine()
+        public PurchaseStateMachine(IOptions<QueueSettings> settings)
         {
+            _settings = settings.Value;
             InstanceState(state => state.CurrentState);
             ConfigureEvents();
             ConfigureInitialState();
             ConfigureAny();
             ConfigureAcceptedState();
+            ConfigureItemsGranted();
         }
 
         private void ConfigureEvents()
@@ -38,6 +48,8 @@ namespace Play.Trading.Service.StatesMachine
             Event(() => PurchaseRequestedFaulted, x => x.CorrelateById(context => context.Message.Message.CorrelationId));
             Event(() => InventoryItemsGranted, x => x.CorrelateById(context => context.Message.CorrelationId));
             Event(() => InventoryItemsGrantedFaulted, x => x.CorrelateById(context => context.Message.Message.CorrelationId));
+            Event(() => GilDebited, x => x.CorrelateById(context => context.Message.CorrelationId));
+            Event(() => GilDebitedFaulted, x => x.CorrelateById(context => context.Message.Message.CorrelationId));
         }
 
         private void ConfigureInitialState()
@@ -53,7 +65,7 @@ namespace Play.Trading.Service.StatesMachine
                     context.Saga.LastUpdated = context.Saga.Received;
                 })
                 .Activity(x=> x.OfType<CalculatePurchaseTotalActivity>()) // migrate to a microservice later
-                .Send(new Uri("queue:inventory-grant-items"), context =>
+                .Send(new Uri(_settings.GrantItemsQueueAddress), context =>
                         new GrantItems(
                             context.Saga.UserId,
                             context.Saga.ItemId,
@@ -71,17 +83,35 @@ namespace Play.Trading.Service.StatesMachine
                 {
                     context.Saga.LastUpdated = DateTimeOffset.UtcNow;
                 })
+                .Send(new Uri(_settings.DebitGilQueueAddress), context =>
+                        new DebitGil(
+                            context.Saga.UserId,
+                            context.Saga.PurchaseTotal.Value,
+                            context.Saga.CorrelationId)
+                    )
                 .TransitionTo(ItemsGranted));
         }
+
+
+        private void ConfigureItemsGranted()
+        {
+            During(ItemsGranted,
+                When(GilDebited)
+                .Then(context =>
+                {
+                    context.Saga.LastUpdated = DateTimeOffset.UtcNow;
+                })
+                .Send(new Uri(_settings.PurchaseCompleteQueueAddress), context =>{} )
+                .TransitionTo(Completed));
+        }
+
         private void ConfigureAny()
         {
-            // Respond to queries
             DuringAny(
                 When(GetPurchaseState)
                     .Respond(x => x.Saga)
             );
 
-            // Capture faults globally
             DuringAny(
                 When(PurchaseRequestedFaulted)
                     .Then(context =>

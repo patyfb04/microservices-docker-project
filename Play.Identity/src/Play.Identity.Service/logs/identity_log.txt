@@ -18950,3 +18950,395 @@ System.FormatException: An error occurred while deserializing the Roles property
 2025-12-16 23:30:27.827 -05:00 [INF] CORS policy execution successful.
 2025-12-16 23:30:27.834 -05:00 [INF] Invoking IdentityServer endpoint: Duende.IdentityServer.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
 2025-12-16 23:30:27.840 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7076/.well-known/openid-configuration - 200 null application/json; charset=UTF-8 30.0132ms
+2025-12-17 20:58:38.537 -05:00 [INF] Starting Duende IdentityServer version 7.3.2+build.0.7d3159f7be1314e01f03a23ad33dd7b665151ee5 (.NET 9.0.11)
+2025-12-17 20:58:38.612 -05:00 [WRN] You do not have a valid license key for the Duende software. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please start a conversation with us: https://duendesoftware.com/contact
+2025-12-17 20:58:38.615 -05:00 [WRN] You have automatic key management enabled, but you do not have a license. This feature requires the Business or Enterprise Edition tier of license. Alternatively you can disable automatic key management by setting the KeyManagement.Enabled property to false on the IdentityServerOptions.
+2025-12-17 20:58:38.634 -05:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2025-12-17 20:58:38.643 -05:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2025-12-17 20:58:38.824 -05:00 [INF] User profile is available. Using 'C:\Users\patri\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-12-17 20:58:40.284 -05:00 [INF] Now listening on: https://localhost:7076
+2025-12-17 20:58:40.290 -05:00 [INF] Now listening on: http://localhost:5228
+2025-12-17 20:58:40.366 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-17 20:58:40.370 -05:00 [INF] Hosting environment: Development
+2025-12-17 20:58:40.372 -05:00 [INF] Content root path: C:\git-repos\MicroservicesProjects\Play.Identity\src\Play.Identity.Service
+2025-12-17 21:07:15.252 -05:00 [INF] Starting Duende IdentityServer version 7.3.2+build.0.7d3159f7be1314e01f03a23ad33dd7b665151ee5 (.NET 9.0.11)
+2025-12-17 21:07:15.356 -05:00 [WRN] You do not have a valid license key for the Duende software. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please start a conversation with us: https://duendesoftware.com/contact
+2025-12-17 21:07:15.363 -05:00 [WRN] You have automatic key management enabled, but you do not have a license. This feature requires the Business or Enterprise Edition tier of license. Alternatively you can disable automatic key management by setting the KeyManagement.Enabled property to false on the IdentityServerOptions.
+2025-12-17 21:07:15.385 -05:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2025-12-17 21:07:15.393 -05:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2025-12-17 21:07:15.588 -05:00 [INF] User profile is available. Using 'C:\Users\patri\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-12-17 21:07:17.166 -05:00 [INF] Now listening on: https://localhost:7076
+2025-12-17 21:07:17.169 -05:00 [INF] Now listening on: http://localhost:5228
+2025-12-17 21:07:17.224 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-17 21:07:17.227 -05:00 [INF] Hosting environment: Development
+2025-12-17 21:07:17.230 -05:00 [INF] Content root path: C:\git-repos\MicroservicesProjects\Play.Identity\src\Play.Identity.Service
+2025-12-17 21:31:49.309 -05:00 [INF] Starting Duende IdentityServer version 7.3.2+build.0.7d3159f7be1314e01f03a23ad33dd7b665151ee5 (.NET 9.0.11)
+2025-12-17 21:31:49.414 -05:00 [WRN] You do not have a valid license key for the Duende software. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please start a conversation with us: https://duendesoftware.com/contact
+2025-12-17 21:31:49.418 -05:00 [WRN] You have automatic key management enabled, but you do not have a license. This feature requires the Business or Enterprise Edition tier of license. Alternatively you can disable automatic key management by setting the KeyManagement.Enabled property to false on the IdentityServerOptions.
+2025-12-17 21:31:49.436 -05:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2025-12-17 21:31:49.445 -05:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2025-12-17 21:31:49.667 -05:00 [INF] User profile is available. Using 'C:\Users\patri\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-12-17 21:31:51.426 -05:00 [INF] Now listening on: https://localhost:7076
+2025-12-17 21:31:51.432 -05:00 [INF] Now listening on: http://localhost:5228
+2025-12-17 21:31:51.498 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-17 21:31:51.502 -05:00 [INF] Hosting environment: Development
+2025-12-17 21:31:51.507 -05:00 [INF] Content root path: C:\git-repos\MicroservicesProjects\Play.Identity\src\Play.Identity.Service
+2025-12-17 21:32:24.825 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7076/connect/authorize?prompt=login&response_type=code&client_id=postman&scope=openid%20profile%20catalog.fullaccess%20inventory.fullaccess%20trading.fullaccess%20IdentityServerApi&redirect_uri=https%3A%2F%2Foauth.pstmn.io%2Fv1%2Fcallback&code_challenge=spA9UswazHSQawzGxBYfvzIrMLcuYDUF2Sfn0GFk328&code_challenge_method=S256 - null null
+2025-12-17 21:32:25.321 -05:00 [INF] Invoking IdentityServer endpoint: Duende.IdentityServer.Endpoints.AuthorizeEndpoint for /connect/authorize
+2025-12-17 21:32:25.812 -05:00 [INF] Showing login: request contains prompt=login
+2025-12-17 21:32:25.840 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7076/connect/authorize?prompt=login&response_type=code&client_id=postman&scope=openid%20profile%20catalog.fullaccess%20inventory.fullaccess%20trading.fullaccess%20IdentityServerApi&redirect_uri=https%3A%2F%2Foauth.pstmn.io%2Fv1%2Fcallback&code_challenge=spA9UswazHSQawzGxBYfvzIrMLcuYDUF2Sfn0GFk328&code_challenge_method=S256 - 302 null null 1016.7865ms
+2025-12-17 21:32:25.848 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7076/Identity/Account/Login?ReturnUrl=%2Fconnect%2Fauthorize%2Fcallback%3Fprompt%3Dlogin%26response_type%3Dcode%26client_id%3Dpostman%26scope%3Dopenid%2520profile%2520catalog.fullaccess%2520inventory.fullaccess%2520trading.fullaccess%2520IdentityServerApi%26redirect_uri%3Dhttps%253A%252F%252Foauth.pstmn.io%252Fv1%252Fcallback%26code_challenge%3DspA9UswazHSQawzGxBYfvzIrMLcuYDUF2Sfn0GFk328%26code_challenge_method%3DS256%26suppressed_prompt%3Dlogin - null null
+2025-12-17 21:32:25.882 -05:00 [INF] Executing endpoint '/Account/Login'
+2025-12-17 21:32:25.952 -05:00 [INF] Route matched with {page = "/Account/Login", area = "Identity", action = "", controller = ""}. Executing page /Account/Login
+2025-12-17 21:32:26.008 -05:00 [INF] Executing handler method Microsoft.AspNetCore.Identity.UI.V5.Pages.Account.Internal.LoginModel.OnGetAsync - ModelState is "Valid"
+2025-12-17 21:32:26.033 -05:00 [INF] AuthenticationScheme: Identity.External signed out.
+2025-12-17 21:32:26.046 -05:00 [INF] Executed handler method OnGetAsync, returned result .
+2025-12-17 21:32:26.059 -05:00 [INF] Executing an implicit handler method - ModelState is "Valid"
+2025-12-17 21:32:26.069 -05:00 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2025-12-17 21:32:26.559 -05:00 [INF] Executed page /Account/Login in 597.7953ms
+2025-12-17 21:32:26.566 -05:00 [INF] Executed endpoint '/Account/Login'
+2025-12-17 21:32:26.576 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7076/Identity/Account/Login?ReturnUrl=%2Fconnect%2Fauthorize%2Fcallback%3Fprompt%3Dlogin%26response_type%3Dcode%26client_id%3Dpostman%26scope%3Dopenid%2520profile%2520catalog.fullaccess%2520inventory.fullaccess%2520trading.fullaccess%2520IdentityServerApi%26redirect_uri%3Dhttps%253A%252F%252Foauth.pstmn.io%252Fv1%252Fcallback%26code_challenge%3DspA9UswazHSQawzGxBYfvzIrMLcuYDUF2Sfn0GFk328%26code_challenge_method%3DS256%26suppressed_prompt%3Dlogin - 200 null text/html; charset=utf-8 727.8657ms
+2025-12-17 21:32:27.138 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7076/_framework/aspnetcore-browser-refresh.js - null null
+2025-12-17 21:32:27.138 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7076/_vs/browserLink - null null
+2025-12-17 21:32:27.166 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7076/_framework/aspnetcore-browser-refresh.js - 200 16527 application/javascript; charset=utf-8 28.1719ms
+2025-12-17 21:32:27.270 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7076/_vs/browserLink - 200 null text/javascript; charset=UTF-8 131.9372ms
+2025-12-17 21:32:35.951 -05:00 [INF] Request starting HTTP/2 POST https://localhost:7076/Identity/Account/Login?ReturnUrl=%2Fconnect%2Fauthorize%2Fcallback%3Fprompt%3Dlogin%26response_type%3Dcode%26client_id%3Dpostman%26scope%3Dopenid%2520profile%2520catalog.fullaccess%2520inventory.fullaccess%2520trading.fullaccess%2520IdentityServerApi%26redirect_uri%3Dhttps%253A%252F%252Foauth.pstmn.io%252Fv1%252Fcallback%26code_challenge%3DspA9UswazHSQawzGxBYfvzIrMLcuYDUF2Sfn0GFk328%26code_challenge_method%3DS256%26suppressed_prompt%3Dlogin - application/x-www-form-urlencoded 262
+2025-12-17 21:32:35.977 -05:00 [INF] CORS policy execution failed.
+2025-12-17 21:32:35.980 -05:00 [INF] Request origin https://localhost:7076 does not have permission to access the resource.
+2025-12-17 21:32:35.988 -05:00 [INF] No CORS policy found for the specified request.
+2025-12-17 21:32:35.996 -05:00 [INF] Executing endpoint '/Account/Login'
+2025-12-17 21:32:35.999 -05:00 [INF] Route matched with {page = "/Account/Login", area = "Identity", action = "", controller = ""}. Executing page /Account/Login
+2025-12-17 21:32:36.051 -05:00 [INF] Executing handler method Microsoft.AspNetCore.Identity.UI.V5.Pages.Account.Internal.LoginModel.OnPostAsync - ModelState is "Valid"
+2025-12-17 21:32:36.268 -05:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2025-12-17 21:32:36.274 -05:00 [INF] User logged in.
+2025-12-17 21:32:36.279 -05:00 [INF] Executed handler method OnPostAsync, returned result Microsoft.AspNetCore.Mvc.LocalRedirectResult.
+2025-12-17 21:32:36.285 -05:00 [INF] Executing LocalRedirectResult, redirecting to /connect/authorize/callback?prompt=login&response_type=code&client_id=postman&scope=openid%20profile%20catalog.fullaccess%20inventory.fullaccess%20trading.fullaccess%20IdentityServerApi&redirect_uri=https%3A%2F%2Foauth.pstmn.io%2Fv1%2Fcallback&code_challenge=spA9UswazHSQawzGxBYfvzIrMLcuYDUF2Sfn0GFk328&code_challenge_method=S256&suppressed_prompt=login.
+2025-12-17 21:32:36.289 -05:00 [INF] Executed page /Account/Login in 287.8796ms
+2025-12-17 21:32:36.292 -05:00 [INF] Executed endpoint '/Account/Login'
+2025-12-17 21:32:36.295 -05:00 [INF] Request finished HTTP/2 POST https://localhost:7076/Identity/Account/Login?ReturnUrl=%2Fconnect%2Fauthorize%2Fcallback%3Fprompt%3Dlogin%26response_type%3Dcode%26client_id%3Dpostman%26scope%3Dopenid%2520profile%2520catalog.fullaccess%2520inventory.fullaccess%2520trading.fullaccess%2520IdentityServerApi%26redirect_uri%3Dhttps%253A%252F%252Foauth.pstmn.io%252Fv1%252Fcallback%26code_challenge%3DspA9UswazHSQawzGxBYfvzIrMLcuYDUF2Sfn0GFk328%26code_challenge_method%3DS256%26suppressed_prompt%3Dlogin - 302 null null 343.2451ms
+2025-12-17 21:32:36.300 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7076/connect/authorize/callback?prompt=login&response_type=code&client_id=postman&scope=openid%20profile%20catalog.fullaccess%20inventory.fullaccess%20trading.fullaccess%20IdentityServerApi&redirect_uri=https%3A%2F%2Foauth.pstmn.io%2Fv1%2Fcallback&code_challenge=spA9UswazHSQawzGxBYfvzIrMLcuYDUF2Sfn0GFk328&code_challenge_method=S256&suppressed_prompt=login - null null
+2025-12-17 21:32:36.315 -05:00 [INF] Invoking IdentityServer endpoint: Duende.IdentityServer.Endpoints.AuthorizeCallbackEndpoint for /connect/authorize/callback
+2025-12-17 21:32:36.427 -05:00 [INF] {"ClientId":"postman","ClientName":"Postman Client","RedirectUri":"https://oauth.pstmn.io/v1/callback","Endpoint":"Authorize","SubjectId":"e522c582-ea63-4d48-bc52-bc4f94809150","Scopes":"openid profile catalog.fullaccess inventory.fullaccess trading.fullaccess IdentityServerApi","GrantType":"authorization_code","Tokens":[{"TokenType":"code","TokenValue":"****60-1","$type":"Token"}],"Category":"Token","Name":"Token Issued Success","EventType":"Success","Id":2000,"Message":null,"ActivityId":"0HNHTRMMSF8UC:0000000B","TimeStamp":"2025-12-18T02:32:36.4051754","ProcessId":55664,"LocalIpAddress":"::1:7076","RemoteIpAddress":"::1","$type":"TokenIssuedSuccessEvent"}
+2025-12-17 21:32:36.478 -05:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2025-12-17 21:32:36.485 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7076/connect/authorize/callback?prompt=login&response_type=code&client_id=postman&scope=openid%20profile%20catalog.fullaccess%20inventory.fullaccess%20trading.fullaccess%20IdentityServerApi&redirect_uri=https%3A%2F%2Foauth.pstmn.io%2Fv1%2Fcallback&code_challenge=spA9UswazHSQawzGxBYfvzIrMLcuYDUF2Sfn0GFk328&code_challenge_method=S256&suppressed_prompt=login - 302 null null 184.5948ms
+2025-12-17 21:32:36.857 -05:00 [INF] Request starting HTTP/1.1 POST https://localhost:7076/connect/token - application/x-www-form-urlencoded 217
+2025-12-17 21:32:36.887 -05:00 [INF] Invoking IdentityServer endpoint: Duende.IdentityServer.Endpoints.TokenEndpoint for /connect/token
+2025-12-17 21:32:36.915 -05:00 [INF] {"ClientId":"postman","AuthenticationMethod":"NoSecret","Category":"Authentication","Name":"Client Authentication Success","EventType":"Success","Id":1010,"Message":null,"ActivityId":"0HNHTRMMSF8UE:00000001","TimeStamp":"2025-12-18T02:32:36.9125412","ProcessId":55664,"LocalIpAddress":"::1:7076","RemoteIpAddress":"::1","$type":"ClientAuthenticationSuccessEvent"}
+2025-12-17 21:32:37.005 -05:00 [INF] Token request validation success, {"ClientId":"postman","ClientName":"Postman Client","GrantType":"authorization_code","Scopes":null,"AuthorizationCode":"****60-1","RefreshToken":"********","UserName":null,"AuthenticationContextReferenceClasses":null,"Tenant":null,"IdP":null,"Raw":{"grant_type":"authorization_code","code":"***REDACTED***","redirect_uri":"https://oauth.pstmn.io/v1/callback","code_verifier":"I5UznNMt85vzPTy0-mL7vNMwcAlhKfu_7D2xridsOiM"},"$type":"TokenRequestValidationLog"}
+2025-12-17 21:32:37.142 -05:00 [INF] {"ClientId":"postman","ClientName":"Postman Client","RedirectUri":null,"Endpoint":"Token","SubjectId":"e522c582-ea63-4d48-bc52-bc4f94809150","Scopes":"openid profile catalog.fullaccess inventory.fullaccess trading.fullaccess IdentityServerApi","GrantType":"authorization_code","Tokens":[{"TokenType":"id_token","TokenValue":"****sr_g","$type":"Token"},{"TokenType":"access_token","TokenValue":"****bFFQ","$type":"Token"}],"Category":"Token","Name":"Token Issued Success","EventType":"Success","Id":2000,"Message":null,"ActivityId":"0HNHTRMMSF8UE:00000001","TimeStamp":"2025-12-18T02:32:37.1421960","ProcessId":55664,"LocalIpAddress":"::1:7076","RemoteIpAddress":"::1","$type":"TokenIssuedSuccessEvent"}
+2025-12-17 21:32:37.199 -05:00 [INF] Request finished HTTP/1.1 POST https://localhost:7076/connect/token - 200 null application/json; charset=UTF-8 342.5797ms
+2025-12-17 21:32:41.496 -05:00 [INF] Request starting HTTP/1.1 GET https://localhost:7076/users - null null
+2025-12-17 21:32:41.728 -05:00 [INF] Executing endpoint 'Play.Identity.Service.Controllers.UsersController.Get (Play.Identity.Service)'
+2025-12-17 21:32:41.742 -05:00 [INF] Route matched with {action = "Get", controller = "Users", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[Play.Identity.Service.Dtos.UserDto]] Get() on controller Play.Identity.Service.Controllers.UsersController (Play.Identity.Service).
+2025-12-17 21:32:41.801 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+ListSelectIterator`2[[Play.Identity.Service.Entities.ApplicationUser, Play.Identity.Service, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[Play.Identity.Service.Dtos.UserDto, Play.Identity.Service, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-12-17 21:32:41.834 -05:00 [INF] Executed action Play.Identity.Service.Controllers.UsersController.Get (Play.Identity.Service) in 86.4528ms
+2025-12-17 21:32:41.841 -05:00 [INF] Executed endpoint 'Play.Identity.Service.Controllers.UsersController.Get (Play.Identity.Service)'
+2025-12-17 21:32:41.846 -05:00 [INF] Request finished HTTP/1.1 GET https://localhost:7076/users - 200 null application/json; charset=utf-8 350.123ms
+2025-12-17 21:33:15.074 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7076/connect/authorize?prompt=login&response_type=code&client_id=postman&scope=openid%20profile%20catalog.fullaccess%20inventory.fullaccess%20trading.fullaccess%20IdentityServerApi&redirect_uri=https%3A%2F%2Foauth.pstmn.io%2Fv1%2Fcallback&code_challenge=yNkGG0RGa8kgshx_xg4Jv5ZIWVgwhFw9Qq8--GbuvGQ&code_challenge_method=S256 - null null
+2025-12-17 21:33:15.094 -05:00 [INF] Invoking IdentityServer endpoint: Duende.IdentityServer.Endpoints.AuthorizeEndpoint for /connect/authorize
+2025-12-17 21:33:15.098 -05:00 [INF] Showing login: request contains prompt=login
+2025-12-17 21:33:15.100 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7076/connect/authorize?prompt=login&response_type=code&client_id=postman&scope=openid%20profile%20catalog.fullaccess%20inventory.fullaccess%20trading.fullaccess%20IdentityServerApi&redirect_uri=https%3A%2F%2Foauth.pstmn.io%2Fv1%2Fcallback&code_challenge=yNkGG0RGa8kgshx_xg4Jv5ZIWVgwhFw9Qq8--GbuvGQ&code_challenge_method=S256 - 302 null null 26.4063ms
+2025-12-17 21:33:15.111 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7076/Identity/Account/Login?ReturnUrl=%2Fconnect%2Fauthorize%2Fcallback%3Fprompt%3Dlogin%26response_type%3Dcode%26client_id%3Dpostman%26scope%3Dopenid%2520profile%2520catalog.fullaccess%2520inventory.fullaccess%2520trading.fullaccess%2520IdentityServerApi%26redirect_uri%3Dhttps%253A%252F%252Foauth.pstmn.io%252Fv1%252Fcallback%26code_challenge%3DyNkGG0RGa8kgshx_xg4Jv5ZIWVgwhFw9Qq8--GbuvGQ%26code_challenge_method%3DS256%26suppressed_prompt%3Dlogin - null null
+2025-12-17 21:33:15.122 -05:00 [INF] Executing endpoint '/Account/Login'
+2025-12-17 21:33:15.127 -05:00 [INF] Route matched with {page = "/Account/Login", area = "Identity", action = "", controller = ""}. Executing page /Account/Login
+2025-12-17 21:33:15.131 -05:00 [INF] Executing handler method Microsoft.AspNetCore.Identity.UI.V5.Pages.Account.Internal.LoginModel.OnGetAsync - ModelState is "Valid"
+2025-12-17 21:33:15.135 -05:00 [INF] AuthenticationScheme: Identity.External signed out.
+2025-12-17 21:33:15.137 -05:00 [INF] Executed handler method OnGetAsync, returned result .
+2025-12-17 21:33:15.139 -05:00 [INF] Executing an implicit handler method - ModelState is "Valid"
+2025-12-17 21:33:15.141 -05:00 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2025-12-17 21:33:15.159 -05:00 [INF] Executed page /Account/Login in 26.5091ms
+2025-12-17 21:33:15.167 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7076/_framework/aspnetcore-browser-refresh.js - null null
+2025-12-17 21:33:15.172 -05:00 [INF] Executed endpoint '/Account/Login'
+2025-12-17 21:33:15.180 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7076/_framework/aspnetcore-browser-refresh.js - 200 16527 application/javascript; charset=utf-8 12.9504ms
+2025-12-17 21:33:15.183 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7076/Identity/Account/Login?ReturnUrl=%2Fconnect%2Fauthorize%2Fcallback%3Fprompt%3Dlogin%26response_type%3Dcode%26client_id%3Dpostman%26scope%3Dopenid%2520profile%2520catalog.fullaccess%2520inventory.fullaccess%2520trading.fullaccess%2520IdentityServerApi%26redirect_uri%3Dhttps%253A%252F%252Foauth.pstmn.io%252Fv1%252Fcallback%26code_challenge%3DyNkGG0RGa8kgshx_xg4Jv5ZIWVgwhFw9Qq8--GbuvGQ%26code_challenge_method%3DS256%26suppressed_prompt%3Dlogin - 200 null text/html; charset=utf-8 72.1984ms
+2025-12-17 21:33:15.209 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7076/_vs/browserLink - null null
+2025-12-17 21:33:15.228 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7076/_vs/browserLink - 200 null text/javascript; charset=UTF-8 19.1281ms
+2025-12-17 21:33:23.655 -05:00 [INF] Request starting HTTP/2 POST https://localhost:7076/Identity/Account/Login?ReturnUrl=%2Fconnect%2Fauthorize%2Fcallback%3Fprompt%3Dlogin%26response_type%3Dcode%26client_id%3Dpostman%26scope%3Dopenid%2520profile%2520catalog.fullaccess%2520inventory.fullaccess%2520trading.fullaccess%2520IdentityServerApi%26redirect_uri%3Dhttps%253A%252F%252Foauth.pstmn.io%252Fv1%252Fcallback%26code_challenge%3DyNkGG0RGa8kgshx_xg4Jv5ZIWVgwhFw9Qq8--GbuvGQ%26code_challenge_method%3DS256%26suppressed_prompt%3Dlogin - application/x-www-form-urlencoded 307
+2025-12-17 21:33:23.664 -05:00 [INF] CORS policy execution failed.
+2025-12-17 21:33:23.667 -05:00 [INF] Request origin https://localhost:7076 does not have permission to access the resource.
+2025-12-17 21:33:23.672 -05:00 [INF] No CORS policy found for the specified request.
+2025-12-17 21:33:23.674 -05:00 [INF] Executing endpoint '/Account/Login'
+2025-12-17 21:33:23.676 -05:00 [INF] Route matched with {page = "/Account/Login", area = "Identity", action = "", controller = ""}. Executing page /Account/Login
+2025-12-17 21:33:23.680 -05:00 [INF] Executing handler method Microsoft.AspNetCore.Identity.UI.V5.Pages.Account.Internal.LoginModel.OnPostAsync - ModelState is "Valid"
+2025-12-17 21:33:23.824 -05:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2025-12-17 21:33:23.826 -05:00 [INF] User logged in.
+2025-12-17 21:33:23.829 -05:00 [INF] Executed handler method OnPostAsync, returned result Microsoft.AspNetCore.Mvc.LocalRedirectResult.
+2025-12-17 21:33:23.832 -05:00 [INF] Executing LocalRedirectResult, redirecting to /connect/authorize/callback?prompt=login&response_type=code&client_id=postman&scope=openid%20profile%20catalog.fullaccess%20inventory.fullaccess%20trading.fullaccess%20IdentityServerApi&redirect_uri=https%3A%2F%2Foauth.pstmn.io%2Fv1%2Fcallback&code_challenge=yNkGG0RGa8kgshx_xg4Jv5ZIWVgwhFw9Qq8--GbuvGQ&code_challenge_method=S256&suppressed_prompt=login.
+2025-12-17 21:33:23.834 -05:00 [INF] Executed page /Account/Login in 155.9927ms
+2025-12-17 21:33:23.838 -05:00 [INF] Executed endpoint '/Account/Login'
+2025-12-17 21:33:23.841 -05:00 [INF] Request finished HTTP/2 POST https://localhost:7076/Identity/Account/Login?ReturnUrl=%2Fconnect%2Fauthorize%2Fcallback%3Fprompt%3Dlogin%26response_type%3Dcode%26client_id%3Dpostman%26scope%3Dopenid%2520profile%2520catalog.fullaccess%2520inventory.fullaccess%2520trading.fullaccess%2520IdentityServerApi%26redirect_uri%3Dhttps%253A%252F%252Foauth.pstmn.io%252Fv1%252Fcallback%26code_challenge%3DyNkGG0RGa8kgshx_xg4Jv5ZIWVgwhFw9Qq8--GbuvGQ%26code_challenge_method%3DS256%26suppressed_prompt%3Dlogin - 302 null null 185.3952ms
+2025-12-17 21:33:23.845 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7076/connect/authorize/callback?prompt=login&response_type=code&client_id=postman&scope=openid%20profile%20catalog.fullaccess%20inventory.fullaccess%20trading.fullaccess%20IdentityServerApi&redirect_uri=https%3A%2F%2Foauth.pstmn.io%2Fv1%2Fcallback&code_challenge=yNkGG0RGa8kgshx_xg4Jv5ZIWVgwhFw9Qq8--GbuvGQ&code_challenge_method=S256&suppressed_prompt=login - null null
+2025-12-17 21:33:23.851 -05:00 [INF] Invoking IdentityServer endpoint: Duende.IdentityServer.Endpoints.AuthorizeCallbackEndpoint for /connect/authorize/callback
+2025-12-17 21:33:23.857 -05:00 [INF] {"ClientId":"postman","ClientName":"Postman Client","RedirectUri":"https://oauth.pstmn.io/v1/callback","Endpoint":"Authorize","SubjectId":"54019058-fa72-485a-bab4-e899942a6194","Scopes":"openid profile catalog.fullaccess inventory.fullaccess trading.fullaccess IdentityServerApi","GrantType":"authorization_code","Tokens":[{"TokenType":"code","TokenValue":"****82-1","$type":"Token"}],"Category":"Token","Name":"Token Issued Success","EventType":"Success","Id":2000,"Message":null,"ActivityId":"0HNHTRMMSF8UF:0000000B","TimeStamp":"2025-12-18T02:33:23.8576625","ProcessId":55664,"LocalIpAddress":"::1:7076","RemoteIpAddress":"::1","$type":"TokenIssuedSuccessEvent"}
+2025-12-17 21:33:23.885 -05:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2025-12-17 21:33:23.887 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7076/connect/authorize/callback?prompt=login&response_type=code&client_id=postman&scope=openid%20profile%20catalog.fullaccess%20inventory.fullaccess%20trading.fullaccess%20IdentityServerApi&redirect_uri=https%3A%2F%2Foauth.pstmn.io%2Fv1%2Fcallback&code_challenge=yNkGG0RGa8kgshx_xg4Jv5ZIWVgwhFw9Qq8--GbuvGQ&code_challenge_method=S256&suppressed_prompt=login - 302 null null 41.6864ms
+2025-12-17 21:33:24.195 -05:00 [INF] Request starting HTTP/1.1 POST https://localhost:7076/connect/token - application/x-www-form-urlencoded 217
+2025-12-17 21:33:24.205 -05:00 [INF] Invoking IdentityServer endpoint: Duende.IdentityServer.Endpoints.TokenEndpoint for /connect/token
+2025-12-17 21:33:24.209 -05:00 [INF] {"ClientId":"postman","AuthenticationMethod":"NoSecret","Category":"Authentication","Name":"Client Authentication Success","EventType":"Success","Id":1010,"Message":null,"ActivityId":"0HNHTRMMSF8UE:00000003","TimeStamp":"2025-12-18T02:33:24.2090118","ProcessId":55664,"LocalIpAddress":"::1:7076","RemoteIpAddress":"::1","$type":"ClientAuthenticationSuccessEvent"}
+2025-12-17 21:33:24.231 -05:00 [INF] Token request validation success, {"ClientId":"postman","ClientName":"Postman Client","GrantType":"authorization_code","Scopes":null,"AuthorizationCode":"****82-1","RefreshToken":"********","UserName":null,"AuthenticationContextReferenceClasses":null,"Tenant":null,"IdP":null,"Raw":{"grant_type":"authorization_code","code":"***REDACTED***","redirect_uri":"https://oauth.pstmn.io/v1/callback","code_verifier":"CcJDJwEAqZiUZe4ifliLfx8L6nx_hbsmrnyFQ9vG9sk"},"$type":"TokenRequestValidationLog"}
+2025-12-17 21:33:24.269 -05:00 [INF] {"ClientId":"postman","ClientName":"Postman Client","RedirectUri":null,"Endpoint":"Token","SubjectId":"54019058-fa72-485a-bab4-e899942a6194","Scopes":"openid profile catalog.fullaccess inventory.fullaccess trading.fullaccess IdentityServerApi","GrantType":"authorization_code","Tokens":[{"TokenType":"id_token","TokenValue":"****egQg","$type":"Token"},{"TokenType":"access_token","TokenValue":"****tbSA","$type":"Token"}],"Category":"Token","Name":"Token Issued Success","EventType":"Success","Id":2000,"Message":null,"ActivityId":"0HNHTRMMSF8UE:00000003","TimeStamp":"2025-12-18T02:33:24.2694929","ProcessId":55664,"LocalIpAddress":"::1:7076","RemoteIpAddress":"::1","$type":"TokenIssuedSuccessEvent"}
+2025-12-17 21:33:24.318 -05:00 [INF] Request finished HTTP/1.1 POST https://localhost:7076/connect/token - 200 null application/json; charset=UTF-8 122.2694ms
+2025-12-17 21:33:33.792 -05:00 [INF] Request starting HTTP/1.1 GET https://localhost:7076/.well-known/openid-configuration - null null
+2025-12-17 21:33:33.802 -05:00 [INF] Invoking IdentityServer endpoint: Duende.IdentityServer.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2025-12-17 21:33:33.837 -05:00 [INF] Request finished HTTP/1.1 GET https://localhost:7076/.well-known/openid-configuration - 200 null application/json; charset=UTF-8 45.416ms
+2025-12-17 21:33:33.876 -05:00 [INF] Request starting HTTP/1.1 GET https://localhost:7076/.well-known/openid-configuration/jwks - null null
+2025-12-17 21:33:33.885 -05:00 [INF] Invoking IdentityServer endpoint: Duende.IdentityServer.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2025-12-17 21:33:33.904 -05:00 [INF] Request finished HTTP/1.1 GET https://localhost:7076/.well-known/openid-configuration/jwks - 200 null application/json; charset=UTF-8 28.1428ms
+2025-12-17 21:33:49.421 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7076/connect/authorize?prompt=login&response_type=code&client_id=postman&scope=openid%20profile%20catalog.fullaccess%20inventory.fullaccess%20trading.fullaccess%20IdentityServerApi&redirect_uri=https%3A%2F%2Foauth.pstmn.io%2Fv1%2Fcallback&code_challenge=4zyWi-B-KFCjNdonlfQSAEoKob2AmCKoCjW91Q_F5OI&code_challenge_method=S256 - null null
+2025-12-17 21:33:49.440 -05:00 [INF] Invoking IdentityServer endpoint: Duende.IdentityServer.Endpoints.AuthorizeEndpoint for /connect/authorize
+2025-12-17 21:33:49.446 -05:00 [INF] Showing login: request contains prompt=login
+2025-12-17 21:33:49.449 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7076/connect/authorize?prompt=login&response_type=code&client_id=postman&scope=openid%20profile%20catalog.fullaccess%20inventory.fullaccess%20trading.fullaccess%20IdentityServerApi&redirect_uri=https%3A%2F%2Foauth.pstmn.io%2Fv1%2Fcallback&code_challenge=4zyWi-B-KFCjNdonlfQSAEoKob2AmCKoCjW91Q_F5OI&code_challenge_method=S256 - 302 null null 28.2261ms
+2025-12-17 21:33:49.454 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7076/Identity/Account/Login?ReturnUrl=%2Fconnect%2Fauthorize%2Fcallback%3Fprompt%3Dlogin%26response_type%3Dcode%26client_id%3Dpostman%26scope%3Dopenid%2520profile%2520catalog.fullaccess%2520inventory.fullaccess%2520trading.fullaccess%2520IdentityServerApi%26redirect_uri%3Dhttps%253A%252F%252Foauth.pstmn.io%252Fv1%252Fcallback%26code_challenge%3D4zyWi-B-KFCjNdonlfQSAEoKob2AmCKoCjW91Q_F5OI%26code_challenge_method%3DS256%26suppressed_prompt%3Dlogin - null null
+2025-12-17 21:33:49.465 -05:00 [INF] Executing endpoint '/Account/Login'
+2025-12-17 21:33:49.467 -05:00 [INF] Route matched with {page = "/Account/Login", area = "Identity", action = "", controller = ""}. Executing page /Account/Login
+2025-12-17 21:33:49.472 -05:00 [INF] Executing handler method Microsoft.AspNetCore.Identity.UI.V5.Pages.Account.Internal.LoginModel.OnGetAsync - ModelState is "Valid"
+2025-12-17 21:33:49.478 -05:00 [INF] AuthenticationScheme: Identity.External signed out.
+2025-12-17 21:33:49.480 -05:00 [INF] Executed handler method OnGetAsync, returned result .
+2025-12-17 21:33:49.482 -05:00 [INF] Executing an implicit handler method - ModelState is "Valid"
+2025-12-17 21:33:49.485 -05:00 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2025-12-17 21:33:49.497 -05:00 [INF] Executed page /Account/Login in 25.7982ms
+2025-12-17 21:33:49.500 -05:00 [INF] Executed endpoint '/Account/Login'
+2025-12-17 21:33:49.502 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7076/Identity/Account/Login?ReturnUrl=%2Fconnect%2Fauthorize%2Fcallback%3Fprompt%3Dlogin%26response_type%3Dcode%26client_id%3Dpostman%26scope%3Dopenid%2520profile%2520catalog.fullaccess%2520inventory.fullaccess%2520trading.fullaccess%2520IdentityServerApi%26redirect_uri%3Dhttps%253A%252F%252Foauth.pstmn.io%252Fv1%252Fcallback%26code_challenge%3D4zyWi-B-KFCjNdonlfQSAEoKob2AmCKoCjW91Q_F5OI%26code_challenge_method%3DS256%26suppressed_prompt%3Dlogin - 200 null text/html; charset=utf-8 47.5898ms
+2025-12-17 21:33:49.508 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7076/_framework/aspnetcore-browser-refresh.js - null null
+2025-12-17 21:33:49.514 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7076/_framework/aspnetcore-browser-refresh.js - 200 16527 application/javascript; charset=utf-8 5.8549ms
+2025-12-17 21:33:49.557 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7076/_vs/browserLink - null null
+2025-12-17 21:33:49.570 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7076/_vs/browserLink - 200 null text/javascript; charset=UTF-8 13.2071ms
+2025-12-17 21:33:51.782 -05:00 [INF] Request starting HTTP/2 POST https://localhost:7076/Identity/Account/Logout - application/x-www-form-urlencoded 225
+2025-12-17 21:33:51.792 -05:00 [INF] CORS policy execution failed.
+2025-12-17 21:33:51.795 -05:00 [INF] Request origin https://localhost:7076 does not have permission to access the resource.
+2025-12-17 21:33:51.799 -05:00 [INF] No CORS policy found for the specified request.
+2025-12-17 21:33:51.801 -05:00 [INF] Executing endpoint '/Account/Logout'
+2025-12-17 21:33:51.816 -05:00 [INF] Route matched with {page = "/Account/Logout", area = "Identity", action = "", controller = ""}. Executing page /Account/Logout
+2025-12-17 21:33:51.831 -05:00 [INF] Executing handler method LogoutModel.OnPost - ModelState is "Invalid"
+2025-12-17 21:33:51.839 -05:00 [INF] AuthenticationScheme: Identity.Application signed out.
+2025-12-17 21:33:51.844 -05:00 [INF] AuthenticationScheme: Identity.External signed out.
+2025-12-17 21:33:51.848 -05:00 [INF] AuthenticationScheme: Identity.TwoFactorUserId signed out.
+2025-12-17 21:33:51.850 -05:00 [INF] User logged out.
+2025-12-17 21:33:51.852 -05:00 [INF] Executed handler method OnPost, returned result Microsoft.AspNetCore.Mvc.RedirectToPageResult.
+2025-12-17 21:33:51.855 -05:00 [INF] Executing RedirectToPageResult, redirecting to Register.
+2025-12-17 21:33:51.857 -05:00 [INF] Executed page /Account/Logout in 32.8536ms
+2025-12-17 21:33:51.859 -05:00 [INF] Executed endpoint '/Account/Logout'
+2025-12-17 21:33:51.872 -05:00 [INF] Request finished HTTP/2 POST https://localhost:7076/Identity/Account/Logout - 302 null null 89.5969ms
+2025-12-17 21:33:51.877 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7076/Identity/Account/Register - null null
+2025-12-17 21:33:51.890 -05:00 [INF] Executing endpoint '/Account/Register'
+2025-12-17 21:33:51.905 -05:00 [INF] Route matched with {page = "/Account/Register", area = "Identity", action = "", controller = ""}. Executing page /Account/Register
+2025-12-17 21:33:51.913 -05:00 [INF] Executing handler method Play.Identity.Service.Areas.Identity.Pages.Account.RegisterModel.OnGetAsync - ModelState is "Valid"
+2025-12-17 21:33:51.917 -05:00 [INF] Executed handler method OnGetAsync, returned result .
+2025-12-17 21:33:51.923 -05:00 [INF] Executing an implicit handler method - ModelState is "Valid"
+2025-12-17 21:33:51.924 -05:00 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2025-12-17 21:33:51.955 -05:00 [INF] Executed page /Account/Register in 43.9515ms
+2025-12-17 21:33:51.961 -05:00 [INF] Executed endpoint '/Account/Register'
+2025-12-17 21:33:51.966 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7076/Identity/Account/Register - 200 null text/html; charset=utf-8 88.5788ms
+2025-12-17 21:33:51.966 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7076/_vs/browserLink - null null
+2025-12-17 21:33:51.967 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7076/_framework/aspnetcore-browser-refresh.js - null null
+2025-12-17 21:33:51.981 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7076/_framework/aspnetcore-browser-refresh.js - 200 16527 application/javascript; charset=utf-8 14.5591ms
+2025-12-17 21:33:52.019 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7076/_vs/browserLink - 200 null text/javascript; charset=UTF-8 22.0894ms
+2025-12-17 21:33:55.512 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7076/connect/authorize?prompt=login&response_type=code&client_id=postman&scope=openid%20profile%20catalog.fullaccess%20inventory.fullaccess%20trading.fullaccess%20IdentityServerApi&redirect_uri=https%3A%2F%2Foauth.pstmn.io%2Fv1%2Fcallback&code_challenge=wEPsnQpZJXzOObXxIcSquMRstCtUqneoVqI6kSjvW1o&code_challenge_method=S256 - null null
+2025-12-17 21:33:55.521 -05:00 [INF] Invoking IdentityServer endpoint: Duende.IdentityServer.Endpoints.AuthorizeEndpoint for /connect/authorize
+2025-12-17 21:33:55.526 -05:00 [INF] Showing login: request contains prompt=login
+2025-12-17 21:33:55.529 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7076/connect/authorize?prompt=login&response_type=code&client_id=postman&scope=openid%20profile%20catalog.fullaccess%20inventory.fullaccess%20trading.fullaccess%20IdentityServerApi&redirect_uri=https%3A%2F%2Foauth.pstmn.io%2Fv1%2Fcallback&code_challenge=wEPsnQpZJXzOObXxIcSquMRstCtUqneoVqI6kSjvW1o&code_challenge_method=S256 - 302 null null 17.0566ms
+2025-12-17 21:33:55.533 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7076/Identity/Account/Login?ReturnUrl=%2Fconnect%2Fauthorize%2Fcallback%3Fprompt%3Dlogin%26response_type%3Dcode%26client_id%3Dpostman%26scope%3Dopenid%2520profile%2520catalog.fullaccess%2520inventory.fullaccess%2520trading.fullaccess%2520IdentityServerApi%26redirect_uri%3Dhttps%253A%252F%252Foauth.pstmn.io%252Fv1%252Fcallback%26code_challenge%3DwEPsnQpZJXzOObXxIcSquMRstCtUqneoVqI6kSjvW1o%26code_challenge_method%3DS256%26suppressed_prompt%3Dlogin - null null
+2025-12-17 21:33:55.541 -05:00 [INF] Executing endpoint '/Account/Login'
+2025-12-17 21:33:55.544 -05:00 [INF] Route matched with {page = "/Account/Login", area = "Identity", action = "", controller = ""}. Executing page /Account/Login
+2025-12-17 21:33:55.547 -05:00 [INF] Executing handler method Microsoft.AspNetCore.Identity.UI.V5.Pages.Account.Internal.LoginModel.OnGetAsync - ModelState is "Valid"
+2025-12-17 21:33:55.549 -05:00 [INF] AuthenticationScheme: Identity.External signed out.
+2025-12-17 21:33:55.552 -05:00 [INF] Executed handler method OnGetAsync, returned result .
+2025-12-17 21:33:55.555 -05:00 [INF] Executing an implicit handler method - ModelState is "Valid"
+2025-12-17 21:33:55.557 -05:00 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2025-12-17 21:33:55.562 -05:00 [INF] Executed page /Account/Login in 15.5915ms
+2025-12-17 21:33:55.564 -05:00 [INF] Executed endpoint '/Account/Login'
+2025-12-17 21:33:55.567 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7076/Identity/Account/Login?ReturnUrl=%2Fconnect%2Fauthorize%2Fcallback%3Fprompt%3Dlogin%26response_type%3Dcode%26client_id%3Dpostman%26scope%3Dopenid%2520profile%2520catalog.fullaccess%2520inventory.fullaccess%2520trading.fullaccess%2520IdentityServerApi%26redirect_uri%3Dhttps%253A%252F%252Foauth.pstmn.io%252Fv1%252Fcallback%26code_challenge%3DwEPsnQpZJXzOObXxIcSquMRstCtUqneoVqI6kSjvW1o%26code_challenge_method%3DS256%26suppressed_prompt%3Dlogin - 200 null text/html; charset=utf-8 33.6604ms
+2025-12-17 21:33:55.572 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7076/_framework/aspnetcore-browser-refresh.js - null null
+2025-12-17 21:33:55.579 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7076/_framework/aspnetcore-browser-refresh.js - 200 16527 application/javascript; charset=utf-8 7.4268ms
+2025-12-17 21:33:55.615 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7076/_vs/browserLink - null null
+2025-12-17 21:33:55.633 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7076/_vs/browserLink - 200 null text/javascript; charset=UTF-8 18.4869ms
+2025-12-17 21:34:03.890 -05:00 [INF] Request starting HTTP/2 POST https://localhost:7076/Identity/Account/Login?ReturnUrl=%2Fconnect%2Fauthorize%2Fcallback%3Fprompt%3Dlogin%26response_type%3Dcode%26client_id%3Dpostman%26scope%3Dopenid%2520profile%2520catalog.fullaccess%2520inventory.fullaccess%2520trading.fullaccess%2520IdentityServerApi%26redirect_uri%3Dhttps%253A%252F%252Foauth.pstmn.io%252Fv1%252Fcallback%26code_challenge%3DwEPsnQpZJXzOObXxIcSquMRstCtUqneoVqI6kSjvW1o%26code_challenge_method%3DS256%26suppressed_prompt%3Dlogin - application/x-www-form-urlencoded 264
+2025-12-17 21:34:03.899 -05:00 [INF] CORS policy execution failed.
+2025-12-17 21:34:03.900 -05:00 [INF] Request origin https://localhost:7076 does not have permission to access the resource.
+2025-12-17 21:34:03.904 -05:00 [INF] No CORS policy found for the specified request.
+2025-12-17 21:34:03.906 -05:00 [INF] Executing endpoint '/Account/Login'
+2025-12-17 21:34:03.907 -05:00 [INF] Route matched with {page = "/Account/Login", area = "Identity", action = "", controller = ""}. Executing page /Account/Login
+2025-12-17 21:34:03.910 -05:00 [INF] Executing handler method Microsoft.AspNetCore.Identity.UI.V5.Pages.Account.Internal.LoginModel.OnPostAsync - ModelState is "Valid"
+2025-12-17 21:34:04.046 -05:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2025-12-17 21:34:04.053 -05:00 [INF] User logged in.
+2025-12-17 21:34:04.056 -05:00 [INF] Executed handler method OnPostAsync, returned result Microsoft.AspNetCore.Mvc.LocalRedirectResult.
+2025-12-17 21:34:04.061 -05:00 [INF] Executing LocalRedirectResult, redirecting to /connect/authorize/callback?prompt=login&response_type=code&client_id=postman&scope=openid%20profile%20catalog.fullaccess%20inventory.fullaccess%20trading.fullaccess%20IdentityServerApi&redirect_uri=https%3A%2F%2Foauth.pstmn.io%2Fv1%2Fcallback&code_challenge=wEPsnQpZJXzOObXxIcSquMRstCtUqneoVqI6kSjvW1o&code_challenge_method=S256&suppressed_prompt=login.
+2025-12-17 21:34:04.064 -05:00 [INF] Executed page /Account/Login in 154.3362ms
+2025-12-17 21:34:04.066 -05:00 [INF] Executed endpoint '/Account/Login'
+2025-12-17 21:34:04.068 -05:00 [INF] Request finished HTTP/2 POST https://localhost:7076/Identity/Account/Login?ReturnUrl=%2Fconnect%2Fauthorize%2Fcallback%3Fprompt%3Dlogin%26response_type%3Dcode%26client_id%3Dpostman%26scope%3Dopenid%2520profile%2520catalog.fullaccess%2520inventory.fullaccess%2520trading.fullaccess%2520IdentityServerApi%26redirect_uri%3Dhttps%253A%252F%252Foauth.pstmn.io%252Fv1%252Fcallback%26code_challenge%3DwEPsnQpZJXzOObXxIcSquMRstCtUqneoVqI6kSjvW1o%26code_challenge_method%3DS256%26suppressed_prompt%3Dlogin - 302 null null 177.6858ms
+2025-12-17 21:34:04.073 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7076/connect/authorize/callback?prompt=login&response_type=code&client_id=postman&scope=openid%20profile%20catalog.fullaccess%20inventory.fullaccess%20trading.fullaccess%20IdentityServerApi&redirect_uri=https%3A%2F%2Foauth.pstmn.io%2Fv1%2Fcallback&code_challenge=wEPsnQpZJXzOObXxIcSquMRstCtUqneoVqI6kSjvW1o&code_challenge_method=S256&suppressed_prompt=login - null null
+2025-12-17 21:34:04.091 -05:00 [INF] Invoking IdentityServer endpoint: Duende.IdentityServer.Endpoints.AuthorizeCallbackEndpoint for /connect/authorize/callback
+2025-12-17 21:34:04.098 -05:00 [INF] {"ClientId":"postman","ClientName":"Postman Client","RedirectUri":"https://oauth.pstmn.io/v1/callback","Endpoint":"Authorize","SubjectId":"54019058-fa72-485a-bab4-e899942a6194","Scopes":"openid profile catalog.fullaccess inventory.fullaccess trading.fullaccess IdentityServerApi","GrantType":"authorization_code","Tokens":[{"TokenType":"code","TokenValue":"****ED-1","$type":"Token"}],"Category":"Token","Name":"Token Issued Success","EventType":"Success","Id":2000,"Message":null,"ActivityId":"0HNHTRMMSF8UI:0000000B","TimeStamp":"2025-12-18T02:34:04.0982917","ProcessId":55664,"LocalIpAddress":"::1:7076","RemoteIpAddress":"::1","$type":"TokenIssuedSuccessEvent"}
+2025-12-17 21:34:04.128 -05:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2025-12-17 21:34:04.131 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7076/connect/authorize/callback?prompt=login&response_type=code&client_id=postman&scope=openid%20profile%20catalog.fullaccess%20inventory.fullaccess%20trading.fullaccess%20IdentityServerApi&redirect_uri=https%3A%2F%2Foauth.pstmn.io%2Fv1%2Fcallback&code_challenge=wEPsnQpZJXzOObXxIcSquMRstCtUqneoVqI6kSjvW1o&code_challenge_method=S256&suppressed_prompt=login - 302 null null 58.2022ms
+2025-12-17 21:34:04.491 -05:00 [INF] Request starting HTTP/1.1 POST https://localhost:7076/connect/token - application/x-www-form-urlencoded 217
+2025-12-17 21:34:04.523 -05:00 [INF] Invoking IdentityServer endpoint: Duende.IdentityServer.Endpoints.TokenEndpoint for /connect/token
+2025-12-17 21:34:04.528 -05:00 [INF] {"ClientId":"postman","AuthenticationMethod":"NoSecret","Category":"Authentication","Name":"Client Authentication Success","EventType":"Success","Id":1010,"Message":null,"ActivityId":"0HNHTRMMSF8UE:00000004","TimeStamp":"2025-12-18T02:34:04.5282233","ProcessId":55664,"LocalIpAddress":"::1:7076","RemoteIpAddress":"::1","$type":"ClientAuthenticationSuccessEvent"}
+2025-12-17 21:34:04.563 -05:00 [INF] Token request validation success, {"ClientId":"postman","ClientName":"Postman Client","GrantType":"authorization_code","Scopes":null,"AuthorizationCode":"****ED-1","RefreshToken":"********","UserName":null,"AuthenticationContextReferenceClasses":null,"Tenant":null,"IdP":null,"Raw":{"grant_type":"authorization_code","code":"***REDACTED***","redirect_uri":"https://oauth.pstmn.io/v1/callback","code_verifier":"dXjdZCaoDH7qSZanXznr4RwERzvJO-x-CnHqVQ_gOQs"},"$type":"TokenRequestValidationLog"}
+2025-12-17 21:34:04.616 -05:00 [INF] {"ClientId":"postman","ClientName":"Postman Client","RedirectUri":null,"Endpoint":"Token","SubjectId":"54019058-fa72-485a-bab4-e899942a6194","Scopes":"openid profile catalog.fullaccess inventory.fullaccess trading.fullaccess IdentityServerApi","GrantType":"authorization_code","Tokens":[{"TokenType":"id_token","TokenValue":"****76CA","$type":"Token"},{"TokenType":"access_token","TokenValue":"****hVLg","$type":"Token"}],"Category":"Token","Name":"Token Issued Success","EventType":"Success","Id":2000,"Message":null,"ActivityId":"0HNHTRMMSF8UE:00000004","TimeStamp":"2025-12-18T02:34:04.6167091","ProcessId":55664,"LocalIpAddress":"::1:7076","RemoteIpAddress":"::1","$type":"TokenIssuedSuccessEvent"}
+2025-12-17 21:34:04.663 -05:00 [INF] Request finished HTTP/1.1 POST https://localhost:7076/connect/token - 200 null application/json; charset=UTF-8 171.9511ms
+2025-12-17 21:40:07.466 -05:00 [INF] Starting Duende IdentityServer version 7.3.2+build.0.7d3159f7be1314e01f03a23ad33dd7b665151ee5 (.NET 9.0.11)
+2025-12-17 21:40:07.536 -05:00 [WRN] You do not have a valid license key for the Duende software. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please start a conversation with us: https://duendesoftware.com/contact
+2025-12-17 21:40:07.538 -05:00 [WRN] You have automatic key management enabled, but you do not have a license. This feature requires the Business or Enterprise Edition tier of license. Alternatively you can disable automatic key management by setting the KeyManagement.Enabled property to false on the IdentityServerOptions.
+2025-12-17 21:40:07.552 -05:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2025-12-17 21:40:07.559 -05:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2025-12-17 21:40:07.693 -05:00 [INF] User profile is available. Using 'C:\Users\patri\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-12-17 21:40:08.986 -05:00 [INF] Now listening on: https://localhost:7076
+2025-12-17 21:40:08.989 -05:00 [INF] Now listening on: http://localhost:5228
+2025-12-17 21:40:09.033 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-17 21:40:09.036 -05:00 [INF] Hosting environment: Development
+2025-12-17 21:40:09.039 -05:00 [INF] Content root path: C:\git-repos\MicroservicesProjects\Play.Identity\src\Play.Identity.Service
+2025-12-17 21:40:18.884 -05:00 [INF] Request starting HTTP/1.1 GET https://localhost:7076/users - null null
+2025-12-17 21:40:19.671 -05:00 [INF] Executing endpoint 'Play.Identity.Service.Controllers.UsersController.Get (Play.Identity.Service)'
+2025-12-17 21:40:19.691 -05:00 [INF] Route matched with {action = "Get", controller = "Users", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[Play.Identity.Service.Dtos.UserDto]] Get() on controller Play.Identity.Service.Controllers.UsersController (Play.Identity.Service).
+2025-12-17 21:40:19.747 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+ListSelectIterator`2[[Play.Identity.Service.Entities.ApplicationUser, Play.Identity.Service, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[Play.Identity.Service.Dtos.UserDto, Play.Identity.Service, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-12-17 21:40:19.803 -05:00 [INF] Executed action Play.Identity.Service.Controllers.UsersController.Get (Play.Identity.Service) in 101.936ms
+2025-12-17 21:40:19.820 -05:00 [INF] Executed endpoint 'Play.Identity.Service.Controllers.UsersController.Get (Play.Identity.Service)'
+2025-12-17 21:40:19.829 -05:00 [INF] Request finished HTTP/1.1 GET https://localhost:7076/users - 200 null application/json; charset=utf-8 948.0981ms
+2025-12-17 21:40:30.709 -05:00 [INF] Request starting HTTP/1.1 GET https://localhost:7076/.well-known/openid-configuration - null null
+2025-12-17 21:40:30.742 -05:00 [INF] Invoking IdentityServer endpoint: Duende.IdentityServer.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2025-12-17 21:40:30.799 -05:00 [INF] Request finished HTTP/1.1 GET https://localhost:7076/.well-known/openid-configuration - 200 null application/json; charset=UTF-8 90.2249ms
+2025-12-17 21:40:30.835 -05:00 [INF] Request starting HTTP/1.1 GET https://localhost:7076/.well-known/openid-configuration/jwks - null null
+2025-12-17 21:40:30.852 -05:00 [INF] Invoking IdentityServer endpoint: Duende.IdentityServer.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2025-12-17 21:40:30.881 -05:00 [INF] Request finished HTTP/1.1 GET https://localhost:7076/.well-known/openid-configuration/jwks - 200 null application/json; charset=UTF-8 45.8642ms
+2025-12-17 21:51:08.178 -05:00 [INF] Starting Duende IdentityServer version 7.3.2+build.0.7d3159f7be1314e01f03a23ad33dd7b665151ee5 (.NET 9.0.11)
+2025-12-17 21:51:08.262 -05:00 [WRN] You do not have a valid license key for the Duende software. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please start a conversation with us: https://duendesoftware.com/contact
+2025-12-17 21:51:08.265 -05:00 [WRN] You have automatic key management enabled, but you do not have a license. This feature requires the Business or Enterprise Edition tier of license. Alternatively you can disable automatic key management by setting the KeyManagement.Enabled property to false on the IdentityServerOptions.
+2025-12-17 21:51:08.283 -05:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2025-12-17 21:51:08.293 -05:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2025-12-17 21:51:08.452 -05:00 [INF] User profile is available. Using 'C:\Users\patri\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-12-17 21:51:10.062 -05:00 [INF] Now listening on: https://localhost:7076
+2025-12-17 21:51:10.066 -05:00 [INF] Now listening on: http://localhost:5228
+2025-12-17 21:51:10.294 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-17 21:51:10.297 -05:00 [INF] Hosting environment: Development
+2025-12-17 21:51:10.300 -05:00 [INF] Content root path: C:\git-repos\MicroservicesProjects\Play.Identity\src\Play.Identity.Service
+2025-12-17 21:51:31.409 -05:00 [INF] Request starting HTTP/1.1 GET https://localhost:7076/users - null null
+2025-12-17 21:51:32.233 -05:00 [INF] Executing endpoint 'Play.Identity.Service.Controllers.UsersController.Get (Play.Identity.Service)'
+2025-12-17 21:51:32.257 -05:00 [INF] Route matched with {action = "Get", controller = "Users", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[Play.Identity.Service.Dtos.UserDto]] Get() on controller Play.Identity.Service.Controllers.UsersController (Play.Identity.Service).
+2025-12-17 21:51:32.330 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+ListSelectIterator`2[[Play.Identity.Service.Entities.ApplicationUser, Play.Identity.Service, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[Play.Identity.Service.Dtos.UserDto, Play.Identity.Service, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-12-17 21:51:32.386 -05:00 [INF] Executed action Play.Identity.Service.Controllers.UsersController.Get (Play.Identity.Service) in 114.6552ms
+2025-12-17 21:51:32.404 -05:00 [INF] Executed endpoint 'Play.Identity.Service.Controllers.UsersController.Get (Play.Identity.Service)'
+2025-12-17 21:51:32.418 -05:00 [INF] Request finished HTTP/1.1 GET https://localhost:7076/users - 200 null application/json; charset=utf-8 1010.844ms
+2025-12-17 21:51:36.133 -05:00 [INF] Request starting HTTP/1.1 GET https://localhost:7076/.well-known/openid-configuration - null null
+2025-12-17 21:51:36.165 -05:00 [INF] Invoking IdentityServer endpoint: Duende.IdentityServer.Endpoints.DiscoveryEndpoint for /.well-known/openid-configuration
+2025-12-17 21:51:36.220 -05:00 [INF] Request finished HTTP/1.1 GET https://localhost:7076/.well-known/openid-configuration - 200 null application/json; charset=UTF-8 87.0341ms
+2025-12-17 21:51:36.252 -05:00 [INF] Request starting HTTP/1.1 GET https://localhost:7076/.well-known/openid-configuration/jwks - null null
+2025-12-17 21:51:36.265 -05:00 [INF] Invoking IdentityServer endpoint: Duende.IdentityServer.Endpoints.DiscoveryKeyEndpoint for /.well-known/openid-configuration/jwks
+2025-12-17 21:51:36.281 -05:00 [INF] Request finished HTTP/1.1 GET https://localhost:7076/.well-known/openid-configuration/jwks - 200 null application/json; charset=UTF-8 29.1464ms
+2025-12-17 21:51:55.420 -05:00 [INF] Request starting HTTP/1.1 GET https://localhost:7076/users - null null
+2025-12-17 21:51:55.434 -05:00 [INF] Executing endpoint 'Play.Identity.Service.Controllers.UsersController.Get (Play.Identity.Service)'
+2025-12-17 21:51:55.438 -05:00 [INF] Route matched with {action = "Get", controller = "Users", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[Play.Identity.Service.Dtos.UserDto]] Get() on controller Play.Identity.Service.Controllers.UsersController (Play.Identity.Service).
+2025-12-17 21:51:55.453 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+ListSelectIterator`2[[Play.Identity.Service.Entities.ApplicationUser, Play.Identity.Service, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[Play.Identity.Service.Dtos.UserDto, Play.Identity.Service, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-12-17 21:51:55.460 -05:00 [INF] Executed action Play.Identity.Service.Controllers.UsersController.Get (Play.Identity.Service) in 17.5065ms
+2025-12-17 21:51:55.465 -05:00 [INF] Executed endpoint 'Play.Identity.Service.Controllers.UsersController.Get (Play.Identity.Service)'
+2025-12-17 21:51:55.469 -05:00 [INF] Request finished HTTP/1.1 GET https://localhost:7076/users - 200 null application/json; charset=utf-8 49.145ms
+2025-12-17 22:02:16.103 -05:00 [INF] Starting Duende IdentityServer version 7.3.2+build.0.7d3159f7be1314e01f03a23ad33dd7b665151ee5 (.NET 9.0.11)
+2025-12-17 22:02:16.204 -05:00 [WRN] You do not have a valid license key for the Duende software. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please start a conversation with us: https://duendesoftware.com/contact
+2025-12-17 22:02:16.208 -05:00 [WRN] You have automatic key management enabled, but you do not have a license. This feature requires the Business or Enterprise Edition tier of license. Alternatively you can disable automatic key management by setting the KeyManagement.Enabled property to false on the IdentityServerOptions.
+2025-12-17 22:02:16.227 -05:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2025-12-17 22:02:16.237 -05:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2025-12-17 22:02:16.457 -05:00 [INF] User profile is available. Using 'C:\Users\patri\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-12-17 22:02:18.335 -05:00 [INF] Now listening on: https://localhost:7076
+2025-12-17 22:02:18.339 -05:00 [INF] Now listening on: http://localhost:5228
+2025-12-17 22:02:18.399 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-17 22:02:18.402 -05:00 [INF] Hosting environment: Development
+2025-12-17 22:02:18.405 -05:00 [INF] Content root path: C:\git-repos\MicroservicesProjects\Play.Identity\src\Play.Identity.Service
+2025-12-17 22:03:36.574 -05:00 [INF] Request starting HTTP/1.1 GET https://localhost:7076/users - null null
+2025-12-17 22:03:37.371 -05:00 [INF] Executing endpoint 'Play.Identity.Service.Controllers.UsersController.Get (Play.Identity.Service)'
+2025-12-17 22:03:37.394 -05:00 [INF] Route matched with {action = "Get", controller = "Users", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[Play.Identity.Service.Dtos.UserDto]] Get() on controller Play.Identity.Service.Controllers.UsersController (Play.Identity.Service).
+2025-12-17 22:03:37.459 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+ListSelectIterator`2[[Play.Identity.Service.Entities.ApplicationUser, Play.Identity.Service, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[Play.Identity.Service.Dtos.UserDto, Play.Identity.Service, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-12-17 22:03:37.523 -05:00 [INF] Executed action Play.Identity.Service.Controllers.UsersController.Get (Play.Identity.Service) in 116.722ms
+2025-12-17 22:03:37.545 -05:00 [INF] Executed endpoint 'Play.Identity.Service.Controllers.UsersController.Get (Play.Identity.Service)'
+2025-12-17 22:03:37.559 -05:00 [INF] Request finished HTTP/1.1 GET https://localhost:7076/users - 200 null application/json; charset=utf-8 986.5862ms
+2025-12-17 22:15:37.178 -05:00 [INF] Starting Duende IdentityServer version 7.3.2+build.0.7d3159f7be1314e01f03a23ad33dd7b665151ee5 (.NET 9.0.11)
+2025-12-17 22:15:37.248 -05:00 [WRN] You do not have a valid license key for the Duende software. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please start a conversation with us: https://duendesoftware.com/contact
+2025-12-17 22:15:37.250 -05:00 [WRN] You have automatic key management enabled, but you do not have a license. This feature requires the Business or Enterprise Edition tier of license. Alternatively you can disable automatic key management by setting the KeyManagement.Enabled property to false on the IdentityServerOptions.
+2025-12-17 22:15:37.266 -05:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2025-12-17 22:15:37.273 -05:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2025-12-17 22:15:37.393 -05:00 [INF] User profile is available. Using 'C:\Users\patri\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-12-17 22:15:38.539 -05:00 [INF] Now listening on: https://localhost:7076
+2025-12-17 22:15:38.543 -05:00 [INF] Now listening on: http://localhost:5228
+2025-12-17 22:15:38.576 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-17 22:15:38.580 -05:00 [INF] Hosting environment: Development
+2025-12-17 22:15:38.582 -05:00 [INF] Content root path: C:\git-repos\MicroservicesProjects\Play.Identity\src\Play.Identity.Service
+2025-12-17 22:17:33.163 -05:00 [INF] Starting Duende IdentityServer version 7.3.2+build.0.7d3159f7be1314e01f03a23ad33dd7b665151ee5 (.NET 9.0.11)
+2025-12-17 22:17:33.225 -05:00 [WRN] You do not have a valid license key for the Duende software. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please start a conversation with us: https://duendesoftware.com/contact
+2025-12-17 22:17:33.228 -05:00 [WRN] You have automatic key management enabled, but you do not have a license. This feature requires the Business or Enterprise Edition tier of license. Alternatively you can disable automatic key management by setting the KeyManagement.Enabled property to false on the IdentityServerOptions.
+2025-12-17 22:17:33.241 -05:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2025-12-17 22:17:33.247 -05:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2025-12-17 22:17:33.375 -05:00 [INF] User profile is available. Using 'C:\Users\patri\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-12-17 22:17:34.510 -05:00 [INF] Now listening on: https://localhost:7076
+2025-12-17 22:17:34.516 -05:00 [INF] Now listening on: http://localhost:5228
+2025-12-17 22:17:34.547 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-17 22:17:34.550 -05:00 [INF] Hosting environment: Development
+2025-12-17 22:17:34.552 -05:00 [INF] Content root path: C:\git-repos\MicroservicesProjects\Play.Identity\src\Play.Identity.Service
+2025-12-17 22:20:36.911 -05:00 [INF] Starting Duende IdentityServer version 7.3.2+build.0.7d3159f7be1314e01f03a23ad33dd7b665151ee5 (.NET 9.0.11)
+2025-12-17 22:20:37.005 -05:00 [WRN] You do not have a valid license key for the Duende software. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please start a conversation with us: https://duendesoftware.com/contact
+2025-12-17 22:20:37.009 -05:00 [WRN] You have automatic key management enabled, but you do not have a license. This feature requires the Business or Enterprise Edition tier of license. Alternatively you can disable automatic key management by setting the KeyManagement.Enabled property to false on the IdentityServerOptions.
+2025-12-17 22:20:37.029 -05:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2025-12-17 22:20:37.039 -05:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2025-12-17 22:20:37.195 -05:00 [INF] User profile is available. Using 'C:\Users\patri\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-12-17 22:22:15.133 -05:00 [INF] Starting Duende IdentityServer version 7.3.2+build.0.7d3159f7be1314e01f03a23ad33dd7b665151ee5 (.NET 9.0.11)
+2025-12-17 22:22:15.201 -05:00 [WRN] You do not have a valid license key for the Duende software. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please start a conversation with us: https://duendesoftware.com/contact
+2025-12-17 22:22:15.205 -05:00 [WRN] You have automatic key management enabled, but you do not have a license. This feature requires the Business or Enterprise Edition tier of license. Alternatively you can disable automatic key management by setting the KeyManagement.Enabled property to false on the IdentityServerOptions.
+2025-12-17 22:22:15.218 -05:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2025-12-17 22:22:15.225 -05:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2025-12-17 22:22:15.358 -05:00 [INF] User profile is available. Using 'C:\Users\patri\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-12-17 22:28:34.406 -05:00 [INF] Starting Duende IdentityServer version 7.3.2+build.0.7d3159f7be1314e01f03a23ad33dd7b665151ee5 (.NET 9.0.11)
+2025-12-17 22:28:34.490 -05:00 [WRN] You do not have a valid license key for the Duende software. This is allowed for development and testing scenarios. If you are running in production you are required to have a licensed version. Please start a conversation with us: https://duendesoftware.com/contact
+2025-12-17 22:28:34.495 -05:00 [WRN] You have automatic key management enabled, but you do not have a license. This feature requires the Business or Enterprise Edition tier of license. Alternatively you can disable automatic key management by setting the KeyManagement.Enabled property to false on the IdentityServerOptions.
+2025-12-17 22:28:34.513 -05:00 [INF] You are using the in-memory version of the persisted grant store. This will store consent decisions, authorization codes, refresh and reference tokens in memory only. If you are using any of those features in production, you want to switch to a different store implementation.
+2025-12-17 22:28:34.520 -05:00 [INF] Using the default authentication scheme Identity.Application for IdentityServer
+2025-12-17 22:28:34.693 -05:00 [INF] User profile is available. Using 'C:\Users\patri\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-12-17 22:28:35.363 -05:00 [INF] Configured endpoint identity-debit-gil, Consumer: Play.Identity.Service.Consumers.DebitGilConsumer
+2025-12-17 22:28:36.302 -05:00 [INF] Bus started: "rabbitmq://localhost/"
+2025-12-17 22:28:46.797 -05:00 [ERR] R-FAULT "rabbitmq://localhost/identity-debit-gil" null "00:00:10.4877934"
+System.Runtime.Serialization.SerializationException: An error occured while deserializing the message envelope
+ ---> System.Text.Json.JsonException: The input does not contain any JSON tokens. Expected the input to start with a valid JSON token, when isFinalBlock is true. Path: $ | LineNumber: 0 | BytePositionInLine: 0.
+ ---> System.Text.Json.JsonReaderException: The input does not contain any JSON tokens. Expected the input to start with a valid JSON token, when isFinalBlock is true. LineNumber: 0 | BytePositionInLine: 0.
+   at System.Text.Json.ThrowHelper.ThrowJsonReaderException(Utf8JsonReader& json, ExceptionResource resource, Byte nextByte, ReadOnlySpan`1 bytes)
+   at System.Text.Json.Utf8JsonReader.Read()
+   at System.Text.Json.Serialization.JsonConverter`1.ReadCore(Utf8JsonReader& reader, T& value, JsonSerializerOptions options, ReadStack& state)
+   --- End of inner exception stack trace ---
+   at System.Text.Json.ThrowHelper.ReThrowWithPath(ReadStack& state, JsonReaderException ex)
+   at System.Text.Json.Serialization.JsonConverter`1.ReadCore(Utf8JsonReader& reader, T& value, JsonSerializerOptions options, ReadStack& state)
+   at System.Text.Json.Serialization.Metadata.JsonTypeInfo`1.Deserialize(Utf8JsonReader& reader, ReadStack& state)
+   at System.Text.Json.JsonSerializer.ReadFromSpan[TValue](ReadOnlySpan`1 utf8Json, JsonTypeInfo`1 jsonTypeInfo, Nullable`1 actualByteCount)
+   at System.Text.Json.JsonSerializer.Deserialize[TValue](ReadOnlySpan`1 utf8Json, JsonSerializerOptions options)
+   at MassTransit.Serialization.SystemTextJsonMessageSerializer.Deserialize(MessageBody body, Headers headers, Uri destinationAddress) in /_/src/MassTransit/Serialization/SystemTextJsonMessageSerializer.cs:line 78
+   --- End of inner exception stack trace ---
+   at MassTransit.Serialization.SystemTextJsonMessageSerializer.Deserialize(MessageBody body, Headers headers, Uri destinationAddress) in /_/src/MassTransit/Serialization/SystemTextJsonMessageSerializer.cs:line 98
+   at MassTransit.Serialization.SystemTextJsonMessageSerializer.Deserialize(ReceiveContext receiveContext) in /_/src/MassTransit/Serialization/SystemTextJsonMessageSerializer.cs:line 71
+   at MassTransit.Middleware.DeserializeFilter.Send(ReceiveContext context, IPipe`1 next) in /_/src/MassTransit/Middleware/DeserializeFilter.cs:line 36
+   at MassTransit.Middleware.RescueFilter`2.MassTransit.IFilter<TContext>.Send(TContext context, IPipe`1 next) in /_/src/MassTransit/Middleware/RescueFilter.cs:line 43
+2025-12-17 22:28:46.797 -05:00 [ERR] R-FAULT "rabbitmq://localhost/identity-debit-gil" null "00:00:10.4879197"
+System.Runtime.Serialization.SerializationException: An error occured while deserializing the message envelope
+ ---> System.Text.Json.JsonException: The input does not contain any JSON tokens. Expected the input to start with a valid JSON token, when isFinalBlock is true. Path: $ | LineNumber: 0 | BytePositionInLine: 0.
+ ---> System.Text.Json.JsonReaderException: The input does not contain any JSON tokens. Expected the input to start with a valid JSON token, when isFinalBlock is true. LineNumber: 0 | BytePositionInLine: 0.
+   at System.Text.Json.ThrowHelper.ThrowJsonReaderException(Utf8JsonReader& json, ExceptionResource resource, Byte nextByte, ReadOnlySpan`1 bytes)
+   at System.Text.Json.Utf8JsonReader.Read()
+   at System.Text.Json.Serialization.JsonConverter`1.ReadCore(Utf8JsonReader& reader, T& value, JsonSerializerOptions options, ReadStack& state)
+   --- End of inner exception stack trace ---
+   at System.Text.Json.ThrowHelper.ReThrowWithPath(ReadStack& state, JsonReaderException ex)
+   at System.Text.Json.Serialization.JsonConverter`1.ReadCore(Utf8JsonReader& reader, T& value, JsonSerializerOptions options, ReadStack& state)
+   at System.Text.Json.Serialization.Metadata.JsonTypeInfo`1.Deserialize(Utf8JsonReader& reader, ReadStack& state)
+   at System.Text.Json.JsonSerializer.ReadFromSpan[TValue](ReadOnlySpan`1 utf8Json, JsonTypeInfo`1 jsonTypeInfo, Nullable`1 actualByteCount)
+   at System.Text.Json.JsonSerializer.Deserialize[TValue](ReadOnlySpan`1 utf8Json, JsonSerializerOptions options)
+   at MassTransit.Serialization.SystemTextJsonMessageSerializer.Deserialize(MessageBody body, Headers headers, Uri destinationAddress) in /_/src/MassTransit/Serialization/SystemTextJsonMessageSerializer.cs:line 78
+   --- End of inner exception stack trace ---
+   at MassTransit.Serialization.SystemTextJsonMessageSerializer.Deserialize(MessageBody body, Headers headers, Uri destinationAddress) in /_/src/MassTransit/Serialization/SystemTextJsonMessageSerializer.cs:line 98
+   at MassTransit.Serialization.SystemTextJsonMessageSerializer.Deserialize(ReceiveContext receiveContext) in /_/src/MassTransit/Serialization/SystemTextJsonMessageSerializer.cs:line 71
+   at MassTransit.Middleware.DeserializeFilter.Send(ReceiveContext context, IPipe`1 next) in /_/src/MassTransit/Middleware/DeserializeFilter.cs:line 36
+   at MassTransit.Middleware.RescueFilter`2.MassTransit.IFilter<TContext>.Send(TContext context, IPipe`1 next) in /_/src/MassTransit/Middleware/RescueFilter.cs:line 43
+2025-12-17 22:28:46.879 -05:00 [INF] Now listening on: https://localhost:7076
+2025-12-17 22:28:46.883 -05:00 [INF] Now listening on: http://localhost:5228
+2025-12-17 22:28:46.933 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-17 22:28:46.937 -05:00 [INF] Hosting environment: Development
+2025-12-17 22:28:46.940 -05:00 [INF] Content root path: C:\git-repos\MicroservicesProjects\Play.Identity\src\Play.Identity.Service
+2025-12-17 22:29:05.669 -05:00 [INF] Request starting HTTP/1.1 GET https://localhost:7076/users - null null
+2025-12-17 22:29:06.450 -05:00 [INF] Executing endpoint 'Play.Identity.Service.Controllers.UsersController.Get (Play.Identity.Service)'
+2025-12-17 22:29:06.474 -05:00 [INF] Route matched with {action = "Get", controller = "Users", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[Play.Identity.Service.Dtos.UserDto]] Get() on controller Play.Identity.Service.Controllers.UsersController (Play.Identity.Service).
+2025-12-17 22:29:06.529 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+ListSelectIterator`2[[Play.Identity.Service.Entities.ApplicationUser, Play.Identity.Service, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[Play.Identity.Service.Dtos.UserDto, Play.Identity.Service, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-12-17 22:29:06.580 -05:00 [INF] Executed action Play.Identity.Service.Controllers.UsersController.Get (Play.Identity.Service) in 89.7191ms
+2025-12-17 22:29:06.602 -05:00 [INF] Executed endpoint 'Play.Identity.Service.Controllers.UsersController.Get (Play.Identity.Service)'
+2025-12-17 22:29:06.611 -05:00 [INF] Request finished HTTP/1.1 GET https://localhost:7076/users - 200 null application/json; charset=utf-8 946.1844ms

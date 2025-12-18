@@ -3297,3 +3297,81 @@ RolesAuthorizationRequirement:User.IsInRole must be true for one of the followin
 2025-12-16 23:24:51.318 -05:00 [INF] Executed action Play.Catalog.Service.Controllers.ItemsController.GetAllAsync (Play.Catalog.Service) in 14.631ms
 2025-12-16 23:24:51.322 -05:00 [INF] Executed endpoint 'Play.Catalog.Service.Controllers.ItemsController.GetAllAsync (Play.Catalog.Service)'
 2025-12-16 23:24:51.325 -05:00 [INF] Request finished HTTP/1.1 GET https://localhost:7057/items - 200 null application/json; charset=utf-8 40.3331ms
+2025-12-17 20:58:38.597 -05:00 [INF] User profile is available. Using 'C:\Users\patri\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-12-17 20:58:39.286 -05:00 [INF] Bus started: "rabbitmq://localhost/"
+2025-12-17 20:58:39.356 -05:00 [INF] Now listening on: https://localhost:7057
+2025-12-17 20:58:39.361 -05:00 [INF] Now listening on: http://localhost:5007
+2025-12-17 20:58:39.466 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-17 20:58:39.478 -05:00 [INF] Hosting environment: Development
+2025-12-17 20:58:39.497 -05:00 [INF] Content root path: C:\git-repos\MicroservicesProjects\Play.Catalog\src\Play.Catalog.Service
+2025-12-17 21:07:15.235 -05:00 [INF] User profile is available. Using 'C:\Users\patri\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-12-17 21:07:15.807 -05:00 [INF] Bus started: "rabbitmq://localhost/"
+2025-12-17 21:07:15.848 -05:00 [INF] Now listening on: https://localhost:7057
+2025-12-17 21:07:15.851 -05:00 [INF] Now listening on: http://localhost:5007
+2025-12-17 21:07:15.948 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-17 21:07:15.950 -05:00 [INF] Hosting environment: Development
+2025-12-17 21:07:15.954 -05:00 [INF] Content root path: C:\git-repos\MicroservicesProjects\Play.Catalog\src\Play.Catalog.Service
+2025-12-17 21:31:48.877 -05:00 [INF] User profile is available. Using 'C:\Users\patri\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-12-17 21:31:49.572 -05:00 [INF] Bus started: "rabbitmq://localhost/"
+2025-12-17 21:31:49.614 -05:00 [INF] Now listening on: https://localhost:7057
+2025-12-17 21:31:49.621 -05:00 [INF] Now listening on: http://localhost:5007
+2025-12-17 21:31:49.736 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-17 21:31:49.740 -05:00 [INF] Hosting environment: Development
+2025-12-17 21:31:49.743 -05:00 [INF] Content root path: C:\git-repos\MicroservicesProjects\Play.Catalog\src\Play.Catalog.Service
+2025-12-17 21:40:06.995 -05:00 [INF] User profile is available. Using 'C:\Users\patri\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-12-17 21:40:07.467 -05:00 [INF] Bus started: "rabbitmq://localhost/"
+2025-12-17 21:40:07.491 -05:00 [INF] Now listening on: https://localhost:7057
+2025-12-17 21:40:07.495 -05:00 [INF] Now listening on: http://localhost:5007
+2025-12-17 21:40:07.564 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-17 21:40:07.567 -05:00 [INF] Hosting environment: Development
+2025-12-17 21:40:07.570 -05:00 [INF] Content root path: C:\git-repos\MicroservicesProjects\Play.Catalog\src\Play.Catalog.Service
+2025-12-17 21:51:07.855 -05:00 [INF] User profile is available. Using 'C:\Users\patri\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-12-17 21:51:08.369 -05:00 [INF] Bus started: "rabbitmq://localhost/"
+2025-12-17 21:51:08.407 -05:00 [INF] Now listening on: https://localhost:7057
+2025-12-17 21:51:08.412 -05:00 [INF] Now listening on: http://localhost:5007
+2025-12-17 21:51:08.503 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-17 21:51:08.504 -05:00 [INF] Hosting environment: Development
+2025-12-17 21:51:08.506 -05:00 [INF] Content root path: C:\git-repos\MicroservicesProjects\Play.Catalog\src\Play.Catalog.Service
+2025-12-17 22:02:15.609 -05:00 [INF] User profile is available. Using 'C:\Users\patri\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-12-17 22:02:16.363 -05:00 [INF] Bus started: "rabbitmq://localhost/"
+2025-12-17 22:02:16.402 -05:00 [INF] Now listening on: https://localhost:7057
+2025-12-17 22:02:16.406 -05:00 [INF] Now listening on: http://localhost:5007
+2025-12-17 22:02:16.508 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-17 22:02:16.514 -05:00 [INF] Hosting environment: Development
+2025-12-17 22:02:16.518 -05:00 [INF] Content root path: C:\git-repos\MicroservicesProjects\Play.Catalog\src\Play.Catalog.Service
+2025-12-17 22:15:37.120 -05:00 [INF] User profile is available. Using 'C:\Users\patri\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-12-17 22:15:37.551 -05:00 [INF] Bus started: "rabbitmq://localhost/"
+2025-12-17 22:15:37.574 -05:00 [INF] Now listening on: https://localhost:7057
+2025-12-17 22:15:37.577 -05:00 [INF] Now listening on: http://localhost:5007
+2025-12-17 22:15:37.652 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-17 22:15:37.655 -05:00 [INF] Hosting environment: Development
+2025-12-17 22:15:37.657 -05:00 [INF] Content root path: C:\git-repos\MicroservicesProjects\Play.Catalog\src\Play.Catalog.Service
+2025-12-17 22:17:32.737 -05:00 [INF] User profile is available. Using 'C:\Users\patri\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-12-17 22:17:33.190 -05:00 [INF] Bus started: "rabbitmq://localhost/"
+2025-12-17 22:17:33.207 -05:00 [INF] Now listening on: https://localhost:7057
+2025-12-17 22:17:33.211 -05:00 [INF] Now listening on: http://localhost:5007
+2025-12-17 22:17:33.275 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-17 22:17:33.278 -05:00 [INF] Hosting environment: Development
+2025-12-17 22:17:33.280 -05:00 [INF] Content root path: C:\git-repos\MicroservicesProjects\Play.Catalog\src\Play.Catalog.Service
+2025-12-17 22:20:35.201 -05:00 [INF] User profile is available. Using 'C:\Users\patri\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-12-17 22:20:35.666 -05:00 [INF] Bus started: "rabbitmq://localhost/"
+2025-12-17 22:20:35.688 -05:00 [INF] Now listening on: https://localhost:7057
+2025-12-17 22:20:35.690 -05:00 [INF] Now listening on: http://localhost:5007
+2025-12-17 22:20:35.759 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-17 22:20:35.762 -05:00 [INF] Hosting environment: Development
+2025-12-17 22:20:35.765 -05:00 [INF] Content root path: C:\git-repos\MicroservicesProjects\Play.Catalog\src\Play.Catalog.Service
+2025-12-17 22:22:15.011 -05:00 [INF] User profile is available. Using 'C:\Users\patri\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-12-17 22:22:15.387 -05:00 [INF] Bus started: "rabbitmq://localhost/"
+2025-12-17 22:22:15.415 -05:00 [INF] Now listening on: https://localhost:7057
+2025-12-17 22:22:15.419 -05:00 [INF] Now listening on: http://localhost:5007
+2025-12-17 22:22:15.497 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-17 22:22:15.500 -05:00 [INF] Hosting environment: Development
+2025-12-17 22:22:15.502 -05:00 [INF] Content root path: C:\git-repos\MicroservicesProjects\Play.Catalog\src\Play.Catalog.Service
+2025-12-17 22:28:05.738 -05:00 [INF] User profile is available. Using 'C:\Users\patri\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-12-17 22:28:33.014 -05:00 [INF] User profile is available. Using 'C:\Users\patri\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-12-17 22:28:33.475 -05:00 [INF] Bus started: "rabbitmq://localhost/"
+2025-12-17 22:28:33.523 -05:00 [INF] Now listening on: https://localhost:7057
+2025-12-17 22:28:33.530 -05:00 [INF] Now listening on: http://localhost:5007
+2025-12-17 22:28:33.645 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-12-17 22:28:33.647 -05:00 [INF] Hosting environment: Development
+2025-12-17 22:28:33.651 -05:00 [INF] Content root path: C:\git-repos\MicroservicesProjects\Play.Catalog\src\Play.Catalog.Service
