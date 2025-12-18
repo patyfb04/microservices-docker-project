@@ -86,7 +86,7 @@ namespace Play.Trading.Service.StatesMachine
                 .Send(new Uri(_settings.DebitGilQueueAddress), context =>
                         new DebitGil(
                             context.Saga.UserId,
-                            context.Saga.PurchaseTotal.Value,
+                            context.Saga.PurchaseTotal!.Value,
                             context.Saga.CorrelationId)
                     )
                 .TransitionTo(ItemsGranted));
@@ -95,14 +95,21 @@ namespace Play.Trading.Service.StatesMachine
 
         private void ConfigureItemsGranted()
         {
+
             During(ItemsGranted,
-                When(GilDebited)
-                .Then(context =>
-                {
-                    context.Saga.LastUpdated = DateTimeOffset.UtcNow;
-                })
-                .Send(new Uri(_settings.PurchaseCompleteQueueAddress), context =>{} )
-                .TransitionTo(Completed));
+               When(GilDebited)
+               .Then(context =>
+               {
+                   context.Saga.LastUpdated = DateTimeOffset.UtcNow;
+               })
+               .Send(new Uri(_settings.PurchaseCompleteQueueAddress), context =>
+                     new PurchaseCompleted(
+                           context.Saga.UserId,
+                           context.Saga.ItemId,
+                           context.Saga.PurchaseTotal!.Value,
+                           context.Saga.CorrelationId)
+               )
+               .TransitionTo(Completed));
         }
 
         private void ConfigureAny()
@@ -128,7 +135,18 @@ namespace Play.Trading.Service.StatesMachine
                     context.Saga.ErrorMessage = string.Join(",", context.Message.Exceptions.Select(c => c.Message));
                     context.Saga.LastUpdated = DateTimeOffset.UtcNow;
                 })
-        );
+            );
+
+            DuringAny(
+                 When(GilDebitedFaulted)
+                     .Then(context =>
+                     {
+                         context.Saga.ErrorMessage = string.Join(",", context.Message.Exceptions.Select(e => e.Message));
+                         context.Saga.LastUpdated = DateTimeOffset.UtcNow;
+                     })
+                     .TransitionTo(Faulted)
+             );
+
 
         }
     }

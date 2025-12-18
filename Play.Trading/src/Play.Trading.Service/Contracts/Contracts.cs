@@ -7,4 +7,10 @@
         Guid CorrelationId);
 
     public record GetPurchaseState(Guid CorrelationId);
+
+    public record PurchaseCompleted(
+     Guid UserId,
+        Guid ItemId,
+        decimal? PurchaseTotal,
+        Guid CorrelationId);
 }
