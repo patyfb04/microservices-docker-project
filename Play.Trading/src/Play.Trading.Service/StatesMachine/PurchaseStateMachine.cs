@@ -23,12 +23,14 @@ namespace Play.Trading.Service.StatesMachine
 
         public Event<PurchaseRequested> PurchaseRequested { get; }
         public Event<GetPurchaseState> GetPurchaseState { get; }
-        public Event<Fault<PurchaseRequested>> PurchaseRequestedFaulted { get; private set; }
         public Event<InventoryItemsGranted> InventoryItemsGranted { get; }
-        public Event<Fault<InventoryItemsGranted>> InventoryItemsGrantedFaulted { get; private set; }
-
         public Event<GilDebited> GilDebited { get; }
-        public Event<Fault<GilDebited>> GilDebitedFaulted { get; private set; }
+
+        public Event<Fault<PurchaseRequested>> PurchaseRequestedFaulted { get; private set; }
+        public Event<Fault<InventoryItemsGranted>> InventoryItemsGrantedFaulted { get; private set; }
+        public Event<Fault<GrantItems>> GrantItemsFaulted { get; private set; }
+        public Event<Fault<DebitGil>> DebitGilFaulted { get; private set; }
+
 
         public PurchaseStateMachine(IOptions<QueueSettings> settings)
         {
@@ -36,20 +38,22 @@ namespace Play.Trading.Service.StatesMachine
             InstanceState(state => state.CurrentState);
             ConfigureEvents();
             ConfigureInitialState();
-            ConfigureAny();
-            ConfigureAcceptedState();
+            ConfigureAccepted();
             ConfigureItemsGranted();
+            ConfigureAny();
+            ConfigureFaulted();
         }
 
         private void ConfigureEvents()
         {
             Event(() => PurchaseRequested, x => x.CorrelateById(context => context.Message.CorrelationId));
             Event(() => GetPurchaseState, x => x.CorrelateById(context => context.Message.CorrelationId));
-            Event(() => PurchaseRequestedFaulted, x => x.CorrelateById(context => context.Message.Message.CorrelationId));
             Event(() => InventoryItemsGranted, x => x.CorrelateById(context => context.Message.CorrelationId));
-            Event(() => InventoryItemsGrantedFaulted, x => x.CorrelateById(context => context.Message.Message.CorrelationId));
             Event(() => GilDebited, x => x.CorrelateById(context => context.Message.CorrelationId));
-            Event(() => GilDebitedFaulted, x => x.CorrelateById(context => context.Message.Message.CorrelationId));
+            Event(() => PurchaseRequestedFaulted, x => x.CorrelateById(context => context.Message.Message.CorrelationId));
+            Event(() => InventoryItemsGrantedFaulted, x => x.CorrelateById(context => context.Message.Message.CorrelationId));
+            Event(() => DebitGilFaulted, x => x.CorrelateById(context => context.Message.Message.CorrelationId));
+            Event(() => GrantItemsFaulted, x => x.CorrelateById(context => context.Message.Message.CorrelationId));
         }
 
         private void ConfigureInitialState()
@@ -75,41 +79,60 @@ namespace Play.Trading.Service.StatesMachine
                 .TransitionTo(Accepted));
         }
 
-        private void ConfigureAcceptedState()
+        private void ConfigureAccepted()
         {
             During(Accepted,
                 When(InventoryItemsGranted)
-                .Then(context =>
-                {
-                    context.Saga.LastUpdated = DateTimeOffset.UtcNow;
-                })
-                .Send(new Uri(_settings.DebitGilQueueAddress), context =>
-                        new DebitGil(
-                            context.Saga.UserId,
-                            context.Saga.PurchaseTotal!.Value,
-                            context.Saga.CorrelationId)
-                    )
-                .TransitionTo(ItemsGranted));
+                    .Then(context =>
+                    {
+                        context.Saga.LastUpdated = DateTimeOffset.UtcNow;
+                    })
+                    .Send(new Uri(_settings.DebitGilQueueAddress), context =>
+                            new DebitGil(
+                                context.Saga.UserId,
+                                context.Saga.PurchaseTotal!.Value,
+                                context.Saga.CorrelationId)
+                        )
+                    .TransitionTo(ItemsGranted),
+                When(GrantItemsFaulted)
+                    .Then(context =>
+                    {
+                        context.Saga.ErrorMessage = string.Join(",", context.Message.Exceptions.Select(e => e.Message));
+                        context.Saga.LastUpdated = DateTimeOffset.UtcNow;
+                    })
+                    .TransitionTo(Faulted)
+                );
         }
-
 
         private void ConfigureItemsGranted()
         {
-
             During(ItemsGranted,
                When(GilDebited)
-               .Then(context =>
-               {
-                   context.Saga.LastUpdated = DateTimeOffset.UtcNow;
-               })
-               .Send(new Uri(_settings.PurchaseCompleteQueueAddress), context =>
-                     new PurchaseCompleted(
-                           context.Saga.UserId,
-                           context.Saga.ItemId,
-                           context.Saga.PurchaseTotal!.Value,
-                           context.Saga.CorrelationId)
-               )
-               .TransitionTo(Completed));
+                   .Then(context =>
+                   {
+                       context.Saga.LastUpdated = DateTimeOffset.UtcNow;
+                   })
+                   .Send(new Uri(_settings.PurchaseCompleteQueueAddress), context =>
+                         new PurchaseCompleted(
+                               context.Saga.UserId,
+                               context.Saga.ItemId,
+                               context.Saga.PurchaseTotal!.Value,
+                               context.Saga.CorrelationId))
+                   .TransitionTo(Completed),
+               When(DebitGilFaulted)
+                .Send(new Uri(_settings.DebitGilQueueAddress), context =>
+                            new SubtractItems(
+                                context.Saga.UserId,
+                                context.Saga.ItemId,
+                                context.Saga.Quantity,
+                                context.Saga.CorrelationId))
+                 .Then(context =>
+                 {
+                     context.Saga.ErrorMessage = string.Join(",", context.Message.Exceptions.Select(e => e.Message));
+                     context.Saga.LastUpdated = DateTimeOffset.UtcNow;
+                 })
+                .TransitionTo(Faulted)
+               );
         }
 
         private void ConfigureAny()
@@ -138,7 +161,7 @@ namespace Play.Trading.Service.StatesMachine
             );
 
             DuringAny(
-                 When(GilDebitedFaulted)
+                 When(DebitGilFaulted)
                      .Then(context =>
                      {
                          context.Saga.ErrorMessage = string.Join(",", context.Message.Exceptions.Select(e => e.Message));
@@ -148,6 +171,15 @@ namespace Play.Trading.Service.StatesMachine
              );
 
 
+        }
+
+        private void ConfigureFaulted()
+        {
+               During(Faulted,
+                    Ignore(PurchaseRequested),
+                    Ignore(InventoryItemsGranted),
+                    Ignore(GilDebited)
+            );
         }
     }
 }
