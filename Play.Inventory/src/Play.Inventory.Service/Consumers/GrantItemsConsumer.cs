@@ -11,6 +11,7 @@ namespace Play.Inventory.Service.Consumers
 {
     public class GrantItemsConsumer : IConsumer<GrantItems>
     {
+        private static int retryCount = 0;
         private readonly IRepository<InventoryItem> inventoryItemsRepository;
         private readonly IRepository<CatalogItem> catalogItemsRepository;
 
@@ -44,11 +45,21 @@ namespace Play.Inventory.Service.Consumers
                     AcquiredDate = DateTimeOffset.UtcNow
                 };
 
+                inventoryItem.MessagesIds.Add(context.MessageId.Value);
+
                 await inventoryItemsRepository.CreateAsync(inventoryItem);
             }
             else
             {
+                if (inventoryItem.MessagesIds.Contains(context.MessageId.Value))
+                {
+                    await context.Publish(new InventoryItemsGranted(message.CorrelationId));
+                    return;
+                }
+
                 inventoryItem.Quantity += message.Quantity;
+                inventoryItem.MessagesIds.Add(context.MessageId.Value);
+
                 await inventoryItemsRepository.UpdateAsync(inventoryItem);
             }
 

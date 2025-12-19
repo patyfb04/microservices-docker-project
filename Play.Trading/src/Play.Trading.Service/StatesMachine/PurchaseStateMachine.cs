@@ -42,6 +42,7 @@ namespace Play.Trading.Service.StatesMachine
             ConfigureItemsGranted();
             ConfigureAny();
             ConfigureFaulted();
+            ConfigureCompleted();
         }
 
         private void ConfigureEvents()
@@ -82,6 +83,7 @@ namespace Play.Trading.Service.StatesMachine
         private void ConfigureAccepted()
         {
             During(Accepted,
+                Ignore(PurchaseRequested),
                 When(InventoryItemsGranted)
                     .Then(context =>
                     {
@@ -107,12 +109,14 @@ namespace Play.Trading.Service.StatesMachine
         private void ConfigureItemsGranted()
         {
             During(ItemsGranted,
+               Ignore(PurchaseRequested),
+               Ignore(InventoryItemsGranted),
                When(GilDebited)
                    .Then(context =>
                    {
                        context.Saga.LastUpdated = DateTimeOffset.UtcNow;
                    })
-                   .Send(new Uri(_settings.PurchaseCompleteQueueAddress), context =>
+                   .Publish(context =>
                          new PurchaseCompleted(
                                context.Saga.UserId,
                                context.Saga.ItemId,
@@ -120,7 +124,7 @@ namespace Play.Trading.Service.StatesMachine
                                context.Saga.CorrelationId))
                    .TransitionTo(Completed),
                When(DebitGilFaulted)
-                .Send(new Uri(_settings.DebitGilQueueAddress), context =>
+                .Publish(context =>
                             new SubtractItems(
                                 context.Saga.UserId,
                                 context.Saga.ItemId,
@@ -133,6 +137,15 @@ namespace Play.Trading.Service.StatesMachine
                  })
                 .TransitionTo(Faulted)
                );
+        }
+
+        private void ConfigureCompleted()
+        {
+            During(Completed,
+                Ignore(PurchaseRequested),
+                Ignore(InventoryItemsGranted),
+                Ignore(GilDebited)
+            );
         }
 
         private void ConfigureAny()

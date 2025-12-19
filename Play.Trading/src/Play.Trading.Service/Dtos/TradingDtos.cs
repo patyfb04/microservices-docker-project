@@ -4,7 +4,8 @@ namespace Play.Trading.Service.Dtos
 {
    public record SubmitPurchaseDto(
        [Required] Guid? ItemId,
-       [Range(1,100)]int Quantity
+       [Range(1,100)]int Quantity,
+       Guid IdempotencyId
        );
 
     public record PurchaseDto(
