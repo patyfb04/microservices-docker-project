@@ -17,4 +17,15 @@ namespace Play.Trading.Service.Dtos
         string Reason,
         DateTimeOffset Received,
         DateTimeOffset LastUpdated);
+
+    public record StoreItemDto(
+        Guid Id, 
+        string Name, 
+        string Description, 
+        decimal Price, 
+        int OwnedQuantity);
+
+    public record StoreDto(
+        IEnumerable<StoreItemDto> Items,
+        decimal UserGil);
 }

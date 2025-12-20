@@ -91,6 +91,15 @@ export class Home extends Component {
                   Identity service
                 </a>
               </li>
+              <li>
+                <a
+                  href={`${window.TRADING_SERVICE_URL}/swagger`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Trading service
+                </a>
+              </li>
             </ul>
           </li>
         </ul>

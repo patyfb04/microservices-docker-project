@@ -5,6 +5,7 @@ import { Home } from "./components/Home";
 import { Catalog } from "./components/Catalog";
 import { Inventory } from "./components/Inventory";
 import { Users } from "./components/Users";
+import { Store } from "./components/Store";
 import AuthorizeRoute from "./components/api-authorization/AuthorizeRoute";
 import ApiAuthorizationRoutes from "./components/api-authorization/ApiAuthorizationRoutes";
 import { ApplicationPaths } from "./components/Constants";
@@ -40,6 +41,15 @@ export default function App() {
             <AuthorizeRoute
               path={ApplicationPaths.UsersPath}
               element={<Users />}
+            />
+          }
+        />
+        <Route
+          path={ApplicationPaths.StorePath}
+          element={
+            <AuthorizeRoute
+              path={ApplicationPaths.StorePath}
+              element={<Store />}
             />
           }
         />

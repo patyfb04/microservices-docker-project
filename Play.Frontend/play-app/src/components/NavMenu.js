@@ -91,9 +91,7 @@ export class NavMenu extends Component {
             <Nav.Link as={Link} to="/">
               Home
             </Nav.Link>
-            <Nav.Link as={Link} to={ApplicationPaths.InventoryPath}>
-              My Inventory
-            </Nav.Link>
+            {this.storeAndInventoryItems()}
             <Nav.Link as={Link} to={ApplicationPaths.CatalogPath}>
               Catalog
             </Nav.Link>
@@ -111,9 +109,7 @@ export class NavMenu extends Component {
             <Nav.Link as={Link} to="/">
               Home
             </Nav.Link>
-            <Nav.Link as={Link} to={ApplicationPaths.InventoryPath}>
-              My Inventory
-            </Nav.Link>
+            {this.storeAndInventoryItems()}
           </Nav>
           <Nav>{this.profileAndLogoutItems()}</Nav>
         </Fragment>
@@ -121,6 +117,19 @@ export class NavMenu extends Component {
     } else {
       return <Fragment>{this.profileAndLogoutItems()}</Fragment>;
     }
+  }
+
+  storeAndInventoryItems() {
+    return (
+      <Fragment>
+        <Nav.Link as={Link} to={ApplicationPaths.StorePath}>
+          Store
+        </Nav.Link>
+        <Nav.Link as={Link} to={ApplicationPaths.InventoryPath}>
+          My Inventory
+        </Nav.Link>
+      </Fragment>
+    );
   }
 
   profileAndLogoutItems() {
