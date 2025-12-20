@@ -2,6 +2,7 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 #nullable disable
 
+using MassTransit;
 using MassTransit.Configuration;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
@@ -10,6 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Options;
+using Play.Identity.Contracts;
 using Play.Identity.Service.Entities;
 using Play.Identity.Service.Settings;
 using System.ComponentModel.DataAnnotations;
@@ -28,6 +30,7 @@ namespace Play.Identity.Service.Areas.Identity.Pages.Account
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
         private readonly IdentitySettings _identitySettings;
+        private readonly IPublishEndpoint _publishEndpoint;
 
         public RegisterModel(
             UserManager<ApplicationUser> userManager,
@@ -35,7 +38,8 @@ namespace Play.Identity.Service.Areas.Identity.Pages.Account
             SignInManager<ApplicationUser> signInManager,
             ILogger<RegisterModel> logger,
             IEmailSender emailSender,
-            IOptions<IdentitySettings> identitySettings)
+            IOptions<IdentitySettings> identitySettings,
+            IPublishEndpoint publishEndpoint)
         {
             _userManager = userManager;
             _userStore = userStore;
@@ -44,6 +48,7 @@ namespace Play.Identity.Service.Areas.Identity.Pages.Account
             _logger = logger;
             _emailSender = emailSender;
             _identitySettings = identitySettings.Value;
+            _publishEndpoint = publishEndpoint;
         }
 
         /// <summary>
@@ -126,6 +131,8 @@ namespace Play.Identity.Service.Areas.Identity.Pages.Account
 
                     await _userManager.AddToRoleAsync(user, Roles.Player);
                     _logger.LogInformation($"User added to the role {Roles.Player}.");
+
+                    await _publishEndpoint.Publish(new UserUpdated(user.Id, user.UserName, StartingGil));
 
                     var userId = await _userManager.GetUserIdAsync(user);
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);

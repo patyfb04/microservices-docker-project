@@ -39,6 +39,8 @@ builder.Services.Configure<QueueSettings>(
 
 builder.Services.AddMongoDb()
                 .AddMongoRepository<CatalogItem>("catalogitems")
+                .AddMongoRepository<InventoryItem>("inventoryitems")
+                .AddMongoRepository<ApplicationUser>("users")
                 .AddJwtBearerAuthentication();
 
 AddMassTransit();
