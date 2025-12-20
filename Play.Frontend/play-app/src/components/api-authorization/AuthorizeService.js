@@ -212,7 +212,7 @@ export class AuthorizeService {
       response_type: "code",
       response_mode: "query",
       scope:
-        "openid profile catalog.fullaccess inventory.fullaccess IdentityServerApi roles",
+        "openid profile catalog.fullaccess inventory.fullaccess trading.fullaccess IdentityServerApi roles",
       post_logout_redirect_uri: `${hostAndPort}${AuthorizationPaths.LogOutCallback}`,
     };
 

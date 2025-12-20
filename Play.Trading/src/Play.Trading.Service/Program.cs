@@ -23,6 +23,8 @@ var builder = WebApplication.CreateBuilder(args);
 BsonSerializer.RegisterSerializer(typeof(Guid), new GuidSerializer(GuidRepresentation.Standard));
 BsonSerializer.RegisterSerializer(typeof(Guid?), new NullableSerializer<Guid>(new GuidSerializer(GuidRepresentation.Standard)));
 
+const string AllowedOriginSetting = "AllowedOrigin";
+
 // Add services to the container.
 
 builder.Services.Configure<MongoDbSettings>(
@@ -85,6 +87,12 @@ if (app.Environment.IsDevelopment())
     app.UseDeveloperExceptionPage();
     app.UseSwagger();
     app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Play.Trading.Service v1"));
+
+    app.UseCors(config => {
+        config.WithOrigins(builder.Configuration[AllowedOriginSetting])
+        .AllowAnyHeader()
+        .AllowAnyMethod();
+    });
 }
 
 

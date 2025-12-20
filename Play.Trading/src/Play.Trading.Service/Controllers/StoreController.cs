@@ -37,6 +37,11 @@ namespace Play.Trading.Service.Controllers
              );
 
             var user = await _userRepository.GetAsync(Guid.Parse(userId));
+            if (user == null)
+            {
+                return NotFound();
+            }
+
             var catalogItems = await _catalogRepository.GetAllAsync();
 
             var catalogItemsFiltered = catalogItems.Select(catalogItem =>
