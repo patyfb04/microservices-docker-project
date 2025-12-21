@@ -148,5 +148,10 @@ namespace Play.Common.Repositories
             }
         }
 
+        public async Task<IReadOnlyCollection<T>> GetAllAsync(FilterDefinition<T> filter)
+        {
+            return await dbCollection.Find<T>(filter).ToListAsync();
+        }
+
     }
 }

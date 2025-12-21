@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using MassTransit;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
+using Play.Identity.Contracts;
 using Play.Identity.Service.Entities;
 using Play.Identity.Service.Settings;
 
@@ -23,6 +25,7 @@ namespace Play.Identity.Service.HostedServices
             using var scope = _serviceScopeFactory.CreateScope();
             var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<ApplicationRole>>();
             var userManager = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+            var publishEndpoint = scope.ServiceProvider.GetRequiredService<IPublishEndpoint>();
 
             // Ensure roles exist
             await CreateRoleIfNotExistsAsync(Roles.Admin, roleManager);
@@ -36,7 +39,8 @@ namespace Play.Identity.Service.HostedServices
                 {
                     UserName = _settings.AdminUserEmail,
                     Email = _settings.AdminUserEmail,
-                    EmailConfirmed = true
+                    EmailConfirmed = true,
+                    Gil = 100
                 };
 
                 var createResult = await userManager.CreateAsync(adminUser, _settings.AdminUserPassword);
@@ -55,6 +59,15 @@ namespace Play.Identity.Service.HostedServices
                     throw new Exception($"Failed to add admin user to role: {string.Join(", ", addRoleResult.Errors)}");
                 }
             }
+
+            // Publish UserCreated so Trading can sync the admin user
+            // We publish even if the user already existed — Trading handles idempotency
+            await publishEndpoint.Publish(
+                new UserUpdated(adminUser.Id, adminUser.Email!, adminUser.Gil),
+                cancellationToken
+            );
+
+            Console.WriteLine($"Published UserCreated for admin: {adminUser.Email}");
 
             // Debug log: print roles for admin user
             var roles = await userManager.GetRolesAsync(adminUser);

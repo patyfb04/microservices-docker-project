@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 using Play.Common.Repositories;
 using Play.Trading.Service.Dtos;
 using Play.Trading.Service.Entities;
-using System.Linq;
 
 namespace Play.Trading.Service.Controllers
 {
@@ -15,7 +14,6 @@ namespace Play.Trading.Service.Controllers
         private readonly IRepository<CatalogItem> _catalogRepository;
         private readonly IRepository<InventoryItem> _inventoryRepository;
         private readonly IRepository<ApplicationUser> _userRepository;
-
         public StoreController(
             IRepository<CatalogItem> catalogRepository,
             IRepository<InventoryItem> inventoryRepository,
@@ -24,13 +22,13 @@ namespace Play.Trading.Service.Controllers
             _catalogRepository = catalogRepository;
             _inventoryRepository = inventoryRepository;
             _userRepository = userRepository;
-
         }
 
         [HttpGet]
         public async Task<ActionResult<StoreDto>> GetAsync()
         {
             string userId = User.FindFirst("sub")!.Value;
+            Console.WriteLine($"JWT sub claim: {User.FindFirst("sub")!.Value}");
 
             var inventoryItems = await _inventoryRepository.GetAllAsync(
                 item => item.UserId == Guid.Parse(userId)

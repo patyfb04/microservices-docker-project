@@ -2,6 +2,8 @@
 using MassTransit.Testing;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using MongoDB.Bson;
+using MongoDB.Driver;
 using Play.Common.Repositories;
 using Play.Inventory.Contracts;
 using Play.Inventory.Dtos;
@@ -49,7 +51,7 @@ namespace Play.Inventory.Service.Controllers
                 }
             }
 
-            var inventoryItemEntities = await _inventoryRepository.GetAllAsync(item => item.UserId == userId);
+            var inventoryItemEntities = await _inventoryRepository.GetAllAsync(item => item.UserId.Equals(userId));
             var catalogItemIds = inventoryItemEntities.Select(c=> c.CatalogItemId);
             var catalogItemEntities = await _catalogItemsRepository.GetAllAsync(item => catalogItemIds.Contains(item.Id));
 

@@ -16,13 +16,14 @@ var builder = WebApplication.CreateBuilder(args);
 // Logging
 Log.Logger = new LoggerConfiguration()
     .WriteTo.Console()
-    .WriteTo.File("logs/identity_log.txt")
+    //.WriteTo.File("logs/identity_log.txt")
     .MinimumLevel.Information()
     .CreateLogger();
 
 builder.Host.UseSerilog();
 
 // MongoDB Guid serialization (Standard)
+//BsonDefaults.GuidRepresentationMode = GuidRepresentationMode.V3;
 BsonSerializer.RegisterSerializer(typeof(Guid), new GuidSerializer(GuidRepresentation.Standard));
 BsonSerializer.RegisterSerializer(typeof(Guid?), new NullableSerializer<Guid>(new GuidSerializer(GuidRepresentation.Standard)));
 

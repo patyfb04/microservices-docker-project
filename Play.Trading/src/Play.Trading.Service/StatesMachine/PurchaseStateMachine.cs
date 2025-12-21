@@ -6,6 +6,7 @@ using Play.Inventory.Contracts;
 using Play.Trading.Service.Activities;
 using Play.Trading.Service.Contracts;
 using Play.Trading.Service.Settings;
+using Play.Trading.Service.SignalR;
 
 namespace Play.Trading.Service.StatesMachine
 {
@@ -13,6 +14,7 @@ namespace Play.Trading.Service.StatesMachine
     {
 
         public readonly QueueSettings _settings;
+        private readonly MessageHub _hub;
         public State Accepted { get; set; }
 
         public State ItemsGranted { get; set; }
@@ -32,9 +34,12 @@ namespace Play.Trading.Service.StatesMachine
         public Event<Fault<DebitGil>> DebitGilFaulted { get; private set; }
 
 
-        public PurchaseStateMachine(IOptions<QueueSettings> settings)
+        public PurchaseStateMachine(
+            IOptions<QueueSettings> settings, 
+            MessageHub _hub)
         {
             _settings = settings.Value;
+            this._hub = _hub;
             InstanceState(state => state.CurrentState);
             ConfigureEvents();
             ConfigureInitialState();
@@ -103,6 +108,10 @@ namespace Play.Trading.Service.StatesMachine
                         context.Saga.LastUpdated = DateTimeOffset.UtcNow;
                     })
                     .TransitionTo(Faulted)
+                    .ThenAsync(async context =>
+                     {
+                         await _hub.SendStatusAsync(context.Saga);
+                     })
                 );
         }
 
@@ -122,7 +131,12 @@ namespace Play.Trading.Service.StatesMachine
                                context.Saga.ItemId,
                                context.Saga.PurchaseTotal!.Value,
                                context.Saga.CorrelationId))
-                   .TransitionTo(Completed),
+                   .TransitionTo(Completed)
+                    .ThenAsync(async context =>
+                    {
+                        await _hub.SendStatusAsync(context.Saga);
+                    }),
+
                When(DebitGilFaulted)
                 .Publish(context =>
                             new SubtractItems(
@@ -136,6 +150,10 @@ namespace Play.Trading.Service.StatesMachine
                      context.Saga.LastUpdated = DateTimeOffset.UtcNow;
                  })
                 .TransitionTo(Faulted)
+                .ThenAsync(async context =>
+                {
+                    await _hub.SendStatusAsync(context.Saga);
+                })
                );
         }
 
@@ -145,6 +163,7 @@ namespace Play.Trading.Service.StatesMachine
                 Ignore(PurchaseRequested),
                 Ignore(InventoryItemsGranted),
                 Ignore(GilDebited)
+
             );
         }
 
@@ -162,6 +181,10 @@ namespace Play.Trading.Service.StatesMachine
                         context.Saga.ErrorMessage = string.Join(",",context.Message.Exceptions.Select(c=> c.Message));
                         context.Saga.LastUpdated = DateTimeOffset.UtcNow;
                     })
+                    .ThenAsync(async context =>
+                     {
+                         await _hub.SendStatusAsync(context.Saga);
+                     })
             );
 
           DuringAny(
@@ -171,6 +194,10 @@ namespace Play.Trading.Service.StatesMachine
                     context.Saga.ErrorMessage = string.Join(",", context.Message.Exceptions.Select(c => c.Message));
                     context.Saga.LastUpdated = DateTimeOffset.UtcNow;
                 })
+                .ThenAsync(async context =>
+                 {
+                     await _hub.SendStatusAsync(context.Saga);
+                 })
             );
 
             DuringAny(
@@ -181,6 +208,10 @@ namespace Play.Trading.Service.StatesMachine
                          context.Saga.LastUpdated = DateTimeOffset.UtcNow;
                      })
                      .TransitionTo(Faulted)
+                     .ThenAsync(async context =>
+                      {
+                          await _hub.SendStatusAsync(context.Saga);
+                      })
              );
 
 

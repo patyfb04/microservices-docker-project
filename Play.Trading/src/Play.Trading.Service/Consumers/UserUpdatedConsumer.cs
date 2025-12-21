@@ -5,11 +5,11 @@ using Play.Trading.Service.Entities;
 
 namespace Play.Trading.Service.Consumers
 {
-    public class UserUpdatedConsumer : IConsumer<UserUpdated>
+    public class UserCreatedConsumer : IConsumer<UserUpdated>
     {
         private readonly IRepository<ApplicationUser> _repository;
 
-        public UserUpdatedConsumer(IRepository<ApplicationUser> repository)
+        public UserCreatedConsumer(IRepository<ApplicationUser> repository)
         {
             _repository = repository;
         }

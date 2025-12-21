@@ -1,0 +1,25 @@
+2025-12-20 17:20:59.672 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+IEnumerableWhereIterator`1[[Play.Inventory.Dtos.InventoryItemDto, Play.Inventory.Service, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-12-20 17:21:16.936 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+IEnumerableWhereIterator`1[[Play.Inventory.Dtos.InventoryItemDto, Play.Inventory.Service, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-12-20 17:46:37.719 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+IEnumerableWhereIterator`1[[Play.Inventory.Dtos.InventoryItemDto, Play.Inventory.Service, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-12-20 17:47:05.427 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+IEnumerableWhereIterator`1[[Play.Inventory.Dtos.InventoryItemDto, Play.Inventory.Service, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-12-20 17:48:07.739 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+IEnumerableWhereIterator`1[[Play.Inventory.Dtos.InventoryItemDto, Play.Inventory.Service, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-12-20 17:48:31.811 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+IEnumerableWhereIterator`1[[Play.Inventory.Dtos.InventoryItemDto, Play.Inventory.Service, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-12-20 17:58:03.335 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+IEnumerableWhereIterator`1[[Play.Inventory.Dtos.InventoryItemDto, Play.Inventory.Service, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-12-20 18:07:53.158 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+IEnumerableWhereIterator`1[[Play.Inventory.Dtos.InventoryItemDto, Play.Inventory.Service, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-12-20 21:44:58.134 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+IEnumerableWhereIterator`1[[Play.Inventory.Dtos.InventoryItemDto, Play.Inventory.Service, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-12-20 21:45:30.701 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+IEnumerableWhereIterator`1[[Play.Inventory.Dtos.InventoryItemDto, Play.Inventory.Service, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-12-20 21:45:45.504 -05:00 [INF] Executing StatusCodeResult, setting HTTP status code 200
+2025-12-20 21:45:48.249 -05:00 [INF] Executing StatusCodeResult, setting HTTP status code 200
+2025-12-20 21:45:51.092 -05:00 [INF] Executing StatusCodeResult, setting HTTP status code 200
+2025-12-20 21:45:53.666 -05:00 [INF] Executing StatusCodeResult, setting HTTP status code 200
+2025-12-20 21:46:14.449 -05:00 [INF] Executing StatusCodeResult, setting HTTP status code 200
+2025-12-20 21:46:17.633 -05:00 [INF] Executing StatusCodeResult, setting HTTP status code 200
+2025-12-20 21:46:20.107 -05:00 [INF] Executing StatusCodeResult, setting HTTP status code 200
+2025-12-20 21:46:22.598 -05:00 [INF] Executing StatusCodeResult, setting HTTP status code 200
+2025-12-20 21:46:24.101 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+IEnumerableWhereIterator`1[[Play.Inventory.Dtos.InventoryItemDto, Play.Inventory.Service, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-12-20 21:46:28.748 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+IEnumerableWhereIterator`1[[Play.Inventory.Dtos.InventoryItemDto, Play.Inventory.Service, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-12-20 21:47:00.329 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+IEnumerableWhereIterator`1[[Play.Inventory.Dtos.InventoryItemDto, Play.Inventory.Service, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-12-20 21:47:05.529 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+IEnumerableWhereIterator`1[[Play.Inventory.Dtos.InventoryItemDto, Play.Inventory.Service, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-12-20 21:47:07.857 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+IEnumerableWhereIterator`1[[Play.Inventory.Dtos.InventoryItemDto, Play.Inventory.Service, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-12-20 21:49:33.527 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+IEnumerableWhereIterator`1[[Play.Inventory.Dtos.InventoryItemDto, Play.Inventory.Service, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-12-20 22:54:57.811 -05:00 [INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+IEnumerableWhereIterator`1[[Play.Inventory.Dtos.InventoryItemDto, Play.Inventory.Service, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.

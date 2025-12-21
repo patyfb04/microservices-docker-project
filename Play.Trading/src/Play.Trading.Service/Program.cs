@@ -1,9 +1,11 @@
 using MassTransit;
-using MassTransit.MongoDbIntegration.Saga;
+//using MassTransit.MongoDbIntegration.Saga;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.OpenApi.Models;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Serializers;
+using MongoDB.Driver;
 using Play.Common.Identity;
 using Play.Common.Repositories;
 using Play.Common.Settings;
@@ -13,17 +15,27 @@ using Play.Trading.Service;
 using Play.Trading.Service.Contracts;
 using Play.Trading.Service.Entities;
 using Play.Trading.Service.Exceptions;
+using Play.Trading.Service.Repository;
 using Play.Trading.Service.Settings;
+using Play.Trading.Service.SignalR;
 using Play.Trading.Service.StatesMachine;
+using Serilog;
 using System.Reflection;
 using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
+BsonDefaults.GuidRepresentationMode = GuidRepresentationMode.V3;
 BsonSerializer.RegisterSerializer(typeof(Guid), new GuidSerializer(GuidRepresentation.Standard));
 BsonSerializer.RegisterSerializer(typeof(Guid?), new NullableSerializer<Guid>(new GuidSerializer(GuidRepresentation.Standard)));
 
 const string AllowedOriginSetting = "AllowedOrigin";
+
+Log.Logger = new LoggerConfiguration()
+             .WriteTo.Console()
+             //.WriteTo.File("logs/invent_log.txt")
+             .MinimumLevel.Information()
+             .CreateLogger();
 
 // Add services to the container.
 
@@ -39,6 +51,13 @@ builder.Services.Configure<MassTransitSettings>(
 builder.Services.Configure<QueueSettings>(
     builder.Configuration.GetSection(nameof(QueueSettings)));
 
+builder.Services.AddSingleton<ITradingUserRepository>(sp =>
+{
+    var client = sp.GetRequiredService<MongoClient>();
+    var database = client.GetDatabase("Identity");
+    return new TradingUserRepository(database, "Users");
+});
+
 builder.Services.AddMongoDb()
                 .AddMongoRepository<CatalogItem>("catalogitems")
                 .AddMongoRepository<InventoryItem>("inventoryitems")
@@ -46,6 +65,10 @@ builder.Services.AddMongoDb()
                 .AddJwtBearerAuthentication();
 
 AddMassTransit();
+
+builder.Services.AddSingleton<IUserIdProvider, UserIdProvider>()
+                .AddSingleton<MessageHub>()
+                .AddSignalR();
 
 builder.Services.AddAuthorization(options =>
 {
@@ -91,10 +114,10 @@ if (app.Environment.IsDevelopment())
     app.UseCors(config => {
         config.WithOrigins(builder.Configuration[AllowedOriginSetting])
         .AllowAnyHeader()
-        .AllowAnyMethod();
+        .AllowAnyMethod()
+        .AllowCredentials();
     });
 }
-
 
 app.UseHttpsRedirection();
 
@@ -103,7 +126,13 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapControllers();
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllers();
+    endpoints.MapHub<MessageHub>("/messagehub");
+});
+
+
 void AddMassTransit()
 {
     builder.Services.AddMassTransit(configure =>
@@ -111,15 +140,16 @@ void AddMassTransit()
         configure.AddConsumers(Assembly.GetEntryAssembly()); // all consumers found in the entry assembly are register with mass transit
 
         configure.AddSagaStateMachine<PurchaseStateMachine, PurchaseState>()
-        .MongoDbRepository(repo => {
-            var serviceSettings = builder.Configuration.GetSection(nameof(ServiceSettings)).Get<ServiceSettings>();
-            var mongoSettings = builder.Configuration.GetSection(nameof(MongoDbSettings)).Get<MongoDbSettings>();
+        .InMemoryRepository();
+        //.MongoDbRepository(repo => {
+        //    var serviceSettings = builder.Configuration.GetSection(nameof(ServiceSettings)).Get<ServiceSettings>();
+        //    var mongoSettings = builder.Configuration.GetSection(nameof(MongoDbSettings)).Get<MongoDbSettings>();
 
-            repo.Connection = mongoSettings.ConnectionString;
-            repo.DatabaseName = serviceSettings.ServiceName;
-            repo.CollectionName = "purchaseStates";
+        //    repo.Connection = mongoSettings.ConnectionString;
+        //    repo.DatabaseName = serviceSettings.ServiceName;
+        //    repo.CollectionName = "purchaseStates";
 
-        });
+        //});
 
         var queueSettings = builder.Configuration.GetSection(nameof(QueueSettings)).Get<QueueSettings>();
 

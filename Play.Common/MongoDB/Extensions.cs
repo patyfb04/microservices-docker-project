@@ -8,6 +8,7 @@ using MongoDB.Bson.Serialization.Serializers;
 using MongoDB.Driver;
 using Play.Common.Entities;
 using Play.Common.Settings;
+using System;
 
 namespace Play.Common.Repositories
 {
@@ -32,13 +33,22 @@ namespace Play.Common.Repositories
 
             return serviceCollection;
         }
-        public static IServiceCollection AddMongoRepository<T>(this IServiceCollection serviceCollection, string collectionsName) where T: IEntity
+        public static IServiceCollection AddMongoRepository<T>(this IServiceCollection serviceCollection, string collectionName, string databaseName = null) where T : IEntity
         {
-          
             serviceCollection.AddSingleton<IRepository<T>>(sp =>
             {
-                var settings = sp.GetService<IMongoDatabase>();
-                return new MongoRepository<T>(settings, collectionsName);
+                var client = sp.GetRequiredService<MongoClient>();
+
+                // If a database name is provided, use it.
+                // Otherwise fall back to the default IMongoDatabase.
+                var database = databaseName != null
+                    ? client.GetDatabase(databaseName)
+                    : sp.GetRequiredService<IMongoDatabase>();
+
+                Console.WriteLine($"[Repository Init] {typeof(T).Name} → DB: " +
+                    $"  {database.DatabaseNamespace.DatabaseName}, Collection: {collectionName}");
+
+                return new MongoRepository<T>(database, collectionName);
             });
 
             return serviceCollection;

@@ -1,4 +1,6 @@
-﻿using Play.Common.Entities;
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+using Play.Common.Entities;
 
 namespace Play.Inventory.Service.Entities
 {

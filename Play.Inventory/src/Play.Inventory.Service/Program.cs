@@ -1,4 +1,3 @@
-using MassTransit;
 using Microsoft.OpenApi;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
@@ -12,18 +11,18 @@ using Play.Inventory.Service.Entities;
 using Polly;
 using Polly.Timeout;
 using Serilog;
-using System;
 
 
 var builder = WebApplication.CreateBuilder(args);
 const string AllowedOriginSetting = "AllowedOrigin";
 
+BsonDefaults.GuidRepresentationMode = GuidRepresentationMode.V3;
 BsonSerializer.RegisterSerializer(typeof(Guid), new GuidSerializer(GuidRepresentation.Standard));
 BsonSerializer.RegisterSerializer(typeof(Guid?), new NullableSerializer<Guid>(new GuidSerializer(GuidRepresentation.Standard)));
 
 Log.Logger = new LoggerConfiguration()
              .WriteTo.Console()
-             .WriteTo.File("logs/invent_log.txt")
+             //.WriteTo.File("logs/invent_log.txt")
              .MinimumLevel.Information()
              .CreateLogger();
 
