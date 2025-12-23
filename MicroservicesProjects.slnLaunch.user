@@ -4,19 +4,23 @@
     "Projects": [
       {
         "Path": "Play.Trading\\src\\Play.Trading.Service\\Play.Trading.Service.csproj",
-        "Action": "Start"
+        "Action": "Start",
+        "DebugTarget": "https"
       },
       {
         "Path": "Play.Identity\\src\\Play.Identity.Service\\Play.Identity.Service.csproj",
-        "Action": "Start"
+        "Action": "Start",
+        "DebugTarget": "https"
       },
       {
         "Path": "Play.Catalog\\src\\Play.Catalog.Service\\Play.Catalog.Service.csproj",
-        "Action": "Start"
+        "Action": "Start",
+        "DebugTarget": "https"
       },
       {
         "Path": "Play.Inventory\\src\\Play.Inventory.Service\\Play.Inventory.Service.csproj",
-        "Action": "Start"
+        "Action": "Start",
+        "DebugTarget": "https"
       }
     ]
   }

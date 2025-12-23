@@ -2,15 +2,19 @@ using Microsoft.OpenApi;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Serializers;
+using Play.Catalog.Contracts;
 using Play.Common.Identity;
 using Play.Common.MassTransit;
 using Play.Common.Repositories;
 using Play.Common.Settings;
 using Play.Inventory.Service.Clients;
+using Play.Inventory.Service.Consumers;
 using Play.Inventory.Service.Entities;
+using Play.Inventory.Service.Services;
 using Polly;
 using Polly.Timeout;
 using Serilog;
+using System.Reflection;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -40,6 +44,8 @@ builder.Services.Configure<MassTransitSettings>(
 builder.Services.Configure<ClientServicesSettings>(
     builder.Configuration.GetSection("ClientServicesSettings"));
 
+builder.Services.AddSingleton<InventoryCatalogSyncService>();
+
 builder.Services.AddMongoDb()
     .AddMongoRepository<InventoryItem>("inventoryitems")
     .AddMongoRepository<CatalogItem>("catalogitems")
@@ -62,7 +68,15 @@ builder.Services.AddSwaggerGen(c =>
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "Play.Inventory.Service", Version = "v1" });
 });
 
+
 var app = builder.Build();
+
+// Sync the catalog items with inventory items on startup
+using (var scope = app.Services.CreateScope())
+{
+    var sync = scope.ServiceProvider.GetRequiredService<InventoryCatalogSyncService>();
+    await sync.RunAsync();
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -84,7 +98,6 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
-
 
  static void AddCatalogClient(IServiceCollection serviceCollection, string catalogUrl)
 {

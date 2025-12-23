@@ -1,9 +1,11 @@
 ﻿using MassTransit;
+using MassTransit.Transports;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using Play.Identity.Contracts;
 using Play.Identity.Service.Entities;
 using Play.Identity.Service.Settings;
+using System.Threading;
 
 namespace Play.Identity.Service.HostedServices
 {
@@ -27,6 +29,13 @@ namespace Play.Identity.Service.HostedServices
             var userManager = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
             var publishEndpoint = scope.ServiceProvider.GetRequiredService<IPublishEndpoint>();
 
+            await CreateAdminUserAndRoles(roleManager, userManager, publishEndpoint, cancellationToken);
+        }
+
+        public Task StopAsync(CancellationToken cancellationToken) => Task.CompletedTask;
+
+        public async Task CreateAdminUserAndRoles(RoleManager<ApplicationRole> roleManager, UserManager<ApplicationUser> userManager, IPublishEndpoint publishEndpoint, CancellationToken cancellationToken)
+        {
             // Ensure roles exist
             await CreateRoleIfNotExistsAsync(Roles.Admin, roleManager);
             await CreateRoleIfNotExistsAsync(Roles.Player, roleManager);
@@ -74,7 +83,11 @@ namespace Play.Identity.Service.HostedServices
             Console.WriteLine($"Roles for {_settings.AdminUserEmail}: {string.Join(",", roles)}");
         }
 
-        public Task StopAsync(CancellationToken cancellationToken) => Task.CompletedTask;
+        public Task CreateServicesIdentities(RoleManager<ApplicationRole> roleManager, UserManager<ApplicationUser> userManager, IPublishEndpoint publishEndpoint, CancellationToken cancellationToken)
+        {
+            // create identities for other services if needed
+            throw new NotImplementedException();
+        }
 
         private static async Task CreateRoleIfNotExistsAsync(
             string role,
