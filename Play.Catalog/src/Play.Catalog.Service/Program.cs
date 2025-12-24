@@ -1,16 +1,17 @@
-using MassTransit;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.OpenApi.Models;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Serializers;
 using Play.Catalog.Service;
 using Play.Catalog.Service.Entities;
+using Play.Catalog.Service.Policies;
 using Play.Common.Identity;
 using Play.Common.MassTransit;
 using Play.Common.Repositories;
 using Play.Common.Settings;
 using Serilog;
+
 
 var builder = WebApplication.CreateBuilder(args);
 const string AllowedOriginSetting = "AllowedOrigin";
@@ -49,6 +50,8 @@ var clientServicesSettings = builder.Configuration
     .GetSection(nameof(ClientServicesSettings))
     .Get<ClientServicesSettings>();
 
+builder.Services.AddSingleton<IAuthorizationHandler, CatalogReadOrAdminHandler>();
+
 builder.Services.AddAuthorization(options =>
 {
     options.AddPolicy(Policies.Read, policy =>
@@ -62,6 +65,10 @@ builder.Services.AddAuthorization(options =>
         policy.RequireRole("Admin");
         policy.RequireClaim("scope", "catalog.fullaccess", "catalog.writeaccess");
     });
+
+    // Define a policy for read-only access to the catalog from the other services
+    options.AddPolicy("CatalogReadOrAdmin", policy =>
+          policy.AddRequirements(new CatalogReadOrAdminRequirement()));
 });
 
 builder.Services.AddControllers();

@@ -1,4 +1,4 @@
-﻿namespace Play.Catalog.Service
+﻿namespace Play.Catalog.Service.Policies
 {
     public static class Policies
     {

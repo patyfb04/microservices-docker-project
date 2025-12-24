@@ -61,6 +61,10 @@ var catalogService = clientServicesSettings.ClientServices
 
 AddCatalogClient(builder.Services, catalogService?.ServiceUrl);
 
+// register token provider and handler for outgoing client calls
+builder.Services.AddSingleton<ITokenProvider, ClientCredentialsTokenProvider>();
+builder.Services.AddTransient<TokenDelegatingHandler>();
+
 builder.Services.AddControllers();
 
 builder.Services.AddSwaggerGen(c =>
@@ -106,28 +110,28 @@ app.MapControllers();
     serviceCollection.AddHttpClient<CatalogClient>(client =>
     {
         client.BaseAddress = new Uri(catalogUrl);
-    }).AddTransientHttpErrorPolicy(policy => policy.Or<TimeoutRejectedException>().WaitAndRetryAsync(
+    })
+    .AddHttpMessageHandler<Play.Common.Identity.TokenDelegatingHandler>()
+    .AddTransientHttpErrorPolicy(policy => policy.Or<TimeoutRejectedException>().WaitAndRetryAsync(
         5, // 5 attempts
         retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)) + TimeSpan.FromMilliseconds(jitterer.Next(0, 1000)), // exponentinal backoff
         onRetry: (outcome, timespan, retryAttemp) =>
         {
-            var serviceProvider = serviceCollection.BuildServiceProvider();
-            serviceProvider.GetService<ILogger<CatalogClient>>()?
-                .LogWarning($"Delaying for  {timespan} seconds, then making retry {retryAttemp}");
+            // Use Serilog static logger instead of building a service provider here
+            Log.Logger.ForContext("SourceContext", typeof(CatalogClient).FullName)
+                .Warning("Delaying for {Delay} seconds, then making retry {Retry}", timespan, retryAttemp);
         }))
       .AddTransientHttpErrorPolicy(policy => policy.Or<TimeoutRejectedException>().CircuitBreakerAsync(
               3,
               TimeSpan.FromSeconds(15),
               onBreak: (outcome, timespan) => {
-                  var serviceProvider = serviceCollection.BuildServiceProvider();
-                  serviceProvider.GetService<ILogger<CatalogClient>>()?
-                      .LogWarning($"Opening the Circuit for  {timespan.TotalSeconds} seconds...");
+                  Log.Logger.ForContext("SourceContext", typeof(CatalogClient).FullName)
+                      .Warning("Opening the Circuit for {Seconds} seconds...", timespan.TotalSeconds);
               },
               onReset: () =>
               {
-                  var serviceProvider = serviceCollection.BuildServiceProvider();
-                  serviceProvider.GetService<ILogger<CatalogClient>>()?
-                      .LogWarning($"Closing the Circuit...");
+                  Log.Logger.ForContext("SourceContext", typeof(CatalogClient).FullName)
+                      .Warning("Closing the Circuit...");
               }
           ))
       .AddPolicyHandler(Policy.TimeoutAsync<HttpResponseMessage>(1));

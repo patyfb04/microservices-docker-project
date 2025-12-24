@@ -1,4 +1,4 @@
-using MassTransit;
+﻿using MassTransit;
 using Microsoft.OpenApi;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
@@ -10,20 +10,20 @@ using Play.Identity.Service.Exceptions;
 using Play.Identity.Service.HostedServices;
 using Play.Identity.Service.Settings;
 using Serilog;
+using Duende.IdentityServer.Models; // IMPORTANT
+using Duende.IdentityServer;        // IMPORTANT
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Logging
 Log.Logger = new LoggerConfiguration()
     .WriteTo.Console()
-    //.WriteTo.File("logs/identity_log.txt")
     .MinimumLevel.Information()
     .CreateLogger();
 
 builder.Host.UseSerilog();
 
-// MongoDB Guid serialization (Standard)
-//BsonDefaults.GuidRepresentationMode = GuidRepresentationMode.V3;
+// MongoDB Guid serialization
 BsonSerializer.RegisterSerializer(typeof(Guid), new GuidSerializer(GuidRepresentation.Standard));
 BsonSerializer.RegisterSerializer(typeof(Guid?), new NullableSerializer<Guid>(new GuidSerializer(GuidRepresentation.Standard)));
 
@@ -39,7 +39,6 @@ builder.Services
     .Configure<IdentitySettings>(identitySettings)
     .AddDefaultIdentity<ApplicationUser>(options =>
     {
-        // Ensure ASP.NET Core Identity uses "role" for role claims
         options.ClaimsIdentity.RoleClaimType = "role";
     })
     .AddRoles<ApplicationRole>()
@@ -48,14 +47,25 @@ builder.Services
         serviceSettings.ServiceName
     );
 
-
+// MassTransit
 builder.Services.AddMassTransitWithRabbitMq(retryConfigurator =>
 {
     retryConfigurator.Interval(3, TimeSpan.FromSeconds(5));
     retryConfigurator.Ignore(typeof(UnknownUserException));
     retryConfigurator.Ignore(typeof(InsufficientFundsException));
-
 });
+
+// ⭐ FIX: Convert appsettings clients → IdentityServer Client objects
+var mappedClients = identityServerSettings.Clients.Select(c => new Client
+{
+    ClientId = c.ClientId,
+    ClientName = c.ClientName,
+    AllowedGrantTypes = c.AllowedGrantTypes,
+    AllowedScopes = c.AllowedScopes,
+    ClientSecrets = c.ClientSecrets
+        .Select(s => new Secret(s.Value.Sha256())) // HASHED SECRET
+        .ToList()
+}).ToList();
 
 // IdentityServer
 builder.Services.AddIdentityServer(options =>
@@ -64,11 +74,11 @@ builder.Services.AddIdentityServer(options =>
     options.Events.RaiseFailureEvents = true;
     options.Events.RaiseErrorEvents = true;
 })
-    .AddAspNetIdentity<ApplicationUser>() // use built-in profile service
+    .AddAspNetIdentity<ApplicationUser>()
     .AddInMemoryApiScopes(identityServerSettings.ApiScopes)
     .AddInMemoryApiResources(identityServerSettings.ApiResources)
-    .AddInMemoryClients(identityServerSettings.Clients)
-    .AddInMemoryIdentityResources(identityServerSettings.IdentityResources) // use local variable to guarantee "roles"
+    .AddInMemoryClients(mappedClients) // ⭐ USE MAPPED CLIENTS
+    .AddInMemoryIdentityResources(identityServerSettings.IdentityResources)
     .AddDeveloperSigningCredential();
 
 // Local API auth
@@ -87,7 +97,7 @@ builder.Services.AddSwaggerGen(c =>
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "Play.Identity.Service", Version = "v1" });
 });
 
-// Cookie settings for SPA cross-site redirects
+// Cookies
 builder.Services.ConfigureApplicationCookie(options =>
 {
     options.Cookie.SameSite = SameSiteMode.None;

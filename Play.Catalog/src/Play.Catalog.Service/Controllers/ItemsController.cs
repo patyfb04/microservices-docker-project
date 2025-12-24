@@ -1,12 +1,12 @@
 using MassTransit;
 using MassTransit.Testing;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Play.Catalog.Contracts;
 using Play.Catalog.Service.DTOs;
 using Play.Catalog.Service.Entities;
 using Play.Common.Repositories;
+using Play.Catalog.Service.Policies;
 
 namespace Play.Catalog.Service.Controllers
 {
@@ -26,7 +26,7 @@ namespace Play.Catalog.Service.Controllers
 
         // GET /items/{id}
         [HttpGet]
-        [Authorize(Policies.Read)]
+        [Authorize("CatalogReadOrAdmin")]
         public async Task<ActionResult<IEnumerable<ItemDto>>> GetAllAsync()
         {
             var items = (await _itemsRepository.GetAllAsync())
@@ -37,7 +37,7 @@ namespace Play.Catalog.Service.Controllers
 
         // GET /items/{id}
         [HttpGet("{id:guid}", Name = "GetByIdAsync")]
-        [Authorize(Policies.Read)]
+        [Authorize("CatalogReadOrAdmin")]
         public async Task<ActionResult<ItemDto>> GetByIdAsync(Guid id)
         {
             var item = await _itemsRepository.GetAsync(id);
@@ -51,7 +51,7 @@ namespace Play.Catalog.Service.Controllers
 
         // POST /items
         [HttpPost]
-        [Authorize(Policies.Write)]
+        [Authorize(Policies.Policies.Write)]
         public async Task<ActionResult<ItemDto>> PostAsync(CreateItemDto createItemDto)
         {
             var item = new Item
@@ -86,7 +86,7 @@ namespace Play.Catalog.Service.Controllers
 
         // PUT /items/{id}
         [HttpPut("{id}")]
-        [Authorize(Policies.Write)]
+        [Authorize(Policies.Policies.Write)]
         public async Task<ActionResult> PutAsync(Guid id, UpdateItemDto updateItemDto)
         {
             var existingItem = await _itemsRepository.GetAsync(id);
@@ -112,7 +112,7 @@ namespace Play.Catalog.Service.Controllers
 
         //// DELETE /items/{id}
         [HttpDelete("{id}")]
-        [Authorize(Policies.Write)]
+        [Authorize(Policies.Policies.Write)]
         public async Task<IActionResult> DeleteAsync(Guid id)
         {
             var item = await _itemsRepository.GetAsync(id);
