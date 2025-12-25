@@ -2,19 +2,16 @@ using Microsoft.OpenApi;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Serializers;
-using Play.Catalog.Contracts;
 using Play.Common.Identity;
 using Play.Common.MassTransit;
 using Play.Common.Repositories;
 using Play.Common.Settings;
 using Play.Inventory.Service.Clients;
-using Play.Inventory.Service.Consumers;
 using Play.Inventory.Service.Entities;
 using Play.Inventory.Service.Services;
 using Polly;
 using Polly.Timeout;
 using Serilog;
-using System.Reflection;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -52,6 +49,10 @@ builder.Services.AddMongoDb()
     .AddMassTransitWithRabbitMq()
     .AddJwtBearerAuthentication();
 
+// register token provider and handler for outgoing client calls
+builder.Services.AddSingleton<ITokenProvider, ClientCredentialsTokenProvider>();
+builder.Services.AddTransient<TokenDelegatingHandler>();
+
 var clientServicesSettings = builder.Configuration
     .GetSection(nameof(ClientServicesSettings))
     .Get<ClientServicesSettings>();
@@ -60,10 +61,6 @@ var catalogService = clientServicesSettings.ClientServices
     .FirstOrDefault(s => s.ServiceName.Equals("CatalogService", StringComparison.OrdinalIgnoreCase));
 
 AddCatalogClient(builder.Services, catalogService?.ServiceUrl);
-
-// register token provider and handler for outgoing client calls
-builder.Services.AddSingleton<ITokenProvider, ClientCredentialsTokenProvider>();
-builder.Services.AddTransient<TokenDelegatingHandler>();
 
 builder.Services.AddControllers();
 
@@ -111,7 +108,7 @@ app.MapControllers();
     {
         client.BaseAddress = new Uri(catalogUrl);
     })
-    .AddHttpMessageHandler<Play.Common.Identity.TokenDelegatingHandler>()
+    .AddHttpMessageHandler<TokenDelegatingHandler>()
     .AddTransientHttpErrorPolicy(policy => policy.Or<TimeoutRejectedException>().WaitAndRetryAsync(
         5, // 5 attempts
         retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)) + TimeSpan.FromMilliseconds(jitterer.Next(0, 1000)), // exponentinal backoff
@@ -121,7 +118,7 @@ app.MapControllers();
             Log.Logger.ForContext("SourceContext", typeof(CatalogClient).FullName)
                 .Warning("Delaying for {Delay} seconds, then making retry {Retry}", timespan, retryAttemp);
         }))
-      .AddTransientHttpErrorPolicy(policy => policy.Or<TimeoutRejectedException>().CircuitBreakerAsync(
+    .AddTransientHttpErrorPolicy(policy => policy.Or<TimeoutRejectedException>().CircuitBreakerAsync(
               3,
               TimeSpan.FromSeconds(15),
               onBreak: (outcome, timespan) => {
@@ -134,7 +131,7 @@ app.MapControllers();
                       .Warning("Closing the Circuit...");
               }
           ))
-      .AddPolicyHandler(Policy.TimeoutAsync<HttpResponseMessage>(1));
+    .AddPolicyHandler(Policy.TimeoutAsync<HttpResponseMessage>(1));
 }
 
 app.Run();

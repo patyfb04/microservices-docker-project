@@ -12,16 +12,20 @@ using Play.Common.Settings;
 using Play.Identity.Contracts;
 using Play.Inventory.Contracts;
 using Play.Trading.Service;
+using Play.Trading.Service.Clients;
 using Play.Trading.Service.Contracts;
 using Play.Trading.Service.Entities;
 using Play.Trading.Service.Exceptions;
 using Play.Trading.Service.Repository;
+using Play.Trading.Service.Services;
 using Play.Trading.Service.Settings;
 using Play.Trading.Service.SignalR;
 using Play.Trading.Service.StatesMachine;
 using Serilog;
 using System.Reflection;
 using System.Text.Json.Serialization;
+using Polly;
+using Polly.Timeout;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -57,6 +61,8 @@ builder.Services.AddSingleton<ITradingUserRepository>(sp =>
     var database = client.GetDatabase("Identity");
     return new TradingUserRepository(database, "Users");
 });
+
+builder.Services.AddSingleton<TradingCatalogSyncService>();
 
 builder.Services.AddMongoDb()
                 .AddMongoRepository<CatalogItem>("catalogitems")
@@ -101,7 +107,29 @@ builder.Services.AddSwaggerGen(c =>
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "Play.Trading.Service", Version = "v1" });
 });
 
+// register token provider and handler for outgoing client calls
+builder.Services.AddSingleton<ITokenProvider, ClientCredentialsTokenProvider>();
+builder.Services.AddTransient<TokenDelegatingHandler>();
+
+var clientServicesSettings = builder.Configuration
+    .GetSection(nameof(ClientServicesSettings))
+    .Get<ClientServicesSettings>();
+
+var catalogService = clientServicesSettings.ClientServices
+    .FirstOrDefault(s => s.ServiceName.Equals("CatalogService", StringComparison.OrdinalIgnoreCase));
+
+AddCatalogClient(builder.Services, catalogService?.ServiceUrl);
+
+
+
 var app = builder.Build();
+// Sync the catalog items with inventory items on startup
+using (var scope = app.Services.CreateScope())
+{
+    var sync = scope.ServiceProvider.GetRequiredService<TradingCatalogSyncService>();
+    await sync.RunAsync();
+}
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -211,6 +239,42 @@ void AddMassTransit()
         EndpointConvention.Map<DebitGil>(new Uri(queueSettings.DebitGilQueueAddress));
         EndpointConvention.Map<SubtractItems>(new Uri(queueSettings.SubtractItemsQueueAddress));
     });
-} 
+}
+
+static void AddCatalogClient(IServiceCollection serviceCollection, string catalogUrl)
+{
+    Random jitterer = new Random();
+
+    serviceCollection.AddHttpClient<CatalogClient>(client =>
+    {
+        client.BaseAddress = new Uri(catalogUrl);
+    })
+    .AddHttpMessageHandler<TokenDelegatingHandler>()
+    .AddTransientHttpErrorPolicy(policy => policy.Or<TimeoutRejectedException>().WaitAndRetryAsync(
+        5, // 5 attempts
+        retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)) + TimeSpan.FromMilliseconds(jitterer.Next(0, 1000)), // exponentinal backoff
+        onRetry: (outcome, timespan, retryAttemp) =>
+        {
+            // Use Serilog static logger instead of building a service provider here
+            Log.Logger.ForContext("SourceContext", typeof(CatalogClient).FullName)
+                .Warning("Delaying for {Delay} seconds, then making retry {Retry}", timespan, retryAttemp);
+        }))
+    .AddTransientHttpErrorPolicy(policy => policy.Or<TimeoutRejectedException>().CircuitBreakerAsync(
+              3,
+              TimeSpan.FromSeconds(15),
+              onBreak: (outcome, timespan) =>
+              {
+                  Log.Logger.ForContext("SourceContext", typeof(CatalogClient).FullName)
+                      .Warning("Opening the Circuit for {Seconds} seconds...", timespan.TotalSeconds);
+              },
+              onReset: () =>
+              {
+                  Log.Logger.ForContext("SourceContext", typeof(CatalogClient).FullName)
+                      .Warning("Closing the Circuit...");
+              }
+          ))
+    .AddPolicyHandler(Policy.TimeoutAsync<HttpResponseMessage>(1));
+}
 
 app.Run();
+
