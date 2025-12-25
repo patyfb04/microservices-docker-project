@@ -104,6 +104,6 @@ Benefits:
 - Docker
 - Serilog
 
-
+Next steps: Include a distributed cache Redis to reduce requests to the database.
 
 
