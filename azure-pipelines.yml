@@ -1,36 +1,87 @@
 trigger:
+- dev
+- stage
 - master
 
 pool:
   name: Default
 
 variables:
-  solution: '**/*.sln'
-  buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
 
-steps:
-- task: NuGetToolInstaller@1
+stages:
 
-- task: NuGetCommand@2
-  inputs:
-    restoreSolution: '**/*.sln'
-    feedsToUse: 'config'
-    nugetConfigPath: 'nuget.config'
+# -------------------------
+# BUILD (runs for all branches)
+# -------------------------
+- stage: Build
+  displayName: Build and Test
+  jobs:
+  - job: BuildJob
+    steps:
+    - task: NuGetToolInstaller@1
 
-- task: VSBuild@1
-  inputs:
-    solution: '$(solution)'
-    msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:DesktopBuildPackageLocation="$(build.artifactStagingDirectory)\WebApp.zip" /p:DeployIisAppPath="Default Web Site"'
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
+    - task: NuGetCommand@2
+      inputs:
+        restoreSolution: '**/*.sln'
+        feedsToUse: 'config'
+        nugetConfigPath: 'nuget.config'
 
-# Run tests using dotnet test (no Visual Studio required)
-- script: dotnet test --configuration Release
-  displayName: Run tests
+    - task: VSBuild@1
+      inputs:
+        solution: '**/*.sln'
+        configuration: '$(buildConfiguration)'
 
-- task: PublishBuildArtifacts@1
-  inputs:
-    pathtoPublish: '$(build.artifactStagingDirectory)'
-    artifactName: 'drop'
-    publishLocation: 'Container'
+    - script: dotnet test --configuration $(buildConfiguration)
+      displayName: Run tests
+
+    - task: PublishBuildArtifacts@1
+      inputs:
+        pathtoPublish: '$(Build.ArtifactStagingDirectory)'
+        artifactName: 'drop'
+        publishLocation: 'Container'
+
+# -------------------------
+# DEPLOY TO DEV (only dev branch)
+# -------------------------
+- stage: Deploy_Dev
+  dependsOn: Build
+  condition: eq(variables['Build.SourceBranch'], 'refs/heads/dev')
+  jobs:
+  - deployment: DevDeploy
+    environment: 'dev'
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - script: echo "Deploying to DEV"
+
+# -------------------------
+# DEPLOY TO STAGE (only stage branch)
+# -------------------------
+- stage: Deploy_Stage
+  dependsOn: Build
+  condition: eq(variables['Build.SourceBranch'], 'refs/heads/stage')
+  jobs:
+  - deployment: StageDeploy
+    environment: 'stage'
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - script: echo "Deploying to STAGE"
+
+# -------------------------
+# DEPLOY TO PROD (only master branch)
+# -------------------------
+- stage: Deploy_Prod
+  dependsOn: Build
+  condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
+  jobs:
+  - deployment: ProdDeploy
+    environment: 'prod'
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - script: echo "Deploying to PROD"
