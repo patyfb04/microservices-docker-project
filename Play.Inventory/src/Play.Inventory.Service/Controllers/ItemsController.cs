@@ -32,6 +32,45 @@ namespace Play.Inventory.Service.Controllers
             _publishedEndpoint = publishedEndpoint;
         }
 
+
+        [HttpGet("sync")]
+        [Authorize("InventoryReadOrAdmin")]
+        public async Task<ActionResult<IEnumerable<InventoryItemDto>>> GetAllAsync()
+        {
+            try { 
+                var inventoryItemEntities = await _inventoryRepository.GetAllAsync();
+
+                var catalogItemIdsList = inventoryItemEntities
+                    .Select(c => c.CatalogItemId)
+                    .Distinct()
+                    .ToList();
+
+                var catalogItemEntities = await _catalogItemsRepository
+                    .GetAllAsync(item => catalogItemIdsList.Contains(item.Id));
+
+                var catalogDict = catalogItemEntities.ToDictionary(c => c.Id);
+
+                var inventoryItemsDtos = inventoryItemEntities
+                    .Select(inventoryItem =>
+                    {
+                        if (!catalogDict.TryGetValue(inventoryItem.CatalogItemId, out var catalogItem))
+                            return null;
+
+                        return inventoryItem.AsDto(catalogItem.Name, catalogItem.Description);
+                    })
+                    .Where(dto => dto != null);
+
+                return Ok(inventoryItemsDtos); 
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Items Controller EXCEPTION:");
+                Console.WriteLine(ex.ToString());
+                throw;
+            }
+
+        }
+
         [HttpGet]
         public async Task<ActionResult<IEnumerable<InventoryItemDto>>> GetAsync(Guid userId) 
         {

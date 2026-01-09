@@ -62,7 +62,10 @@ builder.Services.AddSingleton<ITradingUserRepository>(sp =>
     return new TradingUserRepository(database, "Users");
 });
 
+//datasync with other microservices to keep data consistent
+
 builder.Services.AddSingleton<TradingCatalogSyncService>();
+builder.Services.AddSingleton<TradingInventorySyncService>();
 
 builder.Services.AddMongoDb()
                 .AddMongoRepository<CatalogItem>("catalogitems")
@@ -99,7 +102,6 @@ builder.Services.AddControllers(option =>
        options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
    });
 
-
 //builder.Services.AddOpenApi();
 
 builder.Services.AddSwaggerGen(c =>
@@ -115,21 +117,23 @@ var clientServicesSettings = builder.Configuration
     .GetSection(nameof(ClientServicesSettings))
     .Get<ClientServicesSettings>();
 
-var catalogService = clientServicesSettings.ClientServices
-    .FirstOrDefault(s => s.ServiceName.Equals("CatalogService", StringComparison.OrdinalIgnoreCase));
-
-AddCatalogClient(builder.Services, catalogService?.ServiceUrl);
-
-
+AddCatalogClient(builder.Services, clientServicesSettings);
+AddInventoryClient(builder.Services, clientServicesSettings);
 
 var app = builder.Build();
-// Sync the catalog items with inventory items on startup
+
+// Sync the services items with trading items on startup
 using (var scope = app.Services.CreateScope())
 {
-    var sync = scope.ServiceProvider.GetRequiredService<TradingCatalogSyncService>();
-    await sync.RunAsync();
+    var syncCatalog = scope.ServiceProvider.GetRequiredService<TradingCatalogSyncService>();
+    await syncCatalog.RunAsync();
 }
 
+using (var scope = app.Services.CreateScope())
+{
+    var syncInventory = scope.ServiceProvider.GetRequiredService<TradingInventorySyncService>();
+    await syncInventory.RunAsync();
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -241,13 +245,16 @@ void AddMassTransit()
     });
 }
 
-static void AddCatalogClient(IServiceCollection serviceCollection, string catalogUrl)
+static void AddCatalogClient(IServiceCollection serviceCollection, ClientServicesSettings clientServicesSettings)
 {
+    var catalog = clientServicesSettings.ClientServices
+    .FirstOrDefault(s => s.ServiceName.Equals("CatalogService", StringComparison.OrdinalIgnoreCase));
+
     Random jitterer = new Random();
 
     serviceCollection.AddHttpClient<CatalogClient>(client =>
     {
-        client.BaseAddress = new Uri(catalogUrl);
+        client.BaseAddress = new Uri(catalog?.ServiceUrl);
     })
     .AddHttpMessageHandler<TokenDelegatingHandler>()
     .AddTransientHttpErrorPolicy(policy => policy.Or<TimeoutRejectedException>().WaitAndRetryAsync(
@@ -275,6 +282,45 @@ static void AddCatalogClient(IServiceCollection serviceCollection, string catalo
           ))
     .AddPolicyHandler(Policy.TimeoutAsync<HttpResponseMessage>(1));
 }
+
+static void AddInventoryClient(IServiceCollection serviceCollection, ClientServicesSettings clientServicesSettings)
+{
+    var inventory = clientServicesSettings.ClientServices
+    .FirstOrDefault(s => s.ServiceName.Equals("InventoryService", StringComparison.OrdinalIgnoreCase));
+
+    Random jitterer = new Random();
+
+    serviceCollection.AddHttpClient<InventoryClient>(client =>
+    {
+        client.BaseAddress = new Uri(inventory?.ServiceUrl);
+    })
+    .AddHttpMessageHandler<TokenDelegatingHandler>()
+    .AddTransientHttpErrorPolicy(policy => policy.Or<TimeoutRejectedException>().WaitAndRetryAsync(
+        5, // 5 attempts
+        retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)) + TimeSpan.FromMilliseconds(jitterer.Next(0, 1000)), // exponentinal backoff
+        onRetry: (outcome, timespan, retryAttemp) =>
+        {
+            // Use Serilog static logger instead of building a service provider here
+            Log.Logger.ForContext("SourceContext", typeof(InventoryClient).FullName)
+                .Warning("Delaying for {Delay} seconds, then making retry {Retry}", timespan, retryAttemp);
+        }))
+    .AddTransientHttpErrorPolicy(policy => policy.Or<TimeoutRejectedException>().CircuitBreakerAsync(
+              3,
+              TimeSpan.FromSeconds(15),
+              onBreak: (outcome, timespan) =>
+              {
+                  Log.Logger.ForContext("SourceContext", typeof(InventoryClient).FullName)
+                      .Warning("Opening the Circuit for {Seconds} seconds...", timespan.TotalSeconds);
+              },
+              onReset: () =>
+              {
+                  Log.Logger.ForContext("SourceContext", typeof(InventoryClient).FullName)
+                      .Warning("Closing the Circuit...");
+              }
+          ))
+    .AddPolicyHandler(Policy.TimeoutAsync<HttpResponseMessage>(1));
+}
+
 
 app.Run();
 

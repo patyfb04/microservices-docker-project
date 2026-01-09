@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.OpenApi;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
@@ -8,6 +9,7 @@ using Play.Common.Repositories;
 using Play.Common.Settings;
 using Play.Inventory.Service.Clients;
 using Play.Inventory.Service.Entities;
+using Play.Inventory.Service.Policies;
 using Play.Inventory.Service.Services;
 using Polly;
 using Polly.Timeout;
@@ -52,6 +54,15 @@ builder.Services.AddMongoDb()
 // register token provider and handler for outgoing client calls
 builder.Services.AddSingleton<ITokenProvider, ClientCredentialsTokenProvider>();
 builder.Services.AddTransient<TokenDelegatingHandler>();
+
+builder.Services.AddSingleton<IAuthorizationHandler, InventoryReadOrAdminHandler>();
+
+builder.Services.AddAuthorization(options =>
+{
+    // Define a policy for read-only access to the inventory from the other services
+    options.AddPolicy("InventoryReadOrAdmin", policy =>
+          policy.AddRequirements(new InventoryReadOrAdminRequirement()));
+});
 
 var clientServicesSettings = builder.Configuration
     .GetSection(nameof(ClientServicesSettings))

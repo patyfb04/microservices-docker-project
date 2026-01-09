@@ -16,5 +16,7 @@ namespace Play.Trading.Service.Entities
 
         public int Quantity { get; set; }
 
+        public DateTimeOffset? AcquiredDate { get; set; }
+
     }
 }

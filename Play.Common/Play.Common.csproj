@@ -6,6 +6,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="src\Play.Common.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="MassTransit.RabbitMQ" Version="8.5.5" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="9.0.11" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="9.0.11" />
@@ -14,6 +18,13 @@
     <PackageReference Include="Microsoft.Extensions.Options" Version="9.0.10" />
     <PackageReference Include="MongoDB.Driver" Version="2.22.0" />
     <PackageReference Include="Serilog.AspNetCore" Version="9.0.0" />
+	  <PackageReference Include="OpenTelemetry.Extensions.Hosting" Version="1.14.0" />
+	  <PackageReference Include="OpenTelemetry.Exporter.OpenTelemetryProtocol" Version="1.10.0" />
+	  <PackageReference Include="OpenTelemetry.Instrumentation.Http" Version="1.10.0" />
+	  <PackageReference Include="OpenTelemetry.Instrumentation.AspNetCore" Version="1.10.0" />
+	  <PackageReference Include="OpenTelemetry.Instrumentation.EntityFrameworkCore" Version="1.0.0-beta.14" />
+	  <PackageReference Include="OpenTelemetry.Instrumentation.StackExchangeRedis" Version="1.10.0-beta.1" />
+	  <PackageReference Include="Npgsql.OpenTelemetry" Version="9.0.2" />
     <PackageReference Include="Serilog.Sinks.Console" Version="6.1.1" />
   </ItemGroup>
 

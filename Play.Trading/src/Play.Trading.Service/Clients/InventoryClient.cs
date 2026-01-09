@@ -13,7 +13,7 @@ namespace Play.Trading.Service.Clients
 
         public async Task<IReadOnlyCollection<InventoryItemDto>> GetInventoryItemsAsync()
         {
-            var items = await _httpClient.GetFromJsonAsync<IReadOnlyCollection<InventoryItemDto>>("/items");
+            var items = await _httpClient.GetFromJsonAsync<IReadOnlyCollection<InventoryItemDto>>("/items/sync");
             return items;
         }
     }
