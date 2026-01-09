@@ -25,13 +25,12 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
+# Run tests using dotnet test (no Visual Studio required)
+- script: dotnet test --configuration Release
+  displayName: Run tests
+
 - task: PublishBuildArtifacts@1
   inputs:
     pathtoPublish: '$(build.artifactStagingDirectory)'
     artifactName: 'drop'
     publishLocation: 'Container'
-
-- task: VSTest@2
-  inputs:
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
