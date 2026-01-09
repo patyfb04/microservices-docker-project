@@ -10,6 +10,7 @@ Play Economy is composed of several independently deployable services, each resp
 - Communicates with backend services through REST APIs.
 - Handles user interaction, authentication flows, and real‑time UI updates.
   **2. Trading Service (Orchestrator)**
+  **2. Trading Service (Orchestrator)**
 - The central orchestrator of business workflows.
 - Implements the Saga Pattern (Orchestration) to coordinate multi‑service operations such as:
 - Purchasing items
@@ -17,6 +18,7 @@ Play Economy is composed of several independently deployable services, each resp
 - Validating catalog data
 - Uses MassTransit to publish and consume events.
 - Ensures consistency across services without distributed transactions.
+  **3. Catalog Service**
   **3. Catalog Service**
 - Manages the list of items available in the economy.
 - Exposes CRUD operations for item definitions.
@@ -26,10 +28,12 @@ Play Economy is composed of several independently deployable services, each resp
 - CatalogItemDeleted
 - Uses MongoDB for persistence.
   **4. Inventory Service**
+  **4. Inventory Service**
 - Tracks player inventory and item quantities.
 - Reacts to events from Trading and Catalog.
 - Ensures eventual consistency with the orchestrator.
 - Stores data in MongoDB for scalability and high throughput.
+  **5. Identity Service**
   **5. Identity Service**
 - Provides authentication and authorization.
 - Issues JWT tokens for secure communication between:
@@ -47,6 +51,7 @@ Reasons for choosing MongoDB:
 - Ideal for event‑driven microservices
 - Native support for GUIDs and JSON‑like structures
   Each service owns its own database to ensure loose coupling and bounded contexts.
+  Each service owns its own database to ensure loose coupling and bounded contexts.
 
 **🛰️ Communication – Saga Pattern (Orchestration)**
 Play Economy uses Orchestration‑based Sagas to manage distributed workflows.
@@ -57,6 +62,7 @@ Why Orchestration?
 - Easier debugging
 - Stronger control over compensating actions
   How it works:
+  How it works:
 - Trading Service receives a command (e.g., “Purchase Item”).
 - It orchestrates calls to:
 - Catalog Service (validate item)
@@ -64,6 +70,7 @@ Why Orchestration?
 - If any step fails:
 - Trading triggers compensating actions
 - Ensures eventual consistency across services
+  MassTransit handles:
   MassTransit handles:
 - Message routing
 - Event publishing
@@ -76,9 +83,11 @@ Retries
 - Automatically retry transient failures
 - Helps absorb temporary network issues
   Circuit Breakers
+  Circuit Breakers
 - Prevents cascading failures
 - Stops calls to unhealthy services
 - Allows time for recovery before retrying
+  This results in:
   This results in:
 - Higher system stability
 - Better user experience
@@ -95,6 +104,7 @@ Features:
 - Policies enforced via:
 - Roles (e.g., Admin)
 - Scopes (e.g., catalog.readaccess, catalog.writeaccess)
+  Benefits:
   Benefits:
 - Stateless authentication
 - Easy horizontal scaling
