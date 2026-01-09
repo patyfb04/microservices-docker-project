@@ -22,6 +22,14 @@ steps:
   inputs:
     restoreSolution: '$(solution)'
 
+- task: NuGetToolInstaller@1
+
+- task: NuGetCommand@2
+  inputs:
+    restoreSolution: '**/*.sln'
+    feedsToUse: 'config'
+    nugetConfigPath: 'nuget.config'
+    
 - task: VSBuild@1
   inputs:
     solution: '$(solution)'
