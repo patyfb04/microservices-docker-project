@@ -80,15 +80,16 @@ builder.Services.AddSwaggerGen(c =>
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "Play.Inventory.Service", Version = "v1" });
 });
 
+builder.Services.AddHealthChecks();
 
 var app = builder.Build();
 
 // Sync the catalog items with inventory items on startup
-using (var scope = app.Services.CreateScope())
-{
-    var sync = scope.ServiceProvider.GetRequiredService<InventoryCatalogSyncService>();
-    await sync.RunAsync();
-}
+// using (var scope = app.Services.CreateScope())
+// {
+//     var sync = scope.ServiceProvider.GetRequiredService<InventoryCatalogSyncService>();
+//     await sync.RunAsync();
+// }
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -103,8 +104,12 @@ if (app.Environment.IsDevelopment())
         .AllowAnyMethod();
     });
 }
+else
+{
+    app.UseHttpsRedirection();
+}
 
-app.UseHttpsRedirection();
+
 
 app.UseAuthentication();
 app.UseAuthorization();
@@ -144,5 +149,7 @@ app.MapControllers();
           ))
     .AddPolicyHandler(Policy.TimeoutAsync<HttpResponseMessage>(1));
 }
+
+app.MapHealthChecks("/health");
 
 app.Run();
