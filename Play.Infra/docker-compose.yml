@@ -43,8 +43,8 @@ services:
       - IdentitySettings__AdminUserEmail=admin@play.com
       - AllowedOrigins=http://localhost:3000
 
-      # IdentityServer internal URL
-      - IdentityServerUrl=http://play-identity:5000
+      # IdentityServer PUBLIC URL (browser-facing)
+      - IdentityServerUrl=http://localhost:5001
 
       # ASP.NET Core hosting
       - ASPNETCORE_ENVIRONMENT=Development
@@ -156,6 +156,19 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+
+  play-frontend:
+    build:
+      context: ../
+      dockerfile: Play.Frontend/Dockerfile
+    container_name: play-frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - play-identity
+      - play-catalog
+      - play-inventory
+      - play-trading
 
 volumes:
   mongodbdata:

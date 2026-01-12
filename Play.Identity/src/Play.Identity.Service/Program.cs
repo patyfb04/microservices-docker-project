@@ -56,14 +56,24 @@ builder.Services.AddMassTransitWithRabbitMq(retryConfigurator =>
     retryConfigurator.Ignore(typeof(InsufficientFundsException));
 });
 
-// ⭐ Convert appsettings clients → IdentityServer Client objects
+//  Convert appsettings clients → IdentityServer Client objects
 var mappedClients = identityServerSettings.Clients.Select(c => new Client
 {
     ClientId = c.ClientId,
     ClientName = c.ClientName,
+
     AllowedGrantTypes = c.AllowedGrantTypes,
+    RequireClientSecret = c.RequireClientSecret,
+    RequirePkce = c.RequirePkce,
+
+    RedirectUris = c.RedirectUris,
+    PostLogoutRedirectUris = c.PostLogoutRedirectUris,
+    AllowedCorsOrigins = c.AllowedCorsOrigins,
+
     AllowedScopes = c.AllowedScopes,
-    ClientSecrets = c.ClientSecrets
+    AlwaysIncludeUserClaimsInIdToken = c.AlwaysIncludeUserClaimsInIdToken,
+
+    ClientSecrets = c.ClientSecrets?
         .Select(s => new Secret(s.Value.Sha256()))
         .ToList()
 }).ToList();
