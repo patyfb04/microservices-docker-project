@@ -2,23 +2,176 @@ services:
   mongo:
     image: mongo:latest
     container_name: mongo
+    restart: unless-stopped
     ports:
       - "27017:27017"
     volumes:
       - mongodbdata:/data/db
-  
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
   rabbitmq:
+    mem_limit: 512m
     image: rabbitmq:management
     container_name: rabbitmq
+    restart: unless-stopped
     ports:
       - "5672:5672"
       - "15672:15672"
     volumes:
       - rabbitmqdata:/var/lib/rabbitmq
     hostname: rabbitmq
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  play-identity:
+    build:
+      context: ../
+      dockerfile: Play.Identity/src/Play.Identity.Service/Dockerfile
+    container_name: play-identity
+    restart: unless-stopped
+    environment:
+      - RabbitMQSettings__Host=rabbitmq
+      - MongoDbSettings__Host=mongo
+      - IdentitySettings__AdminUserPassword=B@bies2020
+      - IdentitySettings__AdminUserEmail=admin@play.com
+      - AllowedOrigins=http://localhost:3000
+
+      # IdentityServer PUBLIC URL (browser-facing)
+      - IdentityServerUrl=http://localhost:5001
+
+      # ASP.NET Core hosting
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:5000
+
+    depends_on:
+      mongo:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+    ports:
+      - "5001:5000"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  play-catalog:
+    build:
+      context: ../
+      dockerfile: Play.Catalog/src/Play.Catalog.Service/Dockerfile
+    container_name: play-catalog
+    environment:
+      - RabbitMQSettings__Host=rabbitmq
+      - MongoDbSettings__Host=mongo
+
+      # IdentityServer overrides
+      - IdentityServerUrl=http://play-identity:5000
+      - ServiceSettings__Authority=http://play-identity:5000
+      - Jwt__Authority=http://play-identity:5000
+      - Auth__Authority=http://play-identity:5000
+      - AllowedOrigins=http://localhost:3000
+    depends_on:
+      mongo:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+    ports:
+      - "5002:5000"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  play-inventory:
+    build:
+      context: ../
+      dockerfile: Play.Inventory/src/Play.Inventory.Service/Dockerfile
+    container_name: play-inventory
+    environment:
+      - RabbitMQSettings__Host=rabbitmq
+      - MongoDbSettings__Host=mongo
+      - AllowedOrigins=http://localhost:3000
+
+        # IdentityServer
+      - IdentityServerUrl=http://play-identity:5000
+      - ServiceSettings__Authority=http://play-identity:5000
+      - Auth__Authority=http://play-identity:5000
+
+      # Catalog service URL (array override)
+      - ClientServicesSettings__ClientServices__0__ServiceUrl=http://play-catalog:5000
+
+    depends_on:
+      mongo:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+    ports:
+      - "5003:5000"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  play-trading:
+    build:
+      context: ../
+      dockerfile: Play.Trading/src/Play.Trading.Service/Dockerfile
+    container_name: play-trading
+    environment:
+      # Mongo + RabbitMQ
+      - MongoDbSettings__Host=mongo
+      - RabbitMQSettings__Host=rabbitmq
+
+      # IdentityServer
+      - IdentityServerUrl=http://play-identity:5000
+      - ServiceSettings__Authority=http://play-identity:5000
+      - Auth__Authority=http://play-identity:5000
+
+      # Catalog + Inventory service URLs (array overrides)
+      - ClientServicesSettings__ClientServices__0__ServiceUrl=http://play-catalog:5000
+      - ClientServicesSettings__ClientServices__1__ServiceUrl=http://play-inventory:5000
+
+      # Optional: frontend CORS
+      - AllowedOrigins=http://localhost:3000
+
+    depends_on:
+      mongo:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+    ports:
+      - "5004:5000"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  play-frontend:
+    build:
+      context: ../
+      dockerfile: Play.Frontend/Dockerfile
+    container_name: play-frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - play-identity
+      - play-catalog
+      - play-inventory
+      - play-trading
 
 volumes:
   mongodbdata:
-   name: mongodbdata
+    name: mongodbdata
   rabbitmqdata:
-   name: rabbitmqdata
+    name: rabbitmqdata

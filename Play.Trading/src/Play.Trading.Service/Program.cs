@@ -120,20 +120,22 @@ var clientServicesSettings = builder.Configuration
 AddCatalogClient(builder.Services, clientServicesSettings);
 AddInventoryClient(builder.Services, clientServicesSettings);
 
+builder.Services.AddHealthChecks();
+
 var app = builder.Build();
 
 // Sync the services items with trading items on startup
-using (var scope = app.Services.CreateScope())
-{
-    var syncCatalog = scope.ServiceProvider.GetRequiredService<TradingCatalogSyncService>();
-    await syncCatalog.RunAsync();
-}
+// using (var scope = app.Services.CreateScope())
+// {
+//     var syncCatalog = scope.ServiceProvider.GetRequiredService<TradingCatalogSyncService>();
+//     await syncCatalog.RunAsync();
+// }
 
-using (var scope = app.Services.CreateScope())
-{
-    var syncInventory = scope.ServiceProvider.GetRequiredService<TradingInventorySyncService>();
-    await syncInventory.RunAsync();
-}
+// using (var scope = app.Services.CreateScope())
+// {
+//     var syncInventory = scope.ServiceProvider.GetRequiredService<TradingInventorySyncService>();
+//     await syncInventory.RunAsync();
+// }
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -150,8 +152,11 @@ if (app.Environment.IsDevelopment())
         .AllowCredentials();
     });
 }
+else
+{
+    app.UseHttpsRedirection();
+}
 
-app.UseHttpsRedirection();
 
 app.UseRouting();
 
@@ -321,6 +326,7 @@ static void AddInventoryClient(IServiceCollection serviceCollection, ClientServi
     .AddPolicyHandler(Policy.TimeoutAsync<HttpResponseMessage>(1));
 }
 
+app.MapHealthChecks("/health");
 
 app.Run();
 
