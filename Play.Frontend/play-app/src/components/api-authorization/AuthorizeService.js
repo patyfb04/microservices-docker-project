@@ -205,6 +205,8 @@ export class AuthorizeService {
 
     var hostAndPort = window.location.origin;
 
+    var hostAndPort = window.location.origin;
+
     let settings = {
       authority: `${window.IDENTITY_SERVICE_URL}`,
       client_id: "frontend",
@@ -214,20 +216,22 @@ export class AuthorizeService {
       scope:
         "openid profile catalog.fullaccess inventory.fullaccess trading.fullaccess IdentityServerApi roles",
       post_logout_redirect_uri: `${hostAndPort}${AuthorizationPaths.LogOutCallback}`,
-    };
 
-    settings.automaticSilentRenew = true;
-    settings.includeIdTokenInSilentRenew = true;
-    settings.userStore = new WebStorageStateStore({
-      prefix: ApplicationName,
-    });
+      // ADD THIS:
+      silent_redirect_uri: `${hostAndPort}/authentication/silent-renew`,
+      automaticSilentRenew: false,
+      includeIdTokenInSilentRenew: true,
+      userStore: new WebStorageStateStore({
+        prefix: ApplicationName,
+      }),
+    };
 
     this.userManager = new UserManager(settings);
 
-    this.userManager.events.addUserSignedOut(async () => {
-      await this.userManager.removeUser();
-      this.updateState(undefined);
-    });
+    // this.userManager.events.addUserSignedOut(async () => {
+    //   await this.userManager.removeUser();
+    //   this.updateState(undefined);
+    // });
   }
 
   static get instance() {

@@ -10,8 +10,9 @@ using Play.Identity.Service.Exceptions;
 using Play.Identity.Service.HostedServices;
 using Play.Identity.Service.Settings;
 using Serilog;
-using Duende.IdentityServer.Models; // IMPORTANT
-using Duende.IdentityServer;        // IMPORTANT
+using Duende.IdentityServer.Models;
+using Duende.IdentityServer;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -55,15 +56,25 @@ builder.Services.AddMassTransitWithRabbitMq(retryConfigurator =>
     retryConfigurator.Ignore(typeof(InsufficientFundsException));
 });
 
-// ⭐ FIX: Convert appsettings clients → IdentityServer Client objects
+//  Convert appsettings clients → IdentityServer Client objects
 var mappedClients = identityServerSettings.Clients.Select(c => new Client
 {
     ClientId = c.ClientId,
     ClientName = c.ClientName,
+
     AllowedGrantTypes = c.AllowedGrantTypes,
+    RequireClientSecret = c.RequireClientSecret,
+    RequirePkce = c.RequirePkce,
+
+    RedirectUris = c.RedirectUris,
+    PostLogoutRedirectUris = c.PostLogoutRedirectUris,
+    AllowedCorsOrigins = c.AllowedCorsOrigins,
+
     AllowedScopes = c.AllowedScopes,
-    ClientSecrets = c.ClientSecrets
-        .Select(s => new Secret(s.Value.Sha256())) // HASHED SECRET
+    AlwaysIncludeUserClaimsInIdToken = c.AlwaysIncludeUserClaimsInIdToken,
+
+    ClientSecrets = c.ClientSecrets?
+        .Select(s => new Secret(s.Value.Sha256()))
         .ToList()
 }).ToList();
 
@@ -77,7 +88,7 @@ builder.Services.AddIdentityServer(options =>
     .AddAspNetIdentity<ApplicationUser>()
     .AddInMemoryApiScopes(identityServerSettings.ApiScopes)
     .AddInMemoryApiResources(identityServerSettings.ApiResources)
-    .AddInMemoryClients(mappedClients) // ⭐ USE MAPPED CLIENTS
+    .AddInMemoryClients(mappedClients)
     .AddInMemoryIdentityResources(identityServerSettings.IdentityResources)
     .AddDeveloperSigningCredential();
 
@@ -114,6 +125,8 @@ builder.Services.AddCors(options =>
               .AllowCredentials());
 });
 
+builder.Services.AddHealthChecks();
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
@@ -121,8 +134,12 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Play.Identity.Service v1"));
 }
+else
+{
+    app.UseHttpsRedirection();
+}
 
-app.UseHttpsRedirection();
+
 app.UseStaticFiles();
 
 app.UseRouting();
@@ -135,5 +152,7 @@ app.UseIdentityServer();
 
 app.MapControllers();
 app.MapRazorPages();
+
+app.MapHealthChecks("/health");
 
 app.Run();
