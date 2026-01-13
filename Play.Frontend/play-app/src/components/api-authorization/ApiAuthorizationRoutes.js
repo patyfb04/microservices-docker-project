@@ -3,6 +3,8 @@ import { Routes, Route } from "react-router-dom";
 import { Login } from "./Login";
 import { Logout } from "./Logout";
 import { LoginActions, LogoutActions } from "./ApiAuthorizationConstants";
+import LoginCallback from "./LoginCallback";
+import SilentRenew from "./SilentRenew";
 
 export default function ApiAuthorizationRoutes() {
   return (
@@ -15,10 +17,8 @@ export default function ApiAuthorizationRoutes() {
         path={LoginActions.LoginFailed}
         element={<Login action={LoginActions.LoginFailed} />}
       />
-      <Route
-        path={LoginActions.LoginCallback}
-        element={<Login action={LoginActions.LoginCallback} />}
-      />
+      <Route path={LoginActions.LoginCallback} element={<LoginCallback />} />
+      <Route path="/authentication/silent-renew" element={<SilentRenew />} />
       <Route
         path={LoginActions.Profile}
         element={<Login action={LoginActions.Profile} />}
