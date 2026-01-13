@@ -1,6 +1,6 @@
 ## Play Economy – Microservices Architecture
 
-**Play Economy** is a distributed microservices system designed to simulate a virtual game economy. It demonstrates modern cloud‑native architectural patterns including service decomposition, event‑driven communication, orchestration‑based sagas, resilience engineering, and secure API boundaries.
+**Play Economy** is a distributed microservices system designed to simulate a virtual game economy. It demonstrates modern cloud‑native architectural patterns including service decomposition, event‑driven communication, orchestration‑based sagas, resilience engineering, and secure API boundaries. The services are containerized in Docker.
 
 📐 Architecture Overview
 Play Economy is composed of several independently deployable services, each responsible for a specific domain:
@@ -110,7 +110,10 @@ Features:
 - Easy horizontal scaling
 - Clear separation of concerns
 
-**- 📦 Technologies Used**
+🐳  Docker - Dockerizing the Services
+Docker is used to provide a fully reproducible, isolated environment for all services in the system. Instead of installing and configuring each dependency manually (IdentityServer, APIs, MongoDB, RabbitMQ, frontend, etc.), Docker Compose orchestrates everything so the entire platform can be started with a single command.
+
+** 📦 Technologies Used**
 
 - React
 - .NET 9 Microservices
@@ -121,5 +124,7 @@ Features:
 - Docker
 - Serilog
 
-Next steps: Include a distributed cache Redis to reduce requests to the database.
-test1
+Next steps: 
+- Include a distributed cache Redis to reduce requests to the database.
+- Implement telemetry with OpenTelemetry for observability
+- Implement unit tests and automated tests
